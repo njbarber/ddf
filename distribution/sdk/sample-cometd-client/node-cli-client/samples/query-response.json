@@ -1,0 +1,167 @@
+{
+  "hits": 1,
+  "id": "4303ba5d-21af-4878-9a4c-808e80052e6c",
+  "metacard-types": {
+    "ddf.metacard": {
+      "created": {
+        "format": "DATE",
+        "indexed": true
+      },
+      "description": {
+        "format": "STRING",
+        "indexed": true
+      },
+      "effective": {
+        "format": "DATE",
+        "indexed": true
+      },
+      "expiration": {
+        "format": "DATE",
+        "indexed": true
+      },
+      "id": {
+        "format": "STRING",
+        "indexed": true
+      },
+      "location": {
+        "format": "GEOMETRY",
+        "indexed": true
+      },
+      "metadata": {
+        "format": "XML",
+        "indexed": true
+      },
+      "metadata-content-type": {
+        "format": "STRING",
+        "indexed": true
+      },
+      "metadata-content-type-version": {
+        "format": "STRING",
+        "indexed": true
+      },
+      "metadata-target-namespace": {
+        "format": "STRING",
+        "indexed": true
+      },
+      "modified": {
+        "format": "DATE",
+        "indexed": true
+      },
+      "point-of-contact": {
+        "format": "STRING",
+        "indexed": true
+      },
+      "resource-download-url": {
+        "format": "STRING",
+        "indexed": false
+      },
+      "resource-size": {
+        "format": "STRING",
+        "indexed": false
+      },
+      "resource-uri": {
+        "format": "STRING",
+        "indexed": true
+      },
+      "thumbnail": {
+        "format": "BINARY",
+        "indexed": false
+      },
+      "title": {
+        "format": "STRING",
+        "indexed": true
+      }
+    }
+  },
+  "results": [
+    {
+      "metacard": {
+        "actions": [
+          {
+              "description": "Provides a URL to the metacard that transforms the return value via the html transformer",
+              "id": "catalog.data.metacard.htmlExport as html",
+              "title": "Export as html",
+              "url": "https://localhost:8993/services/catalog/sources/ddf.distribution/9668bfa608434a778278a157ad833468?transform=html"
+          },
+          {
+              "description": "Provides a URL to the metacard that transforms the return value via the thumbnail transformer",
+              "id": "catalog.data.metacard.thumbnailExport as thumbnail",
+              "title": "Export as thumbnail",
+              "url": "https://localhost:8993/services/catalog/sources/ddf.distribution/9668bfa608434a778278a157ad833468?transform=thumbnail"
+          },
+          {
+              "description": "Provides a URL to the metacard that transforms the return value via the resource transformer",
+              "id": "catalog.data.metacard.resourceExport as resource",
+              "title": "Export as resource",
+              "url": "https://localhost:8993/services/catalog/sources/ddf.distribution/9668bfa608434a778278a157ad833468?transform=resource"
+          },
+          {
+              "description": "Provides a URL to the metacard that transforms the return value via the geojson transformer",
+              "id": "catalog.data.metacard.geojsonExport as geojson",
+              "title": "Export as geojson",
+              "url": "https://localhost:8993/services/catalog/sources/ddf.distribution/9668bfa608434a778278a157ad833468?transform=geojson"
+          },
+          {
+              "description": "Provides a URL to the metacard that transforms the return value via the xml transformer",
+              "id": "catalog.data.metacard.xmlExport as xml",
+              "title": "Export as xml",
+              "url": "https://localhost:8993/services/catalog/sources/ddf.distribution/9668bfa608434a778278a157ad833468?transform=xml"
+          },
+          {
+              "description": "Provides a URL to the metacard",
+              "id": "catalog.data.metacard.viewExport Metacard XML",
+              "title": "Export Metacard XML",
+              "url": "https://localhost:8993/services/catalog/sources/ddf.distribution/9668bfa608434a778278a157ad833468"
+          },
+          {
+              "description": "Provides a URL to the metacard that transforms the return value via the metadata transformer",
+              "id": "catalog.data.metacard.metadataExport as metadata",
+              "title": "Export as metadata",
+              "url": "https://localhost:8993/services/catalog/sources/ddf.distribution/9668bfa608434a778278a157ad833468?transform=metadata"
+          },
+          {
+              "description": "Provides a URL to the metacard that transforms the return value via the kml transformer",
+              "id": "catalog.data.metacard.kmlExport as kml",
+              "title": "Export as kml",
+              "url": "https://localhost:8993/services/catalog/sources/ddf.distribution/9668bfa608434a778278a157ad833468?transform=kml"
+          },
+          {
+              "description": "Provides a URL to the metacard that transforms the return value via the csw transformer",
+              "id": "catalog.data.metacard.cswExport as csw",
+              "title": "Export as csw",
+              "url": "https://localhost:8993/services/catalog/sources/ddf.distribution/9668bfa608434a778278a157ad833468?transform=csw"
+          }
+        ],
+        "cached": "2015-10-30T21:06:21.885+0000",
+        "geometry": null,
+        "properties": {
+          "created": "2015-10-30T20:53:07.542+0000",
+          "effective": "2015-10-30T04:00:00.000+0000",
+          "id": "9668bfa608434a778278a157ad833468",
+          "metacard-type": "ddf.metacard",
+          "metadata": "<?xml version=\"1.0\" encoding=\"UTF-8\"?><metadata>\n<head>\n<meta name=\"X-Parsed-By\" content=\"org.apache.tika.parser.DefaultParser\"/>\n<meta name=\"X-Parsed-By\" content=\"org.apache.tika.parser.DefaultParser\"/>\n<meta name=\"X-Parsed-By\" content=\"org.apache.tika.parser.image.ImageParser\"/>\n<meta name=\"Transparency Alpha\" content=\"nonpremultipled\"/>\n<meta name=\"Text TextEntry\" content=\"keyword=XML:com.adobe.xmp, value=&lt;x:xmpmeta xmlns:x=&#34;adobe:ns:meta/&#34; x:xmptk=&#34;XMP Core 5.4.0&#34;&gt;    &lt;rdf:RDF xmlns:rdf=&#34;http://www.w3.org/1999/02/22-rdf-syntax-ns#&#34;&gt;       &lt;rdf:Description rdf:about=&#34;&#34;             xmlns:exif=&#34;http://ns.adobe.com/exif/1.0/&#34;&gt;          &lt;exif:PixelXDimension&gt;2560&lt;/exif:PixelXDimension&gt;          &lt;exif:PixelYDimension&gt;1440&lt;/exif:PixelYDimension&gt;       &lt;/rdf:Description&gt;    &lt;/rdf:RDF&gt; &lt;/x:xmpmeta&gt;, language=, compression=none\"/>\n<meta name=\"tiff:ImageLength\" content=\"1440\"/>\n<meta name=\"Compression CompressionTypeName\" content=\"deflate\"/>\n<meta name=\"Dimension PixelAspectRatio\" content=\"1.0\"/>\n<meta name=\"Data BitsPerSample\" content=\"8 8 8 8\"/>\n<meta name=\"Data PlanarConfiguration\" content=\"PixelInterleaved\"/>\n<meta name=\"IHDR\" content=\"width=2560, height=1440, bitDepth=8, colorType=RGBAlpha, compressionMethod=deflate, filterMethod=adaptive, interlaceMethod=none\"/>\n<meta name=\"iTXt iTXtEntry\" content=\"keyword=XML:com.adobe.xmp, compressionFlag=false, compressionMethod=0, languageTag=, translatedKeyword=, text=&lt;x:xmpmeta xmlns:x=&#34;adobe:ns:meta/&#34; x:xmptk=&#34;XMP Core 5.4.0&#34;&gt;    &lt;rdf:RDF xmlns:rdf=&#34;http://www.w3.org/1999/02/22-rdf-syntax-ns#&#34;&gt;       &lt;rdf:Description rdf:about=&#34;&#34;             xmlns:exif=&#34;http://ns.adobe.com/exif/1.0/&#34;&gt;          &lt;exif:PixelXDimension&gt;2560&lt;/exif:PixelXDimension&gt;          &lt;exif:PixelYDimension&gt;1440&lt;/exif:PixelYDimension&gt;       &lt;/rdf:Description&gt;    &lt;/rdf:RDF&gt; &lt;/x:xmpmeta&gt;\"/>\n<meta name=\"Compression NumProgressiveScans\" content=\"1\"/>\n<meta name=\"iCCP\" content=\"profileName=ICC Profile, compressionMethod=deflate\"/>\n<meta name=\"Chroma ColorSpaceType\" content=\"RGB\"/>\n<meta name=\"Chroma BlackIsZero\" content=\"true\"/>\n<meta name=\"Compression Lossless\" content=\"true\"/>\n<meta name=\"width\" content=\"2560\"/>\n<meta name=\"Dimension ImageOrientation\" content=\"Normal\"/>\n<meta name=\"tiff:BitsPerSample\" content=\"8 8 8 8\"/>\n<meta name=\"tiff:ImageWidth\" content=\"2560\"/>\n<meta name=\"Chroma NumChannels\" content=\"4\"/>\n<meta name=\"Data SampleFormat\" content=\"UnsignedIntegral\"/>\n<meta name=\"Content-Type\" content=\"image/png\"/>\n<meta name=\"height\" content=\"1440\"/>\n<title/>\n</head>\n<body/></metadata>",
+          "metadata-content-type": "image/png",
+          "modified": "2015-10-30T20:53:17.912+0000",
+          "point-of-contact": "Anonymous",
+          "resource-download-url": "https://localhost:8993/services/catalog/sources/ddf.distribution/9668bfa608434a778278a157ad833468?transform=resource",
+          "resource-size": "860565",
+          "resource-uri": "content:707ecd51f57d4e5e971e9b468cf731ec",
+          "source-id": "ddf.distribution",
+          "thumbnail": "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",
+          "title": "Screen Shot 2015-10-29 at 5.41.05 PM.png"
+        },
+        "type": "Feature"
+      }
+    }
+  ],
+  "status": [
+    {
+      "elapsed": 10,
+      "hits": 1,
+      "id": "ddf.distribution",
+      "results": 1,
+      "state": "SUCCEEDED"
+    }
+  ],
+  "successful": true
+}

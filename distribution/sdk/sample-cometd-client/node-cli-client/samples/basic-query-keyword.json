@@ -1,0 +1,30 @@
+/*
+DDF Standard Search page, default query params with keyword
+*/
+
+{
+  "channel":"/service/query",
+  "data": {
+   "offsetTimeUnits":"hours",
+   "scheduleUnits":"minutes",
+   "timeType":"modified",
+   "radiusUnits":"meters",
+   "radius":0,
+   "count":250,
+   "start":1,
+   "format":"geojson",
+   "locationType":"latlon",
+   "federation":"enterprise",
+   "sortField":"modified",
+   "sortOrder":"desc",
+   "q":"*",
+   "src":"ddf.distribution",
+   "result": {
+     "initiated":"Oct 30 2015 8:56 AM"
+   },
+   "cql":"(\"anyText\" LIKE 'foo')",
+   "sort":"modified:desc","id":"3b19bc9c-2155-4ca6-bae8-65a9c8e373f6"
+  },
+  "id":"21",
+  "clientId":"98tbim7ij2qq21l6l5l6fdnrix"
+}
