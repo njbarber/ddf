@@ -30,6 +30,11 @@
             <artifactId>cometd-java-client</artifactId>
             <version>3.0.7</version>
         </dependency>
+        <dependency>
+            <groupId>org.apache.tika</groupId>
+            <artifactId>tika-core</artifactId>
+            <version>1.7</version>
+        </dependency>
     </dependencies>
 
 </project>

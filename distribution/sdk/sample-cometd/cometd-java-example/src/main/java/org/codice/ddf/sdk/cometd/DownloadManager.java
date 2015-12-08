@@ -22,12 +22,18 @@ import java.net.URL;
 import java.nio.channels.Channels;
 import java.nio.channels.ReadableByteChannel;
 
+import org.apache.tika.mime.MimeTypeException;
+import org.apache.tika.mime.MimeTypes;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 public class DownloadManager implements Runnable {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(AsyncClient.class);
+    private MimeTypes allTypes = MimeTypes.getDefaultMimeTypes();
+    private MimeTypes types = new MimeTypes();
+    private String fileExtension;
+    private String mimeType;
 
     private URL url;
     private String outputFileName;
@@ -41,13 +47,20 @@ public class DownloadManager implements Runnable {
         ReadableByteChannel rbc = null;
         try {
             rbc = Channels.newChannel(url.openStream());
+            mimeType = url.openConnection().getContentType();
+            fileExtension = allTypes.forName(mimeType).getExtension();
+            LOGGER.debug("downloading product from: " + url.toString());
+            LOGGER.debug("mimetype is: " + mimeType);
+            LOGGER.debug("File Extension is: " + fileExtension);
         } catch (IOException e) {
             LOGGER.error("Error opening stream from url: " + url);
             LOGGER.error(e.getMessage());
+        } catch (MimeTypeException e) {
+            LOGGER.error("Error determining file extesion from mimetype: " + mimeType);
         }
         FileOutputStream fos = null;
         try {
-            fos = new FileOutputStream(outputFileName);
+            fos = new FileOutputStream(outputFileName + fileExtension);
         } catch (FileNotFoundException e) {
             LOGGER.error("Could not find file: " + outputFileName);
             LOGGER.error(e.getMessage());
