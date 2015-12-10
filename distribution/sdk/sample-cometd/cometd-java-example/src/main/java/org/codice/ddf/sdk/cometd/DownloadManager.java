@@ -14,7 +14,6 @@
  **/
 package org.codice.ddf.sdk.cometd;
 
-import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.net.MalformedURLException;
@@ -29,47 +28,35 @@ import org.slf4j.LoggerFactory;
 
 public class DownloadManager implements Runnable {
 
-    private static final Logger LOGGER = LoggerFactory.getLogger(AsyncClient.class);
-    private MimeTypes allTypes = MimeTypes.getDefaultMimeTypes();
-    private MimeTypes types = new MimeTypes();
-    private String fileExtension;
-    private String mimeType;
+    private static final Logger LOGGER = LoggerFactory.getLogger(DownloadManager.class);
+    private final MimeTypes allTypes = MimeTypes.getDefaultMimeTypes();
 
-    private URL url;
-    private String outputFileName;
+    private final URL url;
+    private final String outputFileName;
 
     public DownloadManager(String url, String outputFileName) throws MalformedURLException {
         this.url = new URL(url);
         this.outputFileName = outputFileName;
     }
 
+    @Override
     public void run() {
-        ReadableByteChannel rbc = null;
+        ReadableByteChannel byteChannel;
+        FileOutputStream fileOutputStream;
+        String mimeType = null;
         try {
-            rbc = Channels.newChannel(url.openStream());
+            byteChannel = Channels.newChannel(url.openStream());
             mimeType = url.openConnection().getContentType();
-            fileExtension = allTypes.forName(mimeType).getExtension();
+            String fileExtension = allTypes.forName(mimeType).getExtension();
             LOGGER.debug("downloading product from: " + url.toString());
             LOGGER.debug("mimetype is: " + mimeType);
             LOGGER.debug("File Extension is: " + fileExtension);
+            fileOutputStream = new FileOutputStream(outputFileName + fileExtension);
+            fileOutputStream.getChannel().transferFrom(byteChannel, 0, Long.MAX_VALUE);
         } catch (IOException e) {
-            LOGGER.error("Error opening stream from url: " + url);
-            LOGGER.error(e.getMessage());
+            LOGGER.error("Error downloading file from url: {}", url, e);
         } catch (MimeTypeException e) {
-            LOGGER.error("Error determining file extesion from mimetype: " + mimeType);
-        }
-        FileOutputStream fos = null;
-        try {
-            fos = new FileOutputStream(outputFileName + fileExtension);
-        } catch (FileNotFoundException e) {
-            LOGGER.error("Could not find file: " + outputFileName);
-            LOGGER.error(e.getMessage());
-        }
-        try {
-            fos.getChannel().transferFrom(rbc, 0, Long.MAX_VALUE);
-        } catch (IOException e) {
-            LOGGER.error("Error downloading file");
-            LOGGER.error(e.getMessage());
+            LOGGER.error("Error determining file extension from mimetype: {}", mimeType, e);
         }
     }
 }

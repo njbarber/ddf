@@ -32,6 +32,7 @@ import javax.net.ssl.X509TrustManager;
 
 import org.cometd.bayeux.Message;
 import org.cometd.bayeux.client.ClientSessionChannel;
+import org.cometd.bayeux.client.ClientSessionChannel.MessageListener;
 import org.cometd.client.BayeuxClient;
 import org.cometd.client.transport.ClientTransport;
 import org.cometd.client.transport.LongPollingTransport;
@@ -39,6 +40,10 @@ import org.eclipse.jetty.client.HttpClient;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+/**
+ * This class is used to establish a session with the DDF cometd api. It provides the capability to monitor
+ * notifications, activities as well as the ability to issue queries and download products.
+ */
 public class AsyncClient {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(AsyncClient.class);
@@ -53,14 +58,14 @@ public class AsyncClient {
     private static final String DOWNLOAD_CONTEXT = "/services/catalog/sources/";
     private static final String DOWNLOAD_TRANSFORM = "?transform=resource";
 
-    private static String asyncClientId;
-    private static Map<String, Object> queryResponse;
-    private static Map<String, Object> activities;
-    private static Map<String, Object> notifications;
+    private final String url;
+    private final BayeuxClient client;
+    private final Map<String, Object> emptyMessage = new HashMap<>();
 
-    private String url;
-    private BayeuxClient client;
-    private Map<String, Object> emptyMessage = new HashMap<>();
+    private String asyncClientId;
+    private Map<String, Object> queryResponse;
+    private Map<String, Object> activities;
+    private Map<String, Object> notifications;
 
     /**
      * Creates a ddf async client with default channel subscriptions
@@ -76,7 +81,7 @@ public class AsyncClient {
 
         httpClient.start();
 
-        Map<String, Object> options = new HashMap<String, Object>();
+        Map<String, Object> options = new HashMap<>();
         ClientTransport transport = new LongPollingTransport(options, httpClient);
 
         // DisableValidation
@@ -86,22 +91,18 @@ public class AsyncClient {
 
         this.client = new BayeuxClient(url + COMETD_CONTEXT, transport);
 
-        client.handshake(new ClientSessionChannel.MessageListener() {
+        client.handshake(new MessageListener() {
             public void onMessage(ClientSessionChannel channel, Message message) {
                 if (message.isSuccessful()) {
                     asyncClientId = channel.getSession().getId();
 
-                    client.getChannel(ALL_ACTIVITIES).addListener(new ClientSessionChannel.MessageListener() {
-                        public void onMessage(ClientSessionChannel channel, Message message) {
-                            activities = message.getDataAsMap();
-                        }
-                    });
+                    client.getChannel(ALL_ACTIVITIES).addListener((MessageListener)
+                            (activitiesChannel, activitiesMessages) ->
+                                    activities = activitiesMessages.getDataAsMap());
 
-                    client.getChannel(ALL_NOTIFICATIONS).addListener(new ClientSessionChannel.MessageListener() {
-                        public void onMessage(ClientSessionChannel channel, Message message) {
-                            notifications = message.getDataAsMap();
-                        }
-                    });
+                    client.getChannel(ALL_NOTIFICATIONS).addListener((MessageListener)
+                            (notificationsChannel, notificationsMessages) ->
+                                    notifications = notificationsMessages.getDataAsMap());
                 }
             }
         });
@@ -136,7 +137,8 @@ public class AsyncClient {
     }
 
     /**
-     * Retrieves all persisted notifications
+     * Retrieves all persisted notification.
+     * The notifications channel returns any persisted notifications when it receives an empty message on the channel
      */
     public void checkAllNotifications() {
 
@@ -152,7 +154,8 @@ public class AsyncClient {
     }
 
     /**
-     * Retrieves all persisted activities
+     * Retrieves all persisted activities.
+     * The activities channel returns any persisted activities when it receives an empty message on the channel
      */
     public void checkAllActivities() {
 
@@ -172,11 +175,8 @@ public class AsyncClient {
         request.put("id", id);
         request.put("cql", "anyText ILIKE  '" + keyword + "'");
 
-        client.getChannel(responseChannel).addListener(new ClientSessionChannel.MessageListener() {
-            public void onMessage(ClientSessionChannel channel, Message message) {
-                queryResponse = message.getDataAsMap();
-            }
-        });
+        client.getChannel(responseChannel).addListener((MessageListener)
+                (channel, message) -> queryResponse = message.getDataAsMap());
 
         client.getChannel(QUERY_SERVICE).publish(request);
     }
@@ -196,7 +196,7 @@ public class AsyncClient {
     }
 
     // Trust All Certifications
-    private static void doTrustAllCertificates() throws NoSuchAlgorithmException,
+    private void doTrustAllCertificates() throws NoSuchAlgorithmException,
             KeyManagementException {
         TrustManager[] trustAllCerts = new TrustManager[] {
                 new X509TrustManager() {
