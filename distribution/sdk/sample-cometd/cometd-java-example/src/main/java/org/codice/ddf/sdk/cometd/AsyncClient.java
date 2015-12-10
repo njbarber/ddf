@@ -192,7 +192,7 @@ public class AsyncClient {
         String downloadUrl = url + DOWNLOAD_CONTEXT + sourceName + "/" + catalogId +
                 DOWNLOAD_TRANSFORM + "&session=" + asyncClientId;
         Thread downloadManager = new Thread(new DownloadManager(downloadUrl, catalogId), catalogId);
-        downloadManager.run();
+        downloadManager.start();
     }
 
     // Trust All Certifications
