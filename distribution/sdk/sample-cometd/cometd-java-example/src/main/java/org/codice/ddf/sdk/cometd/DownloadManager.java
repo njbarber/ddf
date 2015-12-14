@@ -41,18 +41,18 @@ public class DownloadManager implements Runnable {
 
     @Override
     public void run() {
-        ReadableByteChannel byteChannel;
-        FileOutputStream fileOutputStream;
         String mimeType = null;
-        try {
-            byteChannel = Channels.newChannel(url.openStream());
+        try (ReadableByteChannel byteChannel = Channels.newChannel(url.openStream())) {
             mimeType = url.openConnection().getContentType();
             String fileExtension = allTypes.forName(mimeType).getExtension();
             LOGGER.debug("downloading product from: " + url.toString());
             LOGGER.debug("mimetype is: " + mimeType);
             LOGGER.debug("File Extension is: " + fileExtension);
-            fileOutputStream = new FileOutputStream(outputFileName + fileExtension);
-            fileOutputStream.getChannel().transferFrom(byteChannel, 0, Long.MAX_VALUE);
+            try (FileOutputStream fileOutputStream = new FileOutputStream(outputFileName + fileExtension)) {
+                fileOutputStream.getChannel().transferFrom(byteChannel, 0, Long.MAX_VALUE);
+            } catch (IOException e) {
+                LOGGER.error("Error opening stream for {}", outputFileName, e);
+            }
         } catch (IOException e) {
             LOGGER.error("Error downloading file from url: {}", url, e);
         } catch (MimeTypeException e) {
