@@ -51,15 +51,13 @@ public class Download implements RunnableCommand {
     @Override
     public int run() {
         String url = globtions.getUrl();
-        new Thread() {
-            public void run() {
-                try {
-                    asyncClient = new AsyncClient(url, true);
-                } catch (Exception e) {
-                    Notify.error("Client Error", "Client did not start correctly", e.toString());
-                }
-            }
-        }.start();
+        try {
+            asyncClient = new AsyncClient(url, globtions.getValidation());
+
+        } catch (Exception e) {
+            Notify.error("Client Error", "Problem creating client for: " + url, e.getMessage());
+            return 1;
+        }
         for (String cid:cids) {
             Notify.normal("Queuing Download", cid);
             try {

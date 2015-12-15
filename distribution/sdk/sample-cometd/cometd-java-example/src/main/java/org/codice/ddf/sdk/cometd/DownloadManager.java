@@ -26,6 +26,10 @@ import org.apache.tika.mime.MimeTypes;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+/**
+ * This class is used to download a product from the DDF.
+ * Since this could be a long running process it is advised that it is run in a separate thread.
+ */
 public class DownloadManager implements Runnable {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(DownloadManager.class);
@@ -34,6 +38,12 @@ public class DownloadManager implements Runnable {
     private final URL url;
     private final String outputFileName;
 
+    /**
+     * Creates a DownloadManager for a product within the DDF
+     * @param url - product url for retrieval
+     * @param outputFileName - name of output file
+     * @throws MalformedURLException
+     */
     public DownloadManager(String url, String outputFileName) throws MalformedURLException {
         this.url = new URL(url);
         this.outputFileName = outputFileName;

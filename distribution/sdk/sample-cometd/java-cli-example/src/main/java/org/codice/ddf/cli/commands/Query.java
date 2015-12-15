@@ -14,6 +14,8 @@
  **/
 package org.codice.ddf.cli.commands;
 
+import java.util.Map;
+
 import javax.inject.Inject;
 
 import org.codice.ddf.cli.RunnableCommand;
@@ -34,6 +36,9 @@ public class Query implements RunnableCommand {
     @Option(name = "--cid-only", description = "When set, results will only display the catalog id's")
     private boolean cidOnly = false;
 
+    @Option(name = {"-t", "--timeout"}, description = "Query timeout in milliseconds, default is 2 minutes")
+    private long timeout = 60000;
+
     @Arguments(description = "Keyword for query, defaults to %")
     String keyword = "%";
 
@@ -42,17 +47,20 @@ public class Query implements RunnableCommand {
     @Override
     public int run() {
         String url = globtions.getUrl();
-        new Thread() {
-            public void run() {
-                try {
-                    asyncClient = new AsyncClient(url, true);
-                    asyncClient.query(keyword);
-                } catch (Exception e) {
-                    Notify.error("Client Error", "Client did not start correctly", e.toString());
-                    return;
-                }
-            }
-        }.start();
+        Map<String, Object> queryResponse;
+        try {
+            asyncClient = new AsyncClient(url, globtions.getValidation());
+
+        } catch (Exception e) {
+            Notify.error("Client Error", "Problem creating client for: " + url, e.getMessage());
+            return 1;
+        }
+        try {
+            queryResponse = asyncClient.query(keyword, timeout);
+        } catch (InterruptedException e) {
+            Notify.error("Query Interrupted", null, e.getMessage());
+            return 1;
+        }
 
         try {
             Thread.sleep(1000);
@@ -60,7 +68,7 @@ public class Query implements RunnableCommand {
             Notify.error("Error performing query", e.getMessage());
             return 1;
         }
-        Notify.normal("Query Results: " + asyncClient.getQueryResponse().size(), null, asyncClient.getQueryResponse().toString());
+        Notify.normal("Query Results: " + queryResponse.size(), null, queryResponse.toString());
 
         return 0;
     }

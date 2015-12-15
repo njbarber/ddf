@@ -22,7 +22,6 @@ import java.security.cert.CertificateException;
 import java.security.cert.X509Certificate;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.UUID;
 
 import javax.net.ssl.HostnameVerifier;
 import javax.net.ssl.HttpsURLConnection;
@@ -53,17 +52,17 @@ public class AsyncClient {
     private static final String NOTIFICATIONS_CHANNEL = "/ddf/notifications";
     private static final String ALL_NOTIFICATIONS = NOTIFICATIONS_CHANNEL + "/**";
     private static final String DOWNLOADS_CHANNEL = NOTIFICATIONS_CHANNEL + "/downloads";
-    private static final String QUERY_SERVICE = "/service/query";
     private static final String COMETD_CONTEXT = "/cometd";
     private static final String DOWNLOAD_CONTEXT = "/services/catalog/sources/";
     private static final String DOWNLOAD_TRANSFORM = "?transform=resource";
+    private static final long DEFAULT_QUERY_TIMEOUT = 60000;
 
     private final String url;
     private final BayeuxClient client;
     private final Map<String, Object> emptyMessage = new HashMap<>();
+    private final Map<String, Object> queryResponse = new HashMap<>();
 
     private String asyncClientId;
-    private Map<String, Object> queryResponse;
     private Map<String, Object> activities;
     private Map<String, Object> notifications;
 
@@ -89,6 +88,7 @@ public class AsyncClient {
             doTrustAllCertificates();
         }
 
+        LOGGER.debug("Creating client for: {}", url + COMETD_CONTEXT);
         this.client = new BayeuxClient(url + COMETD_CONTEXT, transport);
 
         client.handshake(new MessageListener() {
@@ -107,6 +107,7 @@ public class AsyncClient {
             }
         });
         boolean handshaken = client.waitFor(1000, BayeuxClient.State.CONNECTED);
+        LOGGER.debug("Client handshaken: {}", handshaken);
 
         checkAllActivities();
         checkAllNotifications();
@@ -142,6 +143,7 @@ public class AsyncClient {
      */
     public void checkAllNotifications() {
 
+        LOGGER.debug("Checking all notifications");
         client.getChannel(NOTIFICATIONS_CHANNEL).publish(emptyMessage);
     }
 
@@ -150,6 +152,7 @@ public class AsyncClient {
      */
     public void checkDownloadNotifications() {
 
+        LOGGER.debug("Checking all Downloads");
         client.getChannel(DOWNLOADS_CHANNEL).publish(emptyMessage);
     }
 
@@ -159,26 +162,31 @@ public class AsyncClient {
      */
     public void checkAllActivities() {
 
+        LOGGER.debug("Checking all activities");
         client.getChannel(ACTIVITIES_CHANNEL).publish(emptyMessage);
     }
 
     /**
      * Execute a query against the ddf via the cometd endpoint
-     * @param keyword - Simple keyword for query
-     * @return - Query response map
+     * @param keyword - Simple keyword for query.
+     * @param timeout - maximum time to wait for query to return
+     * @return - Query response {@link Map}
      * @throws InterruptedException
      */
-    public void query(String keyword) throws InterruptedException {
-        String id = UUID.randomUUID().toString();
-        String responseChannel = "/" + id;
-        Map<String, Object> request = new HashMap<>();
-        request.put("id", id);
-        request.put("cql", "anyText ILIKE  '" + keyword + "'");
+    public Map<String, Object> query(String keyword, Long timeout) throws InterruptedException {
+        if (timeout == null) {
+            timeout = DEFAULT_QUERY_TIMEOUT;
+        }
 
-        client.getChannel(responseChannel).addListener((MessageListener)
-                (channel, message) -> queryResponse = message.getDataAsMap());
+        LOGGER.debug("Preparing to execute query");
+        AsyncQuery asyncQuery = new AsyncQuery(client, keyword, queryResponse);
+        Thread queryThread = new Thread(asyncQuery, "foo-thread");
+        queryThread.start();
+        LOGGER.debug("Waiting for query response for: {} milliseconds", timeout);
+        Thread.sleep(timeout);
+        asyncQuery.destroy();
 
-        client.getChannel(QUERY_SERVICE).publish(request);
+        return queryResponse;
     }
 
     /**
@@ -192,6 +200,7 @@ public class AsyncClient {
         String downloadUrl = url + DOWNLOAD_CONTEXT + sourceName + "/" + catalogId +
                 DOWNLOAD_TRANSFORM + "&session=" + asyncClientId;
         Thread downloadManager = new Thread(new DownloadManager(downloadUrl, catalogId), catalogId);
+        LOGGER.debug("Starting download for: {}", catalogId);
         downloadManager.start();
     }
 
