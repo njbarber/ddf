@@ -22,6 +22,7 @@ import java.security.cert.CertificateException;
 import java.security.cert.X509Certificate;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.UUID;
 
 import javax.net.ssl.HostnameVerifier;
 import javax.net.ssl.HttpsURLConnection;
@@ -52,6 +53,7 @@ public class AsyncClient {
     private static final String NOTIFICATIONS_CHANNEL = "/ddf/notifications";
     private static final String ALL_NOTIFICATIONS = NOTIFICATIONS_CHANNEL + "/**";
     private static final String DOWNLOADS_CHANNEL = NOTIFICATIONS_CHANNEL + "/downloads";
+    private static final String QUERY_SERVICE = "/service/query";
     private static final String COMETD_CONTEXT = "/cometd";
     private static final String DOWNLOAD_CONTEXT = "/services/catalog/sources/";
     private static final String DOWNLOAD_TRANSFORM = "?transform=resource";
@@ -177,15 +179,16 @@ public class AsyncClient {
         if (timeout == null) {
             timeout = DEFAULT_QUERY_TIMEOUT;
         }
+        String id = UUID.randomUUID().toString();
+        String responseChannel = "/" + id;
+        Map<String, Object> request = new HashMap<>();
+        request.put("id", id);
+        request.put("cql", "anyText ILIKE  '" + keyword + "'");
+        client.getChannel(responseChannel).addListener((MessageListener)
+                (channel, message) -> queryResponse.putAll(message.getDataAsMap()));
 
-        LOGGER.debug("Preparing to execute query");
-        AsyncQuery asyncQuery = new AsyncQuery(client, keyword, queryResponse);
-        Thread queryThread = new Thread(asyncQuery, "foo-thread");
-        queryThread.start();
-        LOGGER.debug("Waiting for query response for: {} milliseconds", timeout);
-        Thread.sleep(timeout);
-        asyncQuery.destroy();
-
+        client.getChannel(QUERY_SERVICE).publish(request);
+        
         return queryResponse;
     }
 
