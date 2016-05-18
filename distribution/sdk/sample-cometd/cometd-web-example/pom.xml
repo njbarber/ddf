@@ -24,6 +24,7 @@
 
     <groupId>ddf.distribution.sdk.sample-cometd</groupId>
     <artifactId>cometd-web-example</artifactId>
+    <packaging>bundle</packaging>
 
     <build>
         <plugins>
