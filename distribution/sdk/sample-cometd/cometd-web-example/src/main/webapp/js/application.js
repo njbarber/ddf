@@ -25,15 +25,15 @@
     $(document).ready(function() {
 
       function _connectionEstablished() {
-          $('#notifications').append('<div>CometD Connection Established</div>');
+          document.getElementById('status').innerHTML = 'CometD Status: CometD Connection Established';
       }
 
       function _connectionBroken() {
-          $('#notifications').append('<div>CometD Connection Broken</div>');
+          document.getElementById('status').innerHTML = 'CometD Status: Connection Broken';
       }
 
       function _connectionClosed() {
-          $('#notifications').append('<div>CometD Connection Closed</div>');
+          document.getElementById('status').innerHTML = 'CometD Status: Connection Closed';
       }
 
       // Function that manages the connection status with the Bayeux server
@@ -70,10 +70,17 @@
               // Add Notification
               getNotification(message);
             });
+              cometd.subscribe('/ddf/activities/**', function(message) {
+                  console.log("got a message!");
+                  console.log("message id: " + message.data.id);
+
+                  getActivity(message)
+              });
             var cid = cometd.getClientId();
-            $('#notifications').append('<div>Cid: ' +cid + '</div>');
+              document.getElementById('cid').innerHTML = 'Cid: ' + cid;
             // Publish an empty message to the notifications channel to retrieve any existing notifications.
             cometd.publish('/ddf/notifications', { });
+              cometd.publish('/ddf/activities', { });
             var a = $("a").attr("href");
             $("a").attr("href", a + cid);
           });
@@ -114,6 +121,41 @@
         $('#' + notifyId).append('<p class="notify-time">Time: ' + notifyTime + '</p>');
         $('#' + notifyId).append('<p class="notify-message">Message: ' + notifyMessage + '</p>');
       }
+        // Displays new notifications to the user.
+        function addActivity(message) {
+            // Grab notification elements
+            console.log('Adding Notification: ' + JSON.stringify(message))
+            var notifyId      = message.data.id,
+                notifyTitle   = message.data.title,
+                notifyUser    = message.data.user,
+                notifyTime    = message.data.timestamp,
+                notifyMessage = message.data.message;
+
+            // Add New Notification
+            $('#activities').append('<div id="' + notifyId + '" class="notification"></div>');
+            $('#' + notifyId).append('<h3 class="notify-title">' + notifyTitle + '</h3>');
+            $('#' + notifyId).append('<p class="notify-user">User: ' + notifyUser + '</p>');
+            $('#' + notifyId).append('<p class="notify-time">Time: ' + notifyTime + '</p>');
+            $('#' + notifyId).append('<p class="notify-message">Message: ' + notifyMessage + '</p>');
+        }
+
+        // Update notifications.
+        function updateActivity(message) {
+            console.log('Updating Notification: ' + JSON.stringify(message))
+            var notifyId      = message.data.id,
+                notifyTitle   = message.data.title,
+                notifyUser    = message.data.user,
+                notifyTime    = message.data.timestamp,
+                notifyMessage = message.data.message;
+
+            // Update existing notification
+            $('#' + notifyId).replaceWith('<div id="' + notifyId + '" class="notification"></div>');
+            $('#' + notifyId).append('<h3 class="notify-title">' + notifyTitle + '</h3>');
+            $('#' + notifyId).append('<p class="notify-user">User: ' + notifyUser + '</p>');
+            $('#' + notifyId).append('<p class="notify-time">Time: ' + notifyTime + '</p>');
+            $('#' + notifyId).append('<p class="notify-message">Message: ' + notifyMessage + '</p>');
+        }
+        
 
       // When queries are executed a guid must be provided to be used as the response channel.
       // Create a "guid"
@@ -139,6 +181,19 @@
           addNotification(message)
         }
       }
+
+        // Determines whether a notification is new or needs to be updated.
+        function getActivity(message) {
+            var notifyId = message.data.id
+
+            // If notification already exists, update it. Else display a new notification.
+            if ($('#' + notifyId).length > 0) {
+                updateActivity(message);
+            }
+            else {
+                addActivity(message)
+            }
+        }
 
       // Add Query results to page
       function addResult(message) {

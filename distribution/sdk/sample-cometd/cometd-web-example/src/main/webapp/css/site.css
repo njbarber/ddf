@@ -36,6 +36,15 @@ header {
     padding: 0em 2em 2em 2em;
 }
 
+#activities {
+  position: absolute;
+    right: 20em;
+    width: 20em;
+  padding: 0em 10em 2em 2em;
+}
+
+#footer { height: 100px; }
+
 .text-md {
   font-size: 2em;
 }
