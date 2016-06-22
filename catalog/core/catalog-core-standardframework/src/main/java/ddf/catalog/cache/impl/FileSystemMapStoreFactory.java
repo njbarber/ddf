@@ -23,7 +23,7 @@ import com.hazelcast.core.MapStoreFactory;
 
 /**
  * This class is an implementation of the Hazelcast @MapStoreFactory, providing
- * a way to dynamically create a @FileSystemPersistenceProvider for persisting
+ * a way to dynamically create a {@link FileSystemPersistenceProvider} for persisting
  * cached objects to disk. This class is specified in the Hazelcast XML config
  * file (platform-hazelcast.xml) in the <map-store> node.
  */
@@ -34,7 +34,7 @@ public class FileSystemMapStoreFactory implements MapStoreFactory<String, Object
     @Override
     public MapLoader<String, Object> newMapStore(String mapName, Properties properties) {
         LOGGER.trace("INSIDE: newMapStore()");
-        return new FileSystemPersistenceProvider(mapName);
+        return new FileSystemPersistenceProvider(mapName, null);
     }
 
 }

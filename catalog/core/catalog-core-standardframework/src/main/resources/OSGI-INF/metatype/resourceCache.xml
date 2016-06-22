@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+/**
+ * Copyright (c) Codice Foundation
+ *
+ * This is free software: you can redistribute it and/or modify it under the terms of the GNU Lesser General Public License as published by the Free Software Foundation, either
+ * version 3 of the License, or any later version.
+ *
+ * This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+ * See the GNU Lesser General Public License for more details. A copy of the GNU Lesser General Public License is distributed along with this program and can be found at
+ * <http://www.gnu.org/licenses/lgpl.html>.
+ *
+ **/
+
+ -->
+<metatype:MetaData xmlns:metatype="http://www.osgi.org/xmlns/metatype/v1.0.0">
+
+    <OCD description="Resource Cache Configuration"
+         name="Resource Cache Settings"
+         id="ddf.catalog.cache.impl.ResourceCacheImpl">
+        <AD name="Product Cache Directory" id="productCacheDirectory" required="true"
+            type="String" default="${ddf.home}/data/Product_Cache"
+            description="Directory where retrieved products will be cached for faster, future retrieval.
+             If a directory path is specified with directories that do not exist,
+             Product Download feature will attempt to create those directories.
+             Out of the box (without configuration), the product cache directory is
+             INSTALL_DIR/data/product-cache. If a relative path is provided it will be relative
+             to the INSTALL_DIR. It is recommended to enter an absolute directory path such as
+             /opt/product-cache in Linux or C:\product-cache in Windows."/>
+        <AD name="Maximum Cache Size (Megabytes)" id="cacheDirMaxSizeMegabytes" type="Long" default="10240"/>
+    </OCD>
+
+    <Designate
+            pid="ddf.catalog.cache.impl.ResourceCacheImpl">
+        <Object
+                ocdref="ddf.catalog.cache.impl.ResourceCacheImpl"/>
+    </Designate>
+
+</metatype:MetaData>

@@ -304,11 +304,11 @@
              interface="ddf.catalog.event.retrievestatus.DownloadStatusInfo"/>
 
     <bean id="deprecatedProductCache" class="ddf.catalog.cache.impl.ResourceCacheImpl"
-          init-method="setupCache"
           destroy-method="teardownCache">
-        <property name="productCacheDirectory" value=""/>
-        <property name="context" ref="blueprintBundleContext"/>
-        <property name="xmlConfigFilename" value="reliableResource-hazelcast.xml"/>
+        <cm:managed-properties persistent-id="ddf.catalog.cache.impl.ResourceCacheImpl"
+                               update-strategy="container-managed"/>
+        <argument value="${ddf.home}/data/Product_Cache"/>
+        <argument value="10240"/>
     </bean>
 
     <bean id="productCache" class="org.codice.ddf.catalog.resource.cache.impl.ResourceCacheImpl">

@@ -28,8 +28,10 @@ import java.util.Map;
 import java.util.concurrent.Executors;
 import java.util.concurrent.TimeUnit;
 
-import org.junit.BeforeClass;
+import org.junit.Before;
+import org.junit.Rule;
 import org.junit.Test;
+import org.junit.rules.TemporaryFolder;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -62,17 +64,17 @@ public class DownloadsStatusEventListenerTest {
 
     private static DownloadStatusInfoImpl testDownloadStatusInfo;
 
-    @BeforeClass
-    public static void setUp() {
+    @Rule
+    public TemporaryFolder cacheDir = new TemporaryFolder();
+
+    @Before
+    public void setUp() {
 
         ReliableResourceDownloaderConfig downloaderConfig = new ReliableResourceDownloaderConfig();
         testDownloadStatusInfo = new DownloadStatusInfoImpl();
         hcInstanceFactory = new TestHazelcastInstanceFactory(10);
-        ResourceCacheImpl testResourceCache = new ResourceCacheImpl();
-        testResourceCache.setCache(hcInstanceFactory.newHazelcastInstance());
-        productCacheDir = System.getProperty("user.dir") + "/target" + File.separator
-                + ResourceCacheImpl.DEFAULT_PRODUCT_CACHE_DIRECTORY;
-        testResourceCache.setProductCacheDirectory(productCacheDir);
+        productCacheDir = cacheDir.getRoot().getAbsolutePath() + File.separator + "Product_Cache";
+        ResourceCacheImpl testResourceCache = new ResourceCacheImpl(productCacheDir, null);
         DownloadsStatusEventPublisher testEventPublisher =
                 mock(DownloadsStatusEventPublisher.class);
         testEventListener = new DownloadsStatusEventListener();
@@ -133,7 +135,6 @@ public class DownloadsStatusEventListenerTest {
             LOGGER.debug(downloadInfo.get("bytesDownloaded"));
             assertTrue(
                     idToBytes.get(item) <= Integer.parseInt(downloadInfo.get("bytesDownloaded")));
-            System.out.println(downloadInfo.get("status"));
             assertTrue(status.equals(downloadInfo.get("status")));
             assertTrue(fileName.equals(downloadInfo.get("fileName")));
             idToBytes.put(item, Integer.parseInt(downloadInfo.get("bytesDownloaded")));

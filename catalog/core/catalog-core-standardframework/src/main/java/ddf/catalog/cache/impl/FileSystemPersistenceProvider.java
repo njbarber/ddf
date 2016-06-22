@@ -23,7 +23,6 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.ObjectInput;
 import java.io.ObjectInputStream;
-import java.io.ObjectOutput;
 import java.io.ObjectOutputStream;
 import java.io.OutputStream;
 import java.util.Collection;
@@ -32,7 +31,6 @@ import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
 
-import org.apache.commons.io.IOUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -53,14 +51,19 @@ public class FileSystemPersistenceProvider
 
     private static final String SER_REGEX = "\\.ser";
 
-    private static final String PERSISTENCE_PATH = "data/";
+    private String persistencePath = "data/";
 
     private String mapName = "default";
 
-    FileSystemPersistenceProvider(String mapName) {
+    FileSystemPersistenceProvider(String mapName, String persistencePath) {
         LOGGER.trace("INSIDE: FileSystemPersistenceProvider constructor,  mapName = {}", mapName);
         this.mapName = mapName;
-        File dir = new File(PERSISTENCE_PATH);
+        this.persistencePath = persistencePath;
+        initDir();
+    }
+
+    private void initDir() {
+        File dir = new File(persistencePath);
         if (!dir.exists()) {
             boolean success = dir.mkdir();
             if (!success) {
@@ -69,45 +72,27 @@ public class FileSystemPersistenceProvider
         }
     }
 
-    /**
-     * Path to where persisted Hazelcast objects will be stored to disk.
-     *
-     * @return
-     */
-    String getMapStorePath() {
-        return PERSISTENCE_PATH + mapName + "/";
+    public String getPersistencePath() {
+        return persistencePath;
+    }
+
+    public void setPersistencePath(String persistencePath) {
+        this.persistencePath = persistencePath;
     }
 
     @Override
     public void store(String key, Object value) {
-        OutputStream file = null;
-        ObjectOutput output = null;
 
         LOGGER.trace("Entering: store - key: {}", key);
-        try {
-            File dir = new File(getMapStorePath());
-            if (!dir.exists()) {
-                boolean success = dir.mkdir();
-                if (!success) {
-                    LOGGER.error("Could not make directory: {}", dir.getAbsolutePath());
-                }
-            }
-            LOGGER.debug("file name: {}{}{}", getMapStorePath(), key, SER);
-            file = new FileOutputStream(getMapStoreFile(key));
-            OutputStream buffer = new BufferedOutputStream(file);
-            output = new ObjectOutputStream(buffer);
+        try (
+                FileOutputStream file = new FileOutputStream(getMapStoreFile(key));
+                OutputStream buffer = new BufferedOutputStream(file);
+                ObjectOutputStream output = new ObjectOutputStream(buffer)
+        ) {
+            LOGGER.debug("file name: {}{}{}", persistencePath, key, SER);
             output.writeObject(value);
         } catch (IOException e) {
             LOGGER.info("IOException storing value in cache with key = {}", key, e);
-        } finally {
-            try {
-                if (output != null) {
-                    output.close();
-                }
-            } catch (IOException e) {
-                // Intentionally ignored
-            }
-            IOUtils.closeQuietly(file);
         }
         LOGGER.trace("Exiting: store");
     }
@@ -122,9 +107,8 @@ public class FileSystemPersistenceProvider
     @Override
     public void delete(String key) {
         File file = getMapStoreFile(key);
-        if (file.exists()) {
-            boolean success = file.delete();
-            if (!success) {
+        if (getMapStoreFile(key).exists()) {
+            if (!file.delete()) {
                 LOGGER.error("Could not delete file {}", file.getAbsolutePath());
             }
         }
@@ -146,24 +130,19 @@ public class FileSystemPersistenceProvider
     }
 
     Object loadFromPersistence(String key) {
-        File file = getMapStoreFile(key);
-        if (!file.exists()) {
+        if (!getMapStoreFile(key).exists()) {
             return null;
         }
-        InputStream inputStream = null;
-        try {
-            inputStream = new FileInputStream(getMapStorePath() + key + SER);
-            InputStream buffer = new BufferedInputStream(inputStream);
-
-            try (ObjectInput input = new ObjectInputStream(buffer)) {
-                return input.readObject();
-            }
+        try (
+                InputStream inputStream = new FileInputStream(persistencePath + key + SER);
+                InputStream buffer = new BufferedInputStream(inputStream);
+                ObjectInput input = new ObjectInputStream(buffer)
+        ) {
+            return input.readObject();
         } catch (IOException e) {
             LOGGER.info("IOException", e);
         } catch (ClassNotFoundException e) {
             LOGGER.info("ClassNotFoundException", e);
-        } finally {
-            IOUtils.closeQuietly(inputStream);
         }
         return null;
     }
@@ -197,7 +176,7 @@ public class FileSystemPersistenceProvider
         Set<String> keys = new HashSet<String>();
         LOGGER.debug("Entering loadAllKeys");
 
-        File[] files = new File(getMapStorePath()).listFiles(getFilenameFilter());
+        File[] files = new File(persistencePath).listFiles(getFilenameFilter());
         if (files == null) {
             return keys;
         }
@@ -213,7 +192,7 @@ public class FileSystemPersistenceProvider
     }
 
     public void clear() {
-        File[] files = new File(getMapStorePath()).listFiles(getFilenameFilter());
+        File[] files = new File(persistencePath).listFiles(getFilenameFilter());
         if (null != files) {
             for (File file : files) {
                 boolean success = file.delete();
@@ -225,7 +204,7 @@ public class FileSystemPersistenceProvider
     }
 
     private File getMapStoreFile(String key) {
-        return new File(getMapStorePath() + key + SER);
+        return new File(persistencePath + File.separator + key + SER);
     }
 
 }

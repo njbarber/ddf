@@ -28,7 +28,9 @@ import org.apache.commons.io.FileUtils;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
+import org.junit.ClassRule;
 import org.junit.Test;
+import org.junit.rules.TemporaryFolder;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -40,7 +42,6 @@ import com.hazelcast.core.IMap;
 import com.hazelcast.test.TestHazelcastInstanceFactory;
 
 import ddf.catalog.cache.impl.ProductCacheDirListener;
-import ddf.catalog.cache.impl.ResourceCacheImpl;
 import ddf.catalog.data.impl.MetacardImpl;
 import ddf.catalog.resource.data.ReliableResource;
 
@@ -57,12 +58,15 @@ public class ResourceCacheImplSizeLimitTest {
 
     private static ProductCacheDirListener<Object, Object> listener;
 
+    @ClassRule
+    public static TemporaryFolder cacheDir = new TemporaryFolder();
+
     @BeforeClass
     public static void oneTimeSetup() {
         String workingDir = System.getProperty("user.dir") + File.separator + "target";
         System.setProperty("karaf.home", workingDir);
         productCacheDir =
-                workingDir + File.separator + ResourceCacheImpl.DEFAULT_PRODUCT_CACHE_DIRECTORY;
+                cacheDir.getRoot().getAbsolutePath() + File.separator + "Product_Cache";
         hcInstanceFactory = new TestHazelcastInstanceFactory(10);
         listener = new ProductCacheDirListener<Object, Object>(15);
     }
