@@ -14,6 +14,8 @@
 package ddf.common.test.cometd;
 
 import java.net.ConnectException;
+import java.net.HttpCookie;
+import java.net.URI;
 import java.security.KeyManagementException;
 import java.security.NoSuchAlgorithmException;
 import java.security.SecureRandom;
@@ -44,6 +46,7 @@ import org.cometd.client.BayeuxClient;
 import org.cometd.client.transport.ClientTransport;
 import org.cometd.client.transport.LongPollingTransport;
 import org.eclipse.jetty.client.HttpClient;
+import org.eclipse.jetty.util.HttpCookieStore;
 import org.eclipse.jetty.util.ssl.SslContextFactory;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -95,6 +98,19 @@ public class CometDClient {
         bayeuxClient = new BayeuxClient(url, transport);
     }
 
+    public CometDClient(String url, String authUri, String token) throws Exception {
+        SslContextFactory sslContextFactory = new SslContextFactory(true);
+        httpClient = new HttpClient(sslContextFactory);
+        doTrustAllCertificates();
+        URI uri = new URI(authUri);
+        HttpCookie cookie = new HttpCookie("JSESSIONID", token);
+        HttpCookieStore cookieStore = new HttpCookieStore();
+        cookieStore.add(uri, cookie);
+        httpClient.setCookieStore(cookieStore);
+        ClientTransport transport = new LongPollingTransport(new HashMap<>(), httpClient);
+        bayeuxClient = new BayeuxClient(url, transport);
+    }
+
     public void start() throws Exception {
         httpClient.start();
         LOGGER.debug("HTTP client started: {}", httpClient.isStarted());
@@ -102,7 +118,7 @@ public class CometDClient {
         bayeuxClient.getChannel(Channel.META_HANDSHAKE).addListener(handshakeListener);
         bayeuxClient.handshake();
         boolean connected = bayeuxClient.waitFor(TIMEOUT, BayeuxClient.State.CONNECTED);
-        if(!connected) {
+        if (!connected) {
             shutdownHttpClient();
             String message = String.format("%s failed to connect to the server at %s",
                     this.getClass().getName(), bayeuxClient.getURL());
