@@ -27,6 +27,7 @@ import static org.hamcrest.Matchers.is;
 import static org.hamcrest.Matchers.lessThan;
 import static org.hamcrest.Matchers.not;
 import static org.hamcrest.Matchers.notNullValue;
+import static org.hamcrest.Matchers.nullValue;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.fail;
@@ -1713,7 +1714,7 @@ public class TestFederation extends AbstractIntegrationTest {
         String downloadId2 = given().auth().preemptive().basic("admin", "admin").when()
                 .get(resourceDownloadUrlLocalhostUserAsync).then().log().all()
                 .extract().jsonPath().getString("downloadId");
-        assertThat(downloadId, is(equalTo(downloadId2)));
+        assertThat(downloadId2, is(nullValue()));
 
         verifyCswStubCall(1, metacardId);
 
