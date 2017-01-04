@@ -67,8 +67,12 @@ define([
 
                 if (this.model && this.model.has('currentConfiguration')) {
                     data.currentConfiguration = this.model.get('currentConfiguration').toJSON();
+                    data.currentUrl = this.model.getCurrentUrl();
+                    data.isLoopbackUrl = this.model.isLoopbackUrl();
                 } else {
                     data.currentConfiguration = undefined;
+                    data.currentUrl = undefined;
+                    data.isLoopbackUrl = undefined;
                 }
                 if (this.model && this.model.has('disabledConfigurations')) {
                     data.disabledConfigurations = this.model.get('disabledConfigurations').toJSON();

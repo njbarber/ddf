@@ -35,6 +35,8 @@ define([
             idAttribute: 'name',
             initialize: function () {
                 this.set('currentConfiguration', undefined);
+                this.set('currentUrl', undefined);
+                this.set('currentWarning', undefined);
                 this.set('disabledConfigurations', new Source.ConfigurationList());
             },
             addDisabledConfiguration: function (configuration) {
@@ -132,6 +134,27 @@ define([
                 });
 
                 return actions;
+            },
+            getCurrentUrl: function () {
+                var src = this;
+                var currentConfig = src.get('currentConfiguration');
+                var configProps = currentConfig.attributes.properties.attributes;
+                var configPropKeys = Object.keys(configProps);
+
+                var urls = configPropKeys.filter(function(item) {
+                    return /.*Address|.*Url/.test(item);
+                });
+                var filteredKeys = urls.filter(function (item) {
+                    return /^(?!event|site).*$/.test(item);
+                });
+
+                return configProps[filteredKeys];
+            },
+            isLoopbackUrl: function () {
+                if (this.getCurrentUrl() === undefined) {
+                    return false;
+                }
+               return /.*(localhost|org.codice.ddf.system.hostname).*/.test(this.getCurrentUrl().toString());
             },
             addUnique: function (uniqueArray, addThis) {
                 if (_.isUndefined(addThis)) {
