@@ -16,7 +16,7 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
     <parent>
-        <groupId>ddf.platform</groupId>
+        <groupId>org.codice.ddf.platform</groupId>
         <artifactId>platform</artifactId>
         <version>2.11.0-SNAPSHOT</version>
     </parent>
@@ -31,7 +31,7 @@
             <version>${validation.version}</version>
         </dependency>
         <dependency>
-            <groupId>ddf.platform.migration</groupId>
+            <groupId>org.codice.ddf.platform.migration</groupId>
             <artifactId>platform-migratable-api</artifactId>
         </dependency>
         <dependency>
@@ -43,7 +43,7 @@
             <artifactId>commons-lang</artifactId>
         </dependency>
         <dependency>
-            <groupId>ddf.platform.migration</groupId>
+            <groupId>org.codice.ddf.platform.migration</groupId>
             <artifactId>platform-migratable-util</artifactId>
             <version>${project.version}</version>
         </dependency>

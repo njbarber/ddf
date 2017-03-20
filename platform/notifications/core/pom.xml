@@ -16,11 +16,11 @@
     <modelVersion>4.0.0</modelVersion>
     <parent>
         <artifactId>notifications</artifactId>
-        <groupId>ddf.notifications</groupId>
+        <groupId>org.codice.ddf.notifications</groupId>
         <version>2.11.0-SNAPSHOT</version>
     </parent>
     <artifactId>notifications-core-pom</artifactId>
-    <groupId>ddf.notifications.core</groupId>
+    <groupId>org.codice.ddf.notifications.core</groupId>
     <name>DDF Notifications Core</name>
     <packaging>pom</packaging>
     <modules>

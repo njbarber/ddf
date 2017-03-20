@@ -17,11 +17,11 @@
 
     <parent>
         <artifactId>sdk</artifactId>
-        <groupId>ddf.distribution</groupId>
+        <groupId>org.codice.ddf.distribution</groupId>
         <version>2.11.0-SNAPSHOT</version>
     </parent>
 
-    <groupId>ddf.distribution.sdk</groupId>
+    <groupId>org.codice.ddf.distribution.sdk</groupId>
     <artifactId>sample-cometd</artifactId>
     <name>DDF :: SDK :: Sample Cometd</name>
     <packaging>pom</packaging>

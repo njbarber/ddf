@@ -26,12 +26,12 @@
     <packaging>bundle</packaging>
     <dependencies>
         <dependency>
-            <groupId>ddf.admin.core</groupId>
+            <groupId>org.codice.ddf.admin.core</groupId>
             <artifactId>admin-core-appservice</artifactId>
             <version>${project.version}</version>
         </dependency>
         <dependency>
-            <groupId>ddf.platform.error</groupId>
+            <groupId>org.codice.ddf.platform.error</groupId>
             <artifactId>platform-error-servlet</artifactId>
             <version>${project.version}</version>
         </dependency>

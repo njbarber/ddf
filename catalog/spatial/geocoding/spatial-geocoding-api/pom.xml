@@ -25,7 +25,7 @@
     <packaging>bundle</packaging>
     <dependencies>
         <dependency>
-            <groupId>ddf.catalog.core</groupId>
+            <groupId>org.codice.ddf.catalog.core</groupId>
             <artifactId>catalog-core-api</artifactId>
         </dependency>
     </dependencies>

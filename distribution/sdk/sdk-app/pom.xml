@@ -16,7 +16,7 @@
     <modelVersion>4.0.0</modelVersion>
     <parent>
         <artifactId>sdk</artifactId>
-        <groupId>ddf.distribution</groupId>
+        <groupId>org.codice.ddf.distribution</groupId>
         <version>2.11.0-SNAPSHOT</version>
     </parent>
     <artifactId>sdk-app</artifactId>
@@ -90,27 +90,27 @@
     </build>
     <dependencies>
         <dependency>
-            <groupId>ddf.distribution</groupId>
+            <groupId>org.codice.ddf.distribution</groupId>
             <artifactId>sample-metrics</artifactId>
             <version>${project.version}</version>
         </dependency>
         <dependency>
-            <groupId>ddf.distribution</groupId>
+            <groupId>org.codice.ddf.distribution</groupId>
             <artifactId>sample-soap-endpoint</artifactId>
             <version>${project.version}</version>
         </dependency>
         <dependency>
-            <groupId>ddf.distribution</groupId>
+            <groupId>org.codice.ddf.distribution</groupId>
             <artifactId>sample-metacard-filter</artifactId>
             <version>${project.version}</version>
         </dependency>
         <dependency>
-            <groupId>ddf.catalog.security</groupId>
+            <groupId>org.codice.ddf.catalog.security</groupId>
             <artifactId>catalog-security-filter</artifactId>
             <version>${project.version}</version>
         </dependency>
         <dependency>
-            <groupId>ddf.distribution</groupId>
+            <groupId>org.codice.ddf.distribution</groupId>
             <artifactId>sample-rest-endpoint</artifactId>
             <version>${project.version}</version>
         </dependency>
@@ -120,7 +120,7 @@
             <version>${project.version}</version>
         </dependency>
         <dependency>
-            <groupId>ddf.distribution.sdk</groupId>
+            <groupId>org.codice.ddf.distribution.sdk</groupId>
             <artifactId>sample-storageplugins</artifactId>
             <version>${project.version}</version>
         </dependency>

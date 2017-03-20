@@ -15,11 +15,11 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <parent>
-        <groupId>ddf.catalog.transformer</groupId>
+        <groupId>org.codice.ddf.catalog.transformer</groupId>
         <artifactId>transformer</artifactId>
         <version>2.11.0-SNAPSHOT</version>
     </parent>
-    <groupId>ddf.catalog.transformer</groupId>
+    <groupId>org.codice.ddf.catalog.transformer</groupId>
     <artifactId>catalog-transformer-thumbnail</artifactId>
     <name>DDF :: Catalog :: Transformer :: Thumbnail</name>
     <packaging>bundle</packaging>
@@ -27,14 +27,14 @@
         <!-- Can eventually move to catalog core transformer aggregator pom when
             it is written -->
         <dependency>
-            <groupId>ddf.catalog.transformer</groupId>
+            <groupId>org.codice.ddf.catalog.transformer</groupId>
             <artifactId>catalog-transformer-attribute</artifactId>
             <version>${project.version}</version>
         </dependency>
         <!-- Transitive dependency of attribute transformer. Used to embed ddf.catalog.data.impl
             package into this bundle. -->
         <dependency>
-            <groupId>ddf.catalog.core</groupId>
+            <groupId>org.codice.ddf.catalog.core</groupId>
             <artifactId>catalog-core-api-impl</artifactId>
         </dependency>
     </dependencies>

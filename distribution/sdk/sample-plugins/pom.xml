@@ -16,7 +16,7 @@
     <modelVersion>4.0.0</modelVersion>
     <parent>
         <artifactId>sdk</artifactId>
-        <groupId>ddf.distribution</groupId>
+        <groupId>org.codice.ddf.distribution</groupId>
         <version>2.11.0-SNAPSHOT</version>
     </parent>
     <artifactId>sample-plugins</artifactId>
@@ -24,22 +24,22 @@
     <packaging>bundle</packaging>
     <dependencies>
         <dependency>
-            <groupId>ddf.catalog.core</groupId>
+            <groupId>org.codice.ddf.catalog.core</groupId>
             <artifactId>catalog-core-api</artifactId>
             <version>${project.version}</version>
         </dependency>
         <dependency>
-            <groupId>ddf.catalog.core</groupId>
+            <groupId>org.codice.ddf.catalog.core</groupId>
             <artifactId>catalog-core-api-impl</artifactId>
             <version>${project.version}</version>
         </dependency>
         <dependency>
-            <groupId>ddf.catalog.core</groupId>
+            <groupId>org.codice.ddf.catalog.core</groupId>
             <artifactId>filter-proxy</artifactId>
             <version>${project.version}</version>
         </dependency>
         <dependency>
-            <groupId>ddf.platform.util</groupId>
+            <groupId>org.codice.ddf.platform.util</groupId>
             <artifactId>platform-util</artifactId>
             <version>${project.version}</version>
         </dependency>
@@ -108,7 +108,7 @@
             <!--
             Puts the features XML file for this SDK sample-plugins distribution
             into the maven repo, assigning it a repo URL of
-                mvn:ddf.sdk/sample-plugins/${project.version}/xml/features
+                mvn:org.codice.ddf.sdk/sample-plugins/${project.version}/xml/features
             -->
             <plugin>
                 <groupId>org.codehaus.mojo</groupId>

@@ -11,7 +11,7 @@
     "factory": false,
     "configurations": [
       {
-        "bundle_location": "mvn:ddf.platform/platform-configuration/2.8.0-SNAPSHOT",
+        "bundle_location": "mvn:org.codice.ddf.platform/platform-configuration/2.8.0-SNAPSHOT",
         "name": "Platform Global Configuration",
         "id": "ddf.platform.config",
         "bundle_name": "DDF :: Platform :: Configuration",

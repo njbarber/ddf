@@ -11,7 +11,7 @@
     "factory": false,
     "configurations": [
       {
-        "bundle_location": "mvn:ddf.security.sts/security-sts-guestclaimshandler/2.8.0-SNAPSHOT",
+        "bundle_location": "mvn:org.codice.ddf.security.sts/security-sts-guestclaimshandler/2.8.0-SNAPSHOT",
         "name": "Security STS Guest Claims Handler",
         "id": "ddf.security.sts.guestclaims",
         "bundle_name": "DDF :: Security :: STS :: Guest Claims Handler",

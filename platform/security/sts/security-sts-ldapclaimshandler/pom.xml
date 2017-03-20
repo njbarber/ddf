@@ -18,7 +18,7 @@
     <modelVersion>4.0.0</modelVersion>
     <parent>
         <artifactId>security-sts-pom</artifactId>
-        <groupId>ddf.security.sts</groupId>
+        <groupId>org.codice.ddf.security.sts</groupId>
         <version>2.11.0-SNAPSHOT</version>
     </parent>
     <artifactId>security-sts-ldapclaimshandler</artifactId>
@@ -42,15 +42,15 @@
             <scope>compile</scope>
         </dependency>
         <dependency>
-            <groupId>ddf.security.encryption</groupId>
+            <groupId>org.codice.ddf.security.encryption</groupId>
             <artifactId>security-encryption-api</artifactId>
         </dependency>
         <dependency>
-            <groupId>ddf.security.core</groupId>
+            <groupId>org.codice.ddf.security.core</groupId>
             <artifactId>security-core-api</artifactId>
         </dependency>
         <dependency>
-            <groupId>ddf.platform</groupId>
+            <groupId>org.codice.ddf.platform</groupId>
             <artifactId>platform-configuration</artifactId>
         </dependency>
         <dependency>

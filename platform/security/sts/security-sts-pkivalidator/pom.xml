@@ -16,7 +16,7 @@
     <modelVersion>4.0.0</modelVersion>
     <parent>
         <artifactId>security-sts-pom</artifactId>
-        <groupId>ddf.security.sts</groupId>
+        <groupId>org.codice.ddf.security.sts</groupId>
         <version>2.11.0-SNAPSHOT</version>
     </parent>
     <artifactId>security-sts-pkivalidator</artifactId>
@@ -36,21 +36,21 @@
             <artifactId>cxf-rt-ws-security</artifactId>
         </dependency>
         <dependency>
-            <groupId>ddf.security</groupId>
+            <groupId>org.codice.ddf.security</groupId>
             <artifactId>ddf-security-common</artifactId>
         </dependency>
         <dependency>
-            <groupId>ddf.security.sts</groupId>
+            <groupId>org.codice.ddf.security.sts</groupId>
             <artifactId>security-sts-crlinterceptor</artifactId>
             <version>${project.version}</version>
         </dependency>
         <dependency>
-            <groupId>ddf.security.sts</groupId>
+            <groupId>org.codice.ddf.security.sts</groupId>
             <artifactId>security-sts-x509delegationhandler</artifactId>
             <version>${project.version}</version>
         </dependency>
         <dependency>
-            <groupId>ddf.security.handler</groupId>
+            <groupId>org.codice.ddf.security.handler</groupId>
             <artifactId>security-handler-api</artifactId>
         </dependency>
     </dependencies>

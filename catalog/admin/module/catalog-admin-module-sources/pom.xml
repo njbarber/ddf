@@ -17,7 +17,7 @@
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <parent>
         <artifactId>catalog-admin-module</artifactId>
-        <groupId>ddf.catalog.admin</groupId>
+        <groupId>org.codice.ddf.catalog.admin</groupId>
         <version>2.11.0-SNAPSHOT</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
@@ -26,16 +26,16 @@
     <packaging>bundle</packaging>
     <dependencies>
         <dependency>
-            <groupId>ddf.catalog.core</groupId>
+            <groupId>org.codice.ddf.catalog.core</groupId>
             <artifactId>catalog-core-api</artifactId>
         </dependency>
         <dependency>
-            <groupId>ddf.admin.core</groupId>
+            <groupId>org.codice.ddf.admin.core</groupId>
             <artifactId>admin-core-api</artifactId>
         </dependency>
         <dependency>
             <version>${project.version}</version>
-            <groupId>ddf.admin.core</groupId>
+            <groupId>org.codice.ddf.admin.core</groupId>
             <artifactId>admin-core-appservice</artifactId>
         </dependency>
         <dependency>
@@ -43,7 +43,7 @@
             <artifactId>slf4j-ext</artifactId>
         </dependency>
         <dependency>
-            <groupId>ddf.catalog.opensearch</groupId>
+            <groupId>org.codice.ddf.catalog.opensearch</groupId>
             <artifactId>catalog-opensearch-source</artifactId>
             <version>${project.version}</version>
         </dependency>

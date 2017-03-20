@@ -17,7 +17,7 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <parent>
         <artifactId>core</artifactId>
-        <groupId>ddf.catalog.core</groupId>
+        <groupId>org.codice.ddf.catalog.core</groupId>
         <version>2.11.0-SNAPSHOT</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
@@ -31,7 +31,7 @@
             <version>${solr.version}</version>
         </dependency>
         <dependency>
-            <groupId>ddf.platform.solr</groupId>
+            <groupId>org.codice.ddf.platform.solr</groupId>
             <artifactId>solr-xpath</artifactId>
         </dependency>
         <!-- Override dependency management Lucene versions from Camel parent import -->
@@ -51,16 +51,16 @@
             <version>${solr.version}</version>
         </dependency>
         <dependency>
-            <groupId>ddf.platform.solr</groupId>
+            <groupId>org.codice.ddf.platform.solr</groupId>
             <artifactId>solr-factory</artifactId>
         </dependency>
         <dependency>
-            <groupId>ddf.lib</groupId>
+            <groupId>org.codice.ddf.lib</groupId>
             <artifactId>common-system</artifactId>
             <version>${project.version}</version>
         </dependency>
         <dependency>
-            <groupId>ddf.catalog.core</groupId>
+            <groupId>org.codice.ddf.catalog.core</groupId>
             <artifactId>catalog-core-commons</artifactId>
             <!-- Excluding JScience dependency due to NoClassDefFoundError in GeotoolsAttributeBuilder during JUnit
                  testing if included. -->
@@ -72,11 +72,11 @@
             </exclusions>
         </dependency>
         <dependency>
-            <groupId>ddf.catalog.core</groupId>
+            <groupId>org.codice.ddf.catalog.core</groupId>
             <artifactId>catalog-core-api-impl</artifactId>
         </dependency>
         <dependency>
-            <groupId>ddf.measure</groupId>
+            <groupId>org.codice.ddf.measure</groupId>
             <artifactId>measure-api</artifactId>
         </dependency>
         <dependency>
@@ -104,7 +104,7 @@
             <artifactId>jts</artifactId>
         </dependency>
         <dependency>
-            <groupId>ddf.catalog.core</groupId>
+            <groupId>org.codice.ddf.catalog.core</groupId>
             <artifactId>filter-proxy</artifactId>
             <scope>test</scope>
         </dependency>
@@ -115,12 +115,12 @@
             <scope>test</scope>
         </dependency>
         <dependency>
-            <groupId>ddf.platform.solr</groupId>
+            <groupId>org.codice.ddf.platform.solr</groupId>
             <artifactId>solr-dependencies</artifactId>
             <scope>test</scope>
         </dependency>
         <dependency>
-            <groupId>ddf.platform.solr</groupId>
+            <groupId>org.codice.ddf.platform.solr</groupId>
             <artifactId>platform-solr-server-standalone</artifactId>
             <version>${project.version}</version>
             <type>test-jar</type>
@@ -187,7 +187,7 @@
                         <configuration>
                             <artifactItems>
                                 <artifactItem>
-                                    <groupId>ddf.platform.solr</groupId>
+                                    <groupId>org.codice.ddf.platform.solr</groupId>
                                     <artifactId>platform-solr-server-standalone</artifactId>
                                     <version>${project.version}</version>
                                     <type>test-jar</type>

@@ -30,12 +30,12 @@
             <version>${project.version}</version>
         </dependency>
         <dependency>
-            <groupId>ddf.catalog.core</groupId>
+            <groupId>org.codice.ddf.catalog.core</groupId>
             <artifactId>catalog-core-api</artifactId>
             <version>${project.version}</version>
         </dependency>
         <dependency>
-            <groupId>ddf.catalog.core</groupId>
+            <groupId>org.codice.ddf.catalog.core</groupId>
             <artifactId>catalog-core-api-impl</artifactId>
             <version>${project.version}</version>
         </dependency>
@@ -45,7 +45,7 @@
         </dependency>
 
         <dependency>
-            <groupId>ddf.lib</groupId>
+            <groupId>org.codice.ddf.lib</groupId>
             <artifactId>spock-shaded</artifactId>
             <version>${project.version}</version>
             <scope>test</scope>

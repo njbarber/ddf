@@ -16,10 +16,10 @@
     <modelVersion>4.0.0</modelVersion>
     <parent>
         <artifactId>metrics</artifactId>
-        <groupId>ddf.metrics</groupId>
+        <groupId>org.codice.ddf.metrics</groupId>
         <version>2.11.0-SNAPSHOT</version>
     </parent>
-    <groupId>ddf.metrics.collector</groupId>
+    <groupId>org.codice.ddf.metrics.collector</groupId>
     <artifactId>metrics-collector</artifactId>
     <name>DDF :: Metrics :: Collector</name>
     <packaging>jar</packaging>
@@ -79,7 +79,7 @@
             <artifactId>commons-lang</artifactId>
         </dependency>
         <dependency>
-            <groupId>ddf.lib</groupId>
+            <groupId>org.codice.ddf.lib</groupId>
             <artifactId>common-system</artifactId>
             <version>${project.version}</version>
         </dependency>

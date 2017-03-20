@@ -18,7 +18,7 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <parent>
         <artifactId>core</artifactId>
-        <groupId>ddf.catalog.core</groupId>
+        <groupId>org.codice.ddf.catalog.core</groupId>
         <version>2.11.0-SNAPSHOT</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
@@ -59,29 +59,29 @@
             <artifactId>slf4j-ext</artifactId>
         </dependency>
         <dependency>
-            <groupId>ddf.catalog.core</groupId>
+            <groupId>org.codice.ddf.catalog.core</groupId>
             <artifactId>catalog-core-api</artifactId>
         </dependency>
         <dependency>
-            <groupId>ddf.catalog.core</groupId>
+            <groupId>org.codice.ddf.catalog.core</groupId>
             <artifactId>catalog-core-api-impl</artifactId>
         </dependency>
         <dependency>
-            <groupId>ddf.security.core</groupId>
+            <groupId>org.codice.ddf.security.core</groupId>
             <artifactId>security-core-api</artifactId>
         </dependency>
         <dependency>
-            <groupId>ddf.security</groupId>
+            <groupId>org.codice.ddf.security</groupId>
             <artifactId>ddf-security-common</artifactId>
             <version>${project.version}</version>
         </dependency>
         <dependency>
-            <groupId>ddf.platform.util</groupId>
+            <groupId>org.codice.ddf.platform.util</groupId>
             <artifactId>platform-util</artifactId>
             <version>${project.version}</version>
         </dependency>
         <dependency>
-            <groupId>ddf.platform.util</groupId>
+            <groupId>org.codice.ddf.platform.util</groupId>
             <artifactId>platform-util-unavailableurls</artifactId>
             <version>${project.version}</version>
         </dependency>
@@ -102,7 +102,7 @@
             <scope>test</scope>
         </dependency>
         <dependency>
-            <groupId>ddf.persistence.core</groupId>
+            <groupId>org.codice.ddf.persistence.core</groupId>
             <artifactId>persistence-core-api</artifactId>
             <version>${project.version}</version>
         </dependency>

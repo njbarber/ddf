@@ -16,10 +16,10 @@
     <modelVersion>4.0.0</modelVersion>
     <parent>
         <artifactId>metrics</artifactId>
-        <groupId>ddf.metrics</groupId>
+        <groupId>org.codice.ddf.metrics</groupId>
         <version>2.11.0-SNAPSHOT</version>
     </parent>
-    <groupId>ddf.metrics.interceptor</groupId>
+    <groupId>org.codice.ddf.metrics.interceptor</groupId>
     <artifactId>metrics-interceptor</artifactId>
     <name>DDF :: Metrics :: Interceptor</name>
     <packaging>bundle</packaging>
@@ -38,7 +38,7 @@
             <version>3.0.1</version>
         </dependency>
         <dependency>
-            <groupId>ddf.metrics.collector</groupId>
+            <groupId>org.codice.ddf.metrics.collector</groupId>
             <artifactId>metrics-collector</artifactId>
             <version>${project.version}</version>
         </dependency>

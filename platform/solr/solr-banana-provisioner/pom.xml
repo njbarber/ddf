@@ -18,19 +18,19 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <parent>
         <artifactId>solr</artifactId>
-        <groupId>ddf.platform.solr</groupId>
+        <groupId>org.codice.ddf.platform.solr</groupId>
         <version>2.11.0-SNAPSHOT</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>ddf.platform.solr</groupId>
+    <groupId>org.codice.ddf.platform.solr</groupId>
     <artifactId>solr-banana-provisioner</artifactId>
     <name>DDF :: Platform :: Solr :: Banana :: Provisioner</name>
     <packaging>bundle</packaging>
 
     <dependencies>
         <dependency>
-            <groupId>ddf.platform.solr</groupId>
+            <groupId>org.codice.ddf.platform.solr</groupId>
             <artifactId>solr-factory</artifactId>
             <version>${project.version}</version>
         </dependency>

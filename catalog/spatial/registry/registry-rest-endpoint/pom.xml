@@ -61,23 +61,23 @@
             <scope>test</scope>
         </dependency>
         <dependency>
-            <groupId>ddf.platform</groupId>
+            <groupId>org.codice.ddf.platform</groupId>
             <artifactId>platform-parser-api</artifactId>
             <version>${project.version}</version>
             <scope>test</scope>
         </dependency>
         <dependency>
-            <groupId>ddf.platform</groupId>
+            <groupId>org.codice.ddf.platform</groupId>
             <artifactId>platform-parser-xml</artifactId>
             <version>${project.version}</version>
             <scope>test</scope>
         </dependency>
         <dependency>
-            <groupId>ddf.catalog.core</groupId>
+            <groupId>org.codice.ddf.catalog.core</groupId>
             <artifactId>catalog-core-api</artifactId>
         </dependency>
         <dependency>
-            <groupId>ddf.catalog.core</groupId>
+            <groupId>org.codice.ddf.catalog.core</groupId>
             <artifactId>catalog-core-api-impl</artifactId>
         </dependency>
         <dependency>

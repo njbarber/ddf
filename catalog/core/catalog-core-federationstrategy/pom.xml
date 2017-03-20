@@ -16,7 +16,7 @@
     <modelVersion>4.0.0</modelVersion>
     <parent>
         <artifactId>core</artifactId>
-        <groupId>ddf.catalog.core</groupId>
+        <groupId>org.codice.ddf.catalog.core</groupId>
         <version>2.11.0-SNAPSHOT</version>
     </parent>
     <artifactId>catalog-core-federationstrategy</artifactId>
@@ -24,15 +24,15 @@
     <packaging>bundle</packaging>
     <dependencies>
         <dependency>
-            <groupId>ddf.catalog.core</groupId>
+            <groupId>org.codice.ddf.catalog.core</groupId>
             <artifactId>catalog-core-api-impl</artifactId>
         </dependency>
         <dependency>
-            <groupId>ddf.catalog.core</groupId>
+            <groupId>org.codice.ddf.catalog.core</groupId>
             <artifactId>catalog-core-commons</artifactId>
         </dependency>
         <dependency>
-            <groupId>ddf.catalog.core</groupId>
+            <groupId>org.codice.ddf.catalog.core</groupId>
             <artifactId>catalog-core-metricsplugin</artifactId>
             <version>${project.version}</version>
         </dependency>
@@ -46,19 +46,19 @@
         </dependency>
         <!-- JAR of the test classes in catalog-api, namely its mock objects -->
         <dependency>
-            <groupId>ddf.catalog.core</groupId>
+            <groupId>org.codice.ddf.catalog.core</groupId>
             <artifactId>catalog-core-api-impl</artifactId>
             <type>test-jar</type>
             <scope>test</scope>
         </dependency>
         <dependency>
-            <groupId>ddf.catalog.core</groupId>
+            <groupId>org.codice.ddf.catalog.core</groupId>
             <artifactId>filter-proxy</artifactId>
             <version>${project.version}</version>
             <scope>test</scope>
         </dependency>
         <dependency>
-            <groupId>ddf.catalog.core</groupId>
+            <groupId>org.codice.ddf.catalog.core</groupId>
             <artifactId>catalog-core-standardframework</artifactId>
             <version>${project.version}</version>
         </dependency>
@@ -89,7 +89,7 @@
             <scope>test</scope>
         </dependency>
         <dependency>
-            <groupId>ddf.catalog.core</groupId>
+            <groupId>org.codice.ddf.catalog.core</groupId>
             <artifactId>catalog-core-defaultvalues</artifactId>
             <version>${project.version}</version>
             <scope>test</scope>
@@ -99,7 +99,7 @@
             <artifactId>joda-time</artifactId>
         </dependency>
         <dependency>
-            <groupId>ddf.platform.util</groupId>
+            <groupId>org.codice.ddf.platform.util</groupId>
             <artifactId>platform-util</artifactId>
         </dependency>
     </dependencies>

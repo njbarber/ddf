@@ -18,7 +18,7 @@
     <modelVersion>4.0.0</modelVersion>
     <parent>
         <artifactId>security-sts-pom</artifactId>
-        <groupId>ddf.security.sts</groupId>
+        <groupId>org.codice.ddf.security.sts</groupId>
         <version>2.11.0-SNAPSHOT</version>
     </parent>
     <artifactId>security-sts-ldaplogin</artifactId>
@@ -118,19 +118,19 @@
             <artifactId>org.osgi.core</artifactId>
         </dependency>
         <dependency>
-            <groupId>ddf.security.encryption</groupId>
+            <groupId>org.codice.ddf.security.encryption</groupId>
             <artifactId>security-encryption-api</artifactId>
         </dependency>
         <dependency>
-            <groupId>ddf.security.core</groupId>
+            <groupId>org.codice.ddf.security.core</groupId>
             <artifactId>security-core-api</artifactId>
         </dependency>
         <dependency>
-            <groupId>ddf.platform</groupId>
+            <groupId>org.codice.ddf.platform</groupId>
             <artifactId>platform-configuration</artifactId>
         </dependency>
         <dependency>
-            <groupId>ddf.security.sts</groupId>
+            <groupId>org.codice.ddf.security.sts</groupId>
             <artifactId>security-sts-server</artifactId>
             <version>${project.version}</version>
         </dependency>
@@ -195,7 +195,7 @@
             <version>${powermock.version}</version>
         </dependency>
         <dependency>
-            <groupId>ddf.lib</groupId>
+            <groupId>org.codice.ddf.lib</groupId>
             <artifactId>common-system</artifactId>
             <version>${project.version}</version>
         </dependency>

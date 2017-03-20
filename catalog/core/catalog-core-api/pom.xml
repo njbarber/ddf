@@ -18,7 +18,7 @@
     <modelVersion>4.0.0</modelVersion>
     <parent>
         <artifactId>core</artifactId>
-        <groupId>ddf.catalog.core</groupId>
+        <groupId>org.codice.ddf.catalog.core</groupId>
         <version>2.11.0-SNAPSHOT</version>
     </parent>
     <artifactId>catalog-core-api</artifactId>
@@ -26,7 +26,7 @@
     <packaging>bundle</packaging>
     <dependencies>
         <dependency>
-            <groupId>ddf.mime.core</groupId>
+            <groupId>org.codice.ddf.mime.core</groupId>
             <artifactId>mime-core-api</artifactId>
         </dependency>
         <dependency>
@@ -54,7 +54,7 @@
             <artifactId>org.osgi.compendium</artifactId>
         </dependency>
         <dependency>
-            <groupId>ddf.platform</groupId>
+            <groupId>org.codice.ddf.platform</groupId>
             <artifactId>platform-configuration</artifactId>
         </dependency>
         <dependency>
@@ -73,12 +73,12 @@
             <scope>test</scope>
         </dependency>
         <dependency>
-            <groupId>ddf.lib</groupId>
+            <groupId>org.codice.ddf.lib</groupId>
             <artifactId>common-system</artifactId>
             <version>${project.version}</version>
         </dependency>
         <dependency>
-            <groupId>ddf.platform.api</groupId>
+            <groupId>org.codice.ddf.platform.api</groupId>
             <artifactId>platform-api</artifactId>
             <version>${project.version}</version>
         </dependency>

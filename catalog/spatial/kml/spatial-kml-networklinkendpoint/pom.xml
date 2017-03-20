@@ -17,7 +17,7 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <parent>
         <artifactId>spatial-kml-pom</artifactId>
-        <groupId>ddf.spatial.kml</groupId>
+        <groupId>org.codice.ddf.spatial.kml</groupId>
         <version>2.11.0-SNAPSHOT</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
@@ -30,7 +30,7 @@
             <artifactId>cxf-rt-frontend-jaxrs</artifactId>
         </dependency>
         <dependency>
-            <groupId>ddf.catalog.core</groupId>
+            <groupId>org.codice.ddf.catalog.core</groupId>
             <artifactId>catalog-core-api-impl</artifactId>
         </dependency>
         <dependency>
@@ -38,7 +38,7 @@
             <artifactId>JavaAPIforKml</artifactId>
         </dependency>
         <dependency>
-            <groupId>ddf.distribution</groupId>
+            <groupId>org.codice.ddf.distribution</groupId>
             <artifactId>branding-api</artifactId>
         </dependency>
         <dependency>
@@ -61,12 +61,12 @@
             <version>3.0</version>
         </dependency>
         <dependency>
-            <groupId>ddf.lib</groupId>
+            <groupId>org.codice.ddf.lib</groupId>
             <artifactId>common-system</artifactId>
             <version>${project.version}</version>
         </dependency>
         <dependency>
-            <groupId>ddf.platform.util</groupId>
+            <groupId>org.codice.ddf.platform.util</groupId>
             <artifactId>platform-util</artifactId>
         </dependency>
     </dependencies>

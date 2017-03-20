@@ -17,7 +17,7 @@
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <parent>
         <artifactId>admin-modules</artifactId>
-        <groupId>ddf.admin.modules</groupId>
+        <groupId>org.codice.ddf.admin.modules</groupId>
         <version>2.11.0-SNAPSHOT</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
@@ -26,17 +26,17 @@
     <packaging>bundle</packaging>
     <dependencies>
         <dependency>
-            <groupId>ddf.admin.core</groupId>
+            <groupId>org.codice.ddf.admin.core</groupId>
             <artifactId>admin-core-appservice</artifactId>
             <version>${project.version}</version>
         </dependency>
         <dependency>
-            <groupId>ddf.platform.error</groupId>
+            <groupId>org.codice.ddf.platform.error</groupId>
             <artifactId>platform-error-servlet</artifactId>
             <version>${project.version}</version>
         </dependency>
         <dependency>
-            <groupId>ddf.lib</groupId>
+            <groupId>org.codice.ddf.lib</groupId>
             <artifactId>grunt-port-allocator</artifactId>
             <version>${project.version}</version>
             <type>tar.gz</type>
@@ -164,7 +164,7 @@
                         <configuration>
                             <artifactItems>
                                 <artifactItem>
-                                    <groupId>ddf.lib</groupId>
+                                    <groupId>org.codice.ddf.lib</groupId>
                                     <artifactId>grunt-port-allocator</artifactId>
                                     <version>${project.version}</version>
                                     <type>tar.gz</type>

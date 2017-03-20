@@ -18,7 +18,7 @@
     <modelVersion>4.0.0</modelVersion>
     <parent>
         <artifactId>solr</artifactId>
-        <groupId>ddf.platform.solr</groupId>
+        <groupId>org.codice.ddf.platform.solr</groupId>
         <version>2.11.0-SNAPSHOT</version>
     </parent>
     <artifactId>solr-factory</artifactId>
@@ -27,68 +27,68 @@
     <packaging>jar</packaging>
     <dependencies>
         <dependency>
-            <groupId>ddf.platform.solr</groupId>
+            <groupId>org.codice.ddf.platform.solr</groupId>
             <artifactId>solr-dependencies</artifactId>
             <version>${project.version}</version>
         </dependency>
         <dependency>
-            <groupId>ddf.platform.solr</groupId>
+            <groupId>org.codice.ddf.platform.solr</groupId>
             <artifactId>platform-solr-server-standalone</artifactId>
             <version>${project.version}</version>
             <type>txt</type>
             <classifier>protwords</classifier>
         </dependency>
         <dependency>
-            <groupId>ddf.platform.solr</groupId>
+            <groupId>org.codice.ddf.platform.solr</groupId>
             <artifactId>platform-solr-server-standalone</artifactId>
             <version>${project.version}</version>
             <type>xml</type>
             <classifier>schema</classifier>
         </dependency>
         <dependency>
-            <groupId>ddf.platform.solr</groupId>
+            <groupId>org.codice.ddf.platform.solr</groupId>
             <artifactId>platform-solr-server-standalone</artifactId>
             <version>${project.version}</version>
             <type>xml</type>
             <classifier>solr</classifier>
         </dependency>
         <dependency>
-            <groupId>ddf.platform.solr</groupId>
+            <groupId>org.codice.ddf.platform.solr</groupId>
             <artifactId>platform-solr-server-standalone</artifactId>
             <version>${project.version}</version>
             <type>xml</type>
             <classifier>solrconfig</classifier>
         </dependency>
         <dependency>
-            <groupId>ddf.platform.solr</groupId>
+            <groupId>org.codice.ddf.platform.solr</groupId>
             <artifactId>platform-solr-server-standalone</artifactId>
             <version>${project.version}</version>
             <type>xml</type>
             <classifier>solrconfig-inmemory</classifier>
         </dependency>
         <dependency>
-            <groupId>ddf.platform.solr</groupId>
+            <groupId>org.codice.ddf.platform.solr</groupId>
             <artifactId>platform-solr-server-standalone</artifactId>
             <version>${project.version}</version>
             <type>txt</type>
             <classifier>stopwords_en</classifier>
         </dependency>
         <dependency>
-            <groupId>ddf.platform.solr</groupId>
+            <groupId>org.codice.ddf.platform.solr</groupId>
             <artifactId>platform-solr-server-standalone</artifactId>
             <version>${project.version}</version>
             <type>txt</type>
             <classifier>stopwords</classifier>
         </dependency>
         <dependency>
-            <groupId>ddf.platform.solr</groupId>
+            <groupId>org.codice.ddf.platform.solr</groupId>
             <artifactId>platform-solr-server-standalone</artifactId>
             <version>${project.version}</version>
             <type>txt</type>
             <classifier>synonyms</classifier>
         </dependency>
         <dependency>
-            <groupId>ddf.lib</groupId>
+            <groupId>org.codice.ddf.lib</groupId>
             <artifactId>common-system</artifactId>
             <version>${project.version}</version>
         </dependency>
@@ -185,7 +185,7 @@
                         <configuration>
                             <artifactItems>
                                 <artifactItem>
-                                    <groupId>ddf.platform.solr</groupId>
+                                    <groupId>org.codice.ddf.platform.solr</groupId>
                                     <artifactId>platform-solr-server-standalone</artifactId>
                                     <version>${project.version}</version>
                                     <type>txt</type>
@@ -197,7 +197,7 @@
                                     <destFileName>protwords.txt</destFileName>
                                 </artifactItem>
                                 <artifactItem>
-                                    <groupId>ddf.platform.solr</groupId>
+                                    <groupId>org.codice.ddf.platform.solr</groupId>
                                     <artifactId>platform-solr-server-standalone</artifactId>
                                     <version>${project.version}</version>
                                     <type>xml</type>
@@ -209,7 +209,7 @@
                                     <destFileName>schema.xml</destFileName>
                                 </artifactItem>
                                 <artifactItem>
-                                    <groupId>ddf.platform.solr</groupId>
+                                    <groupId>org.codice.ddf.platform.solr</groupId>
                                     <artifactId>platform-solr-server-standalone</artifactId>
                                     <version>${project.version}</version>
                                     <type>xml</type>
@@ -221,7 +221,7 @@
                                     <destFileName>solr.xml</destFileName>
                                 </artifactItem>
                                 <artifactItem>
-                                    <groupId>ddf.platform.solr</groupId>
+                                    <groupId>org.codice.ddf.platform.solr</groupId>
                                     <artifactId>platform-solr-server-standalone</artifactId>
                                     <version>${project.version}</version>
                                     <type>xml</type>
@@ -233,7 +233,7 @@
                                     <destFileName>solrconfig.xml</destFileName>
                                 </artifactItem>
                                 <artifactItem>
-                                    <groupId>ddf.platform.solr</groupId>
+                                    <groupId>org.codice.ddf.platform.solr</groupId>
                                     <artifactId>platform-solr-server-standalone</artifactId>
                                     <version>${project.version}</version>
                                     <type>xml</type>
@@ -245,7 +245,7 @@
                                     <destFileName>solrconfig-inmemory.xml</destFileName>
                                 </artifactItem>
                                 <artifactItem>
-                                    <groupId>ddf.platform.solr</groupId>
+                                    <groupId>org.codice.ddf.platform.solr</groupId>
                                     <artifactId>platform-solr-server-standalone</artifactId>
                                     <version>${project.version}</version>
                                     <type>txt</type>
@@ -257,7 +257,7 @@
                                     <destFileName>stopwords_en.txt</destFileName>
                                 </artifactItem>
                                 <artifactItem>
-                                    <groupId>ddf.platform.solr</groupId>
+                                    <groupId>org.codice.ddf.platform.solr</groupId>
                                     <artifactId>platform-solr-server-standalone</artifactId>
                                     <version>${project.version}</version>
                                     <type>txt</type>
@@ -269,7 +269,7 @@
                                     <destFileName>stopwords.txt</destFileName>
                                 </artifactItem>
                                 <artifactItem>
-                                    <groupId>ddf.platform.solr</groupId>
+                                    <groupId>org.codice.ddf.platform.solr</groupId>
                                     <artifactId>platform-solr-server-standalone</artifactId>
                                     <version>${project.version}</version>
                                     <type>txt</type>

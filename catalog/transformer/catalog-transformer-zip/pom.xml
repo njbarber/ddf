@@ -15,7 +15,7 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <parent>
-        <groupId>ddf.catalog.transformer</groupId>
+        <groupId>org.codice.ddf.catalog.transformer</groupId>
         <artifactId>transformer</artifactId>
         <version>2.11.0-SNAPSHOT</version>
     </parent>
@@ -38,11 +38,11 @@
             <artifactId>slf4j-api</artifactId>
         </dependency>
         <dependency>
-            <groupId>ddf.catalog.core</groupId>
+            <groupId>org.codice.ddf.catalog.core</groupId>
             <artifactId>catalog-core-api</artifactId>
         </dependency>
         <dependency>
-            <groupId>ddf.catalog.core</groupId>
+            <groupId>org.codice.ddf.catalog.core</groupId>
             <artifactId>catalog-core-api-impl</artifactId>
         </dependency>
         <dependency>
@@ -51,7 +51,7 @@
             <version>1.3.2</version>
         </dependency>
         <dependency>
-            <groupId>ddf.platform.util</groupId>
+            <groupId>org.codice.ddf.platform.util</groupId>
             <artifactId>platform-util</artifactId>
             <version>${project.version}</version>
         </dependency>
@@ -60,7 +60,7 @@
             <artifactId>cxf-services-sts-core</artifactId>
         </dependency>
         <dependency>
-            <groupId>ddf.security.core</groupId>
+            <groupId>org.codice.ddf.security.core</groupId>
             <artifactId>security-core-api</artifactId>
         </dependency>
     </dependencies>

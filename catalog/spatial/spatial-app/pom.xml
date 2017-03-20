@@ -92,12 +92,12 @@
     </build>
     <dependencies>
         <dependency>
-            <groupId>ddf.spatial.kml</groupId>
+            <groupId>org.codice.ddf.spatial.kml</groupId>
             <artifactId>spatial-kml-transformer</artifactId>
             <version>${project.version}</version>
         </dependency>
         <dependency>
-            <groupId>ddf.spatial.kml</groupId>
+            <groupId>org.codice.ddf.spatial.kml</groupId>
             <artifactId>spatial-kml-networklinkendpoint</artifactId>
             <version>${project.version}</version>
         </dependency>

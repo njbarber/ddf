@@ -17,7 +17,7 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <parent>
-        <groupId>ddf.catalog.transformer</groupId>
+        <groupId>org.codice.ddf.catalog.transformer</groupId>
         <artifactId>transformer</artifactId>
         <version>2.11.0-SNAPSHOT</version>
     </parent>
@@ -27,11 +27,11 @@
     <packaging>bundle</packaging>
     <dependencies>
         <dependency>
-            <groupId>ddf.catalog.core</groupId>
+            <groupId>org.codice.ddf.catalog.core</groupId>
             <artifactId>catalog-core-api-impl</artifactId>
         </dependency>
         <dependency>
-            <groupId>ddf.catalog.common</groupId>
+            <groupId>org.codice.ddf.catalog.common</groupId>
             <artifactId>geo-formatter</artifactId>
         </dependency>
         <dependency>
@@ -45,7 +45,7 @@
         </dependency>
         <!-- Test dependencies -->
         <dependency>
-            <groupId>ddf.catalog.core</groupId>
+            <groupId>org.codice.ddf.catalog.core</groupId>
             <artifactId>catalog-core-attributeregistry</artifactId>
             <version>${project.version}</version>
             <scope>test</scope>

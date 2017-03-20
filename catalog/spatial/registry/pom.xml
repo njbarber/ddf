@@ -126,7 +126,7 @@
                 <version>${project.version}</version>
             </dependency>
             <dependency>
-                <groupId>ddf.platform.security</groupId>
+                <groupId>org.codice.ddf.platform.security</groupId>
                 <artifactId>security-rest-cxfwrapper</artifactId>
                 <version>${project.version}</version>
             </dependency>

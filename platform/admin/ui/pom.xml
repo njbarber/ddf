@@ -17,7 +17,7 @@
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <parent>
         <artifactId>admin</artifactId>
-        <groupId>ddf.admin</groupId>
+        <groupId>org.codice.ddf.admin</groupId>
         <version>2.11.0-SNAPSHOT</version>
     </parent>
     <name>DDF :: Admin :: UI</name>
@@ -35,7 +35,7 @@
     </properties>
     <dependencies>
         <dependency>
-            <groupId>ddf.admin.core</groupId>
+            <groupId>org.codice.ddf.admin.core</groupId>
             <artifactId>admin-core-api</artifactId>
             <version>${project.version}</version>
         </dependency>
@@ -54,7 +54,7 @@
             <version>1.0.2</version>
         </dependency>
         <dependency>
-            <groupId>ddf.platform.error</groupId>
+            <groupId>org.codice.ddf.platform.error</groupId>
             <artifactId>platform-error-servlet</artifactId>
             <version>${project.version}</version>
         </dependency>
@@ -63,14 +63,14 @@
             <artifactId>jetty-server</artifactId>
         </dependency>
         <dependency>
-            <groupId>ddf.lib</groupId>
+            <groupId>org.codice.ddf.lib</groupId>
             <artifactId>grunt-port-allocator</artifactId>
             <version>${project.version}</version>
             <type>tar.gz</type>
             <classifier>npm</classifier>
         </dependency>
         <dependency>
-            <groupId>ddf.distribution</groupId>
+            <groupId>org.codice.ddf.distribution</groupId>
             <artifactId>branding-api</artifactId>
         </dependency>
         <dependency>
@@ -239,7 +239,7 @@
                         <configuration>
                             <artifactItems>
                                 <artifactItem>
-                                    <groupId>ddf.lib</groupId>
+                                    <groupId>org.codice.ddf.lib</groupId>
                                     <artifactId>grunt-port-allocator</artifactId>
                                     <version>${project.version}</version>
                                     <type>tar.gz</type>

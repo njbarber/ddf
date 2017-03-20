@@ -36,7 +36,7 @@
                             <artifactItems>
                                 <!-- this artifact item should be listed in the dependency section of the pom -->
                                 <artifactItem>
-                                    <groupId>ddf.lib</groupId>
+                                    <groupId>org.codice.ddf.lib</groupId>
                                     <artifactId>grunt-port-allocator</artifactId>
                                     <version>${project.version}</version>
                                     <type>tar.gz</type>

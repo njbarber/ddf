@@ -15,11 +15,11 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <parent>
-        <groupId>ddf.platform</groupId>
+        <groupId>org.codice.ddf.platform</groupId>
         <artifactId>platform</artifactId>
         <version>2.11.0-SNAPSHOT</version>
     </parent>
-    <groupId>ddf.platform.security</groupId>
+    <groupId>org.codice.ddf.platform.security</groupId>
     <artifactId>security</artifactId>
     <name>DDF Platform Security</name>
     <packaging>pom</packaging>
@@ -47,42 +47,42 @@
                 <version>${guava.version}</version>
             </dependency>
             <dependency>
-                <groupId>ddf.platform</groupId>
+                <groupId>org.codice.ddf.platform</groupId>
                 <artifactId>platform-configuration</artifactId>
                 <version>${project.version}</version>
             </dependency>
             <dependency>
-                <groupId>ddf.security.pdp</groupId>
+                <groupId>org.codice.ddf.security.pdp</groupId>
                 <artifactId>security-pdp-authzrealm</artifactId>
                 <version>${project.version}</version>
             </dependency>
             <dependency>
-                <groupId>ddf.security.encryption</groupId>
+                <groupId>org.codice.ddf.security.encryption</groupId>
                 <artifactId>security-encryption-impl</artifactId>
                 <version>${project.version}</version>
             </dependency>
             <dependency>
-                <groupId>ddf.security.encryption</groupId>
+                <groupId>org.codice.ddf.security.encryption</groupId>
                 <artifactId>security-encryption-api</artifactId>
                 <version>${project.version}</version>
             </dependency>
             <dependency>
-                <groupId>ddf.security.expansion</groupId>
+                <groupId>org.codice.ddf.security.expansion</groupId>
                 <artifactId>security-expansion-impl</artifactId>
                 <version>${project.version}</version>
             </dependency>
             <dependency>
-                <groupId>ddf.security.expansion</groupId>
+                <groupId>org.codice.ddf.security.expansion</groupId>
                 <artifactId>security-expansion-api</artifactId>
                 <version>${project.version}</version>
             </dependency>
             <dependency>
-                <groupId>ddf.security.core</groupId>
+                <groupId>org.codice.ddf.security.core</groupId>
                 <artifactId>security-core-api</artifactId>
                 <version>${project.version}</version>
             </dependency>
             <dependency>
-                <groupId>ddf.security.core</groupId>
+                <groupId>org.codice.ddf.security.core</groupId>
                 <artifactId>security-core-impl</artifactId>
                 <version>${project.version}</version>
             </dependency>
@@ -120,14 +120,14 @@
                 <scope>import</scope>
             </dependency>
             <dependency>
-                <groupId>ddf.platform</groupId>
+                <groupId>org.codice.ddf.platform</groupId>
                 <artifactId>platform</artifactId>
                 <version>${project.version}</version>
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
             <dependency>
-                <groupId>ddf.platform.security</groupId>
+                <groupId>org.codice.ddf.platform.security</groupId>
                 <artifactId>security</artifactId>
                 <version>${project.version}</version>
             </dependency>
@@ -137,12 +137,12 @@
                 <version>${cas.client.version}</version>
             </dependency>
             <dependency>
-                <groupId>ddf.security</groupId>
+                <groupId>org.codice.ddf.security</groupId>
                 <artifactId>ddf-security-common</artifactId>
                 <version>${project.version}</version>
             </dependency>
             <dependency>
-                <groupId>ddf.security.handler</groupId>
+                <groupId>org.codice.ddf.security.handler</groupId>
                 <artifactId>security-handler-api</artifactId>
                 <version>${project.version}</version>
             </dependency>

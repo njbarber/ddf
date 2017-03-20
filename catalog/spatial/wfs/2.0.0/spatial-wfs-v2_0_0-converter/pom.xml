@@ -24,7 +24,7 @@
     <name>DDF :: Spatial :: WFS :: 2.0.0 :: Converter</name>
     <dependencies>
         <dependency>
-            <groupId>ddf.catalog.core</groupId>
+            <groupId>org.codice.ddf.catalog.core</groupId>
             <artifactId>catalog-core-api-impl</artifactId>
         </dependency>
         <dependency>
@@ -64,7 +64,7 @@
                     <groupId>org.apache.cxf</groupId>
                 </exclusion>
                 <exclusion>
-                    <groupId>ddf.security.core</groupId>
+                    <groupId>org.codice.ddf.security.core</groupId>
                     <artifactId>security-core-api</artifactId>
                 </exclusion>
                 <exclusion>

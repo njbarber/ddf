@@ -16,7 +16,7 @@
     <modelVersion>4.0.0</modelVersion>
     <parent>
         <artifactId>security-cas-pom</artifactId>
-        <groupId>ddf.security.cas</groupId>
+        <groupId>org.codice.ddf.security.cas</groupId>
         <version>2.11.0-SNAPSHOT</version>
     </parent>
     <artifactId>security-cas-cxfservletfilter</artifactId>
@@ -41,7 +41,7 @@
             <artifactId>javax.servlet-api</artifactId>
         </dependency>
         <dependency>
-            <groupId>ddf.lib</groupId>
+            <groupId>org.codice.ddf.lib</groupId>
             <artifactId>common-system</artifactId>
             <version>${project.version}</version>
         </dependency>

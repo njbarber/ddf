@@ -20,7 +20,7 @@
         <version>2.11.0-SNAPSHOT</version>
     </parent>
     <artifactId>spatial-kml-pom</artifactId>
-    <groupId>ddf.spatial.kml</groupId>
+    <groupId>org.codice.ddf.spatial.kml</groupId>
     <name>DDF :: Spatial :: KML</name>
     <packaging>pom</packaging>
     <modules>

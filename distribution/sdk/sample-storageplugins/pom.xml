@@ -18,26 +18,26 @@
     <modelVersion>4.0.0</modelVersion>
     <parent>
         <artifactId>sdk</artifactId>
-        <groupId>ddf.distribution</groupId>
+        <groupId>org.codice.ddf.distribution</groupId>
         <version>2.11.0-SNAPSHOT</version>
     </parent>
-    <groupId>ddf.distribution.sdk</groupId>
+    <groupId>org.codice.ddf.distribution.sdk</groupId>
     <artifactId>sample-storageplugins</artifactId>
     <name>DDF :: SDK :: Plugin :: Sample Storage Plugins</name>
     <packaging>bundle</packaging>
     <dependencies>
         <dependency>
-            <groupId>ddf.catalog.core</groupId>
+            <groupId>org.codice.ddf.catalog.core</groupId>
             <artifactId>catalog-core-api</artifactId>
             <version>${project.version}</version>
         </dependency>
         <dependency>
-            <groupId>ddf.catalog.core</groupId>
+            <groupId>org.codice.ddf.catalog.core</groupId>
             <artifactId>catalog-core-api-impl</artifactId>
             <version>${project.version}</version>
         </dependency>
         <dependency>
-            <groupId>ddf.platform.util</groupId>
+            <groupId>org.codice.ddf.platform.util</groupId>
             <artifactId>platform-util</artifactId>
             <version>${project.version}</version>
         </dependency>

@@ -26,7 +26,7 @@
     <name>DDF :: Registry :: Admin :: Remote UI</name>
     <dependencies>
         <dependency>
-            <groupId>ddf.admin.core</groupId>
+            <groupId>org.codice.ddf.admin.core</groupId>
             <artifactId>admin-core-appservice</artifactId>
             <version>${project.version}</version>
         </dependency>

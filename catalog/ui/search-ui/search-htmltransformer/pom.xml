@@ -16,7 +16,7 @@
     <modelVersion>4.0.0</modelVersion>
     <parent>
         <artifactId>search-ui</artifactId>
-        <groupId>ddf.ui.search</groupId>
+        <groupId>org.codice.ddf.ui.search</groupId>
         <version>2.11.0-SNAPSHOT</version>
     </parent>
     <artifactId>search-htmltransformer</artifactId>
@@ -24,7 +24,7 @@
     <packaging>bundle</packaging>
     <dependencies>
         <dependency>
-            <groupId>ddf.catalog.core</groupId>
+            <groupId>org.codice.ddf.catalog.core</groupId>
             <artifactId>catalog-core-api</artifactId>
         </dependency>
         <dependency>
@@ -54,17 +54,17 @@
             <version>1.0.0</version>
         </dependency>
         <dependency>
-            <groupId>ddf.ui.search</groupId>
+            <groupId>org.codice.ddf.ui.search</groupId>
             <artifactId>simple</artifactId>
             <version>${project.version}</version>
         </dependency>
         <dependency>
-            <groupId>ddf.catalog.core</groupId>
+            <groupId>org.codice.ddf.catalog.core</groupId>
             <artifactId>catalog-core-api-impl</artifactId>
             <version>${project.version}</version>
         </dependency>
         <dependency>
-            <groupId>ddf.platform.util</groupId>
+            <groupId>org.codice.ddf.platform.util</groupId>
             <artifactId>platform-util</artifactId>
             <version>${project.version}</version>
         </dependency>

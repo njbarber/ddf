@@ -15,11 +15,11 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <parent>
-        <groupId>ddf.catalog.transformer</groupId>
+        <groupId>org.codice.ddf.catalog.transformer</groupId>
         <artifactId>transformer</artifactId>
         <version>2.11.0-SNAPSHOT</version>
     </parent>
-    <groupId>ddf.catalog.transformer</groupId>
+    <groupId>org.codice.ddf.catalog.transformer</groupId>
     <artifactId>catalog-transformer-xml</artifactId>
     <packaging>bundle</packaging>
     <name>DDF :: Catalog :: Transformer :: XML</name>
@@ -30,16 +30,16 @@
             <version>1.0.3</version>
         </dependency>
         <dependency>
-            <groupId>ddf.catalog.core</groupId>
+            <groupId>org.codice.ddf.catalog.core</groupId>
             <artifactId>catalog-core-api-impl</artifactId>
         </dependency>
         <dependency>
-            <groupId>ddf.platform</groupId>
+            <groupId>org.codice.ddf.platform</groupId>
             <artifactId>platform-parser-xml</artifactId>
             <version>${project.version}</version>
         </dependency>
         <dependency>
-            <groupId>ddf.catalog.core</groupId>
+            <groupId>org.codice.ddf.catalog.core</groupId>
             <artifactId>catalog-core-commons</artifactId>
             <scope>test</scope>
         </dependency>
@@ -54,7 +54,7 @@
             <version>1.0.3</version>
         </dependency>
         <dependency>
-            <groupId>ddf.catalog.transformer</groupId>
+            <groupId>org.codice.ddf.catalog.transformer</groupId>
             <artifactId>catalog-transformer-xml-binding</artifactId>
             <scope>compile</scope>
         </dependency>

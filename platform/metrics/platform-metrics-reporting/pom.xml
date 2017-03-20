@@ -16,10 +16,10 @@
     <modelVersion>4.0.0</modelVersion>
     <parent>
         <artifactId>metrics</artifactId>
-        <groupId>ddf.metrics</groupId>
+        <groupId>org.codice.ddf.metrics</groupId>
         <version>2.11.0-SNAPSHOT</version>
     </parent>
-    <groupId>ddf.metrics.reporting</groupId>
+    <groupId>org.codice.ddf.metrics.reporting</groupId>
     <artifactId>metrics-reporting</artifactId>
     <name>DDF :: Metrics :: Reporting</name>
     <packaging>bundle</packaging>
@@ -74,7 +74,7 @@
             <artifactId>commons-io</artifactId>
         </dependency>
         <dependency>
-            <groupId>ddf.platform</groupId>
+            <groupId>org.codice.ddf.platform</groupId>
             <artifactId>platform-configuration</artifactId>
         </dependency>
         <dependency>
@@ -88,12 +88,12 @@
             <version>2.2</version>
         </dependency>
         <dependency>
-            <groupId>ddf.lib</groupId>
+            <groupId>org.codice.ddf.lib</groupId>
             <artifactId>common-system</artifactId>
             <version>${project.version}</version>
         </dependency>
         <dependency>
-            <groupId>ddf.platform.util</groupId>
+            <groupId>org.codice.ddf.platform.util</groupId>
             <artifactId>platform-util</artifactId>
             <version>${project.version}</version>
         </dependency>

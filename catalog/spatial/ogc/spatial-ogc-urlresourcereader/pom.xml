@@ -28,15 +28,15 @@
             <artifactId>cxf-rt-rs-client</artifactId>
         </dependency>
         <dependency>
-            <groupId>ddf.catalog.core</groupId>
+            <groupId>org.codice.ddf.catalog.core</groupId>
             <artifactId>catalog-core-api</artifactId>
         </dependency>
         <dependency>
-            <groupId>ddf.catalog.core</groupId>
+            <groupId>org.codice.ddf.catalog.core</groupId>
             <artifactId>catalog-core-commons</artifactId>
         </dependency>
         <dependency>
-            <groupId>ddf.catalog.core</groupId>
+            <groupId>org.codice.ddf.catalog.core</groupId>
             <artifactId>catalog-core-urlresourcereader</artifactId>
         </dependency>
         <dependency>
@@ -48,22 +48,22 @@
             <artifactId>tika-core</artifactId>
         </dependency>
         <dependency>
-            <groupId>ddf.mime.core</groupId>
+            <groupId>org.codice.ddf.mime.core</groupId>
             <artifactId>mime-core-api</artifactId>
         </dependency>
         <dependency>
-            <groupId>ddf.mime.core</groupId>
+            <groupId>org.codice.ddf.mime.core</groupId>
             <artifactId>mime-core-impl</artifactId>
             <scope>test</scope>
         </dependency>
         <dependency>
-            <groupId>ddf.mime.core</groupId>
+            <groupId>org.codice.ddf.mime.core</groupId>
             <artifactId>mime-core-configurableresolver</artifactId>
             <version>${project.version}</version>
             <scope>test</scope>
         </dependency>
         <dependency>
-            <groupId>ddf.mime.tika</groupId>
+            <groupId>org.codice.ddf.mime.tika</groupId>
             <artifactId>mime-tika-resolver</artifactId>
             <version>${project.version}</version>
             <scope>test</scope>

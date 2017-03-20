@@ -18,24 +18,24 @@
 
     <feature name="sdk-metrics" version="${project.version}" install="manual"
              description="SDK sample metrics.">
-        <bundle>mvn:ddf.distribution/sample-metrics/${project.version}</bundle>
+        <bundle>mvn:org.codice.ddf.distribution/sample-metrics/${project.version}</bundle>
     </feature>
 
     <feature name="sdk-soap" version="${project.version}" install="auto"
              description="SDK sample soap endpoint.">
         <feature prerequisite="true">sdk-app</feature>
-        <bundle>mvn:ddf.distribution/sample-soap-endpoint/${project.version}</bundle>
+        <bundle>mvn:org.codice.ddf.distribution/sample-soap-endpoint/${project.version}</bundle>
     </feature>
 
     <feature name="sample-filter" version="${project.version}" install="manual"
              description="SDK sample metacard filter">
-        <bundle>mvn:ddf.distribution/sample-metacard-filter/${project.version}</bundle>
+        <bundle>mvn:org.codice.ddf.distribution/sample-metacard-filter/${project.version}</bundle>
     </feature>
 
     <feature name="sdk-rest" version="${project.version}" install="auto"
              description="SDK Sample rest service whoami">
         <feature prerequisite="true">sdk-app</feature>
-        <bundle>mvn:ddf.distribution/sample-rest-endpoint/${project.version}</bundle>
+        <bundle>mvn:org.codice.ddf.distribution/sample-rest-endpoint/${project.version}</bundle>
     </feature>
 
     <feature name="sample-validator" version="${project.version}" install="manual"
@@ -49,7 +49,7 @@
     <feature name="sample-storageplugins" version="${project.version}" install="auto"
              description="SDK sample storage plugin">
         <feature prerequisite="true">sdk-app</feature>
-        <bundle>mvn:ddf.distribution.sdk/sample-storageplugins/${project.version}
+        <bundle>mvn:org.codice.ddf.distribution.sdk/sample-storageplugins/${project.version}
         </bundle>
     </feature>
 

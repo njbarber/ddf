@@ -37,7 +37,7 @@ test('catch feature errors', function (t) {
       t.equal(data.deps.length, 1)
 
       var dep = data.deps[0]
-      t.equal(dep.group, 'ddf.catalog.security')
+      t.equal(dep.group, 'org.codice.ddf.catalog.security')
       t.equal(dep.artifact, 'catalog-security-ingestplugin')
     })
 })
@@ -50,7 +50,7 @@ test('catch artifact-item errors', function (t) {
       t.equal(data.deps.length, 1)
 
       var dep = data.deps[0]
-      t.equal(dep.group, 'ddf.lib')
+      t.equal(dep.group, 'org.codice.ddf.lib')
       t.equal(dep.artifact, 'grunt-port-allocator')
     })
 })
@@ -63,7 +63,7 @@ test('catch descriptor errors', function (t) {
       t.equal(data.deps.length, 1)
 
       var dep = data.deps[0]
-      t.equal(dep.group, 'ddf.distribution')
+      t.equal(dep.group, 'org.codice.ddf.distribution')
       t.equal(dep.artifact, 'install-profiles')
     })
 })

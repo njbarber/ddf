@@ -18,7 +18,7 @@
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <parent>
         <artifactId>admin</artifactId>
-        <groupId>ddf.admin</groupId>
+        <groupId>org.codice.ddf.admin</groupId>
         <version>2.11.0-SNAPSHOT</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
@@ -93,82 +93,82 @@
     </build>
     <dependencies>
         <dependency>
-            <groupId>ddf.admin.core</groupId>
+            <groupId>org.codice.ddf.admin.core</groupId>
             <artifactId>admin-core-api</artifactId>
             <version>${project.version}</version>
         </dependency>
         <dependency>
-            <groupId>ddf.admin.core</groupId>
+            <groupId>org.codice.ddf.admin.core</groupId>
             <artifactId>admin-core-jolokia</artifactId>
             <version>${project.version}</version>
         </dependency>
         <dependency>
-            <groupId>ddf.admin.core</groupId>
+            <groupId>org.codice.ddf.admin.core</groupId>
             <artifactId>admin-core-configplugin</artifactId>
             <version>${project.version}</version>
         </dependency>
         <dependency>
-            <groupId>ddf.admin.core</groupId>
+            <groupId>org.codice.ddf.admin.core</groupId>
             <artifactId>admin-core-appservice</artifactId>
             <version>${project.version}</version>
         </dependency>
         <dependency>
-            <groupId>ddf.admin.core</groupId>
+            <groupId>org.codice.ddf.admin.core</groupId>
             <artifactId>admin-core-insecuredefaults</artifactId>
             <version>${project.version}</version>
         </dependency>
         <dependency>
-            <groupId>ddf.admin</groupId>
+            <groupId>org.codice.ddf.admin</groupId>
             <artifactId>admin-ui</artifactId>
             <version>${project.version}</version>
         </dependency>
         <dependency>
-            <groupId>ddf.admin.modules</groupId>
+            <groupId>org.codice.ddf.admin.modules</groupId>
             <artifactId>admin-modules-configuration</artifactId>
             <version>${project.version}</version>
         </dependency>
         <dependency>
-            <groupId>ddf.admin.modules</groupId>
+            <groupId>org.codice.ddf.admin.modules</groupId>
             <artifactId>admin-modules-installer</artifactId>
             <version>${project.version}</version>
         </dependency>
         <dependency>
-            <groupId>ddf.admin.modules</groupId>
+            <groupId>org.codice.ddf.admin.modules</groupId>
             <artifactId>admin-modules-application</artifactId>
             <version>${project.version}</version>
         </dependency>
         <dependency>
-            <groupId>ddf.admin.modules</groupId>
+            <groupId>org.codice.ddf.admin.modules</groupId>
             <artifactId>admin-metrics-ui</artifactId>
             <version>${project.version}</version>
         </dependency>
         <dependency>
-            <groupId>ddf.admin.modules</groupId>
+            <groupId>org.codice.ddf.admin.modules</groupId>
             <artifactId>admin-security-ui</artifactId>
             <version>${project.version}</version>
         </dependency>
         <dependency>
-            <groupId>ddf.admin.modules</groupId>
+            <groupId>org.codice.ddf.admin.modules</groupId>
             <artifactId>admin-security-certificate-ui</artifactId>
             <version>${project.version}</version>
         </dependency>
         <dependency>
-            <groupId>ddf.admin.core</groupId>
+            <groupId>org.codice.ddf.admin.core</groupId>
             <artifactId>admin-core-migration-commands</artifactId>
             <version>${project.version}</version>
         </dependency>
         <dependency>
-            <groupId>ddf.admin.core</groupId>
+            <groupId>org.codice.ddf.admin.core</groupId>
             <artifactId>admin-core-logviewer</artifactId>
             <version>${project.version}</version>
         </dependency>
         <dependency>
-            <groupId>ddf.admin.core</groupId>
+            <groupId>org.codice.ddf.admin.core</groupId>
             <artifactId>admin-core-configpolicy</artifactId>
             <version>${project.version}</version>
         </dependency>
         <dependency>
-            <groupId>ddf.admin.modules</groupId>
+            <groupId>org.codice.ddf.admin.modules</groupId>
             <artifactId>admin-docs-ui</artifactId>
             <version>${project.version}</version>
         </dependency>

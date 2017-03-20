@@ -95,7 +95,7 @@ public class TestSecurity extends AbstractIntegrationTest {
                     "security-all");
 
     protected static final String ADD_SDK_APP_JOLOKIA_REQ =
-            "{\"type\":\"EXEC\",\"mbean\":\"org.codice.ddf.admin.application.service.ApplicationService:service=application-service\",\"operation\":\"addApplications\",\"arguments\":[[{\"value\":\"mvn:ddf.distribution/sdk-app/"
+            "{\"type\":\"EXEC\",\"mbean\":\"org.codice.ddf.admin.application.service.ApplicationService:service=application-service\",\"operation\":\"addApplications\",\"arguments\":[[{\"value\":\"mvn:org.codice.ddf.distribution/sdk-app/"
                     + System.getProperty("ddf.version") + "/xml/features\"}]]}";
 
     protected static final String SOAP_ENV =
@@ -315,7 +315,7 @@ public class TestSecurity extends AbstractIntegrationTest {
             configurePDP();
             Configuration config = getAdminConfig().getConfiguration(
                     "org.codice.ddf.admin.config.policy.AdminConfigPolicy");
-            config.setBundleLocation("mvn:ddf.admin.core/admin-core-configpolicy/"
+            config.setBundleLocation("mvn:org.codice.ddf.admin.core/admin-core-configpolicy/"
                     + System.getProperty("ddf.version"));
             Dictionary properties = new Hashtable<>();
 

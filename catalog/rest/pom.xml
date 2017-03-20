@@ -16,11 +16,11 @@
     <modelVersion>4.0.0</modelVersion>
     <parent>
         <artifactId>catalog</artifactId>
-        <groupId>ddf.catalog</groupId>
+        <groupId>org.codice.ddf.catalog</groupId>
         <version>2.11.0-SNAPSHOT</version>
     </parent>
     <artifactId>catalog-rest-pom</artifactId>
-    <groupId>ddf.catalog.rest</groupId>
+    <groupId>org.codice.ddf.catalog.rest</groupId>
     <name>DDF Catalog REST</name>
     <packaging>pom</packaging>
     <modules>

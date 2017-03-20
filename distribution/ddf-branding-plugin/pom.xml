@@ -18,16 +18,16 @@
     <modelVersion>4.0.0</modelVersion>
     <parent>
         <artifactId>distribution</artifactId>
-        <groupId>ddf</groupId>
+        <groupId>org.codice.ddf</groupId>
         <version>2.11.0-SNAPSHOT</version>
     </parent>
-    <groupId>ddf.distribution</groupId>
+    <groupId>org.codice.ddf.distribution</groupId>
     <artifactId>ddf-branding-plugin</artifactId>
     <name>DDF :: Distribution :: Branding Plugin</name>
     <packaging>bundle</packaging>
     <dependencies>
         <dependency>
-            <groupId>ddf.distribution</groupId>
+            <groupId>org.codice.ddf.distribution</groupId>
             <artifactId>branding-api</artifactId>
             <version>${project.version}</version>
         </dependency>

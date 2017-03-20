@@ -16,11 +16,11 @@
     <modelVersion>4.0.0</modelVersion>
     <parent>
         <artifactId>security</artifactId>
-        <groupId>ddf.platform.security</groupId>
+        <groupId>org.codice.ddf.platform.security</groupId>
         <version>2.11.0-SNAPSHOT</version>
     </parent>
     <artifactId>security-expansion-pom</artifactId>
-    <groupId>ddf.security.expansion</groupId>
+    <groupId>org.codice.ddf.security.expansion</groupId>
     <name>DDF Security Expansion</name>
     <packaging>pom</packaging>
     <modules>

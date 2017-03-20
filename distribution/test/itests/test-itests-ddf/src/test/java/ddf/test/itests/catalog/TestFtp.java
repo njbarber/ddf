@@ -480,7 +480,7 @@ public class TestFtp extends AbstractIntegrationTest {
     private void setClientAuthConfiguration(String clientAuth) throws Exception {
         Configuration config =
                 getAdminConfig().getConfiguration("ddf.catalog.ftp.FtpServerStarter");
-        config.setBundleLocation("mvn:ddf.catalog/ftp/" + System.getProperty("ddf.version"));
+        config.setBundleLocation("mvn:org.codice.ddf.catalog/ftp/" + System.getProperty("ddf.version"));
         Dictionary properties = new Hashtable<>();
         properties.put(CLIENT_AUTH, clientAuth);
         config.update(properties);

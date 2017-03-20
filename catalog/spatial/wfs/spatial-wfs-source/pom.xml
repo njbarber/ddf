@@ -24,7 +24,7 @@
     <name>DDF :: Spatial :: WFS :: Source</name>
     <dependencies>
         <dependency>
-            <groupId>ddf.catalog.core</groupId>
+            <groupId>org.codice.ddf.catalog.core</groupId>
             <artifactId>catalog-core-api-impl</artifactId>
         </dependency>
         <dependency>
@@ -54,7 +54,7 @@
             </exclusions>
         </dependency>
         <dependency>
-            <groupId>ddf.catalog.core</groupId>
+            <groupId>org.codice.ddf.catalog.core</groupId>
             <artifactId>filter-proxy</artifactId>
             <scope>test</scope>
         </dependency>
@@ -83,7 +83,7 @@
             <artifactId>guava</artifactId>
         </dependency>
         <dependency>
-            <groupId>ddf.security.core</groupId>
+            <groupId>org.codice.ddf.security.core</groupId>
             <artifactId>security-core-impl</artifactId>
             <version>${project.version}</version>
         </dependency>

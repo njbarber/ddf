@@ -15,7 +15,7 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <parent>
-        <groupId>ddf.security.pep</groupId>
+        <groupId>org.codice.ddf.security.pep</groupId>
         <artifactId>security-pep-pom</artifactId>
         <version>2.11.0-SNAPSHOT</version>
     </parent>
@@ -28,11 +28,11 @@
             <artifactId>shiro-core</artifactId>
         </dependency>
         <dependency>
-            <groupId>ddf.security.core</groupId>
+            <groupId>org.codice.ddf.security.core</groupId>
             <artifactId>security-core-api</artifactId>
         </dependency>
         <dependency>
-            <groupId>ddf.security</groupId>
+            <groupId>org.codice.ddf.security</groupId>
             <artifactId>ddf-security-common</artifactId>
             <version>${project.version}</version>
         </dependency>
@@ -41,7 +41,7 @@
             <artifactId>cxf-rt-ws-security</artifactId>
         </dependency>
         <dependency>
-            <groupId>ddf.security.policy</groupId>
+            <groupId>org.codice.ddf.security.policy</groupId>
             <artifactId>security-policy-api</artifactId>
             <version>${project.version}</version>
         </dependency>
@@ -63,7 +63,7 @@
             <artifactId>powermock-module-junit4-rule-agent</artifactId>
         </dependency>
         <dependency>
-            <groupId>ddf.platform.util</groupId>
+            <groupId>org.codice.ddf.platform.util</groupId>
             <artifactId>platform-util</artifactId>
             <version>${project.version}</version>
         </dependency>
@@ -76,7 +76,7 @@
             <artifactId>validation-api</artifactId>
         </dependency>
         <dependency>
-            <groupId>ddf.platform.util</groupId>
+            <groupId>org.codice.ddf.platform.util</groupId>
             <artifactId>platform-util-unavailableurls</artifactId>
             <version>${project.version}</version>
         </dependency>

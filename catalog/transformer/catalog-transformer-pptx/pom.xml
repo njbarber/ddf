@@ -15,7 +15,7 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <parent>
-        <groupId>ddf.catalog.transformer</groupId>
+        <groupId>org.codice.ddf.catalog.transformer</groupId>
         <artifactId>transformer</artifactId>
         <version>2.11.0-SNAPSHOT</version>
     </parent>
@@ -30,15 +30,15 @@
 
     <dependencies>
         <dependency>
-            <groupId>ddf.catalog.core</groupId>
+            <groupId>org.codice.ddf.catalog.core</groupId>
             <artifactId>catalog-core-api</artifactId>
         </dependency>
         <dependency>
-            <groupId>ddf.catalog.core</groupId>
+            <groupId>org.codice.ddf.catalog.core</groupId>
             <artifactId>catalog-core-api-impl</artifactId>
         </dependency>
         <dependency>
-            <groupId>ddf.platform.util</groupId>
+            <groupId>org.codice.ddf.platform.util</groupId>
             <artifactId>platform-util</artifactId>
             <version>${project.version}</version>
         </dependency>
@@ -50,7 +50,7 @@
             <scope>test</scope>
         </dependency>
         <dependency>
-            <groupId>ddf.catalog.transformer</groupId>
+            <groupId>org.codice.ddf.catalog.transformer</groupId>
             <artifactId>tika-input-transformer</artifactId>
             <version>${project.version}</version>
             <scope>test</scope>

@@ -19,7 +19,7 @@
     <modelVersion>4.0.0</modelVersion>
     <parent>
         <artifactId>itests</artifactId>
-        <groupId>ddf.test.itests</groupId>
+        <groupId>org.codice.ddf.test.itests</groupId>
         <version>2.11.0-SNAPSHOT</version>
     </parent>
     <artifactId>test-itests-dependencies-app</artifactId>
@@ -34,21 +34,21 @@
 
     <dependencies>
         <dependency>
-            <groupId>ddf.test.itests</groupId>
+            <groupId>org.codice.ddf.test.itests</groupId>
             <artifactId>test-itests-common</artifactId>
             <version>${project.version}</version>
         </dependency>
         <dependency>
-            <groupId>ddf.security</groupId>
+            <groupId>org.codice.ddf.security</groupId>
             <artifactId>ddf-security-common</artifactId>
             <version>${project.version}</version>
         </dependency>
         <dependency>
-            <groupId>ddf.test.thirdparty</groupId>
+            <groupId>org.codice.ddf.test.thirdparty</groupId>
             <artifactId>rest-assured</artifactId>
         </dependency>
         <dependency>
-            <groupId>ddf.test.thirdparty</groupId>
+            <groupId>org.codice.ddf.test.thirdparty</groupId>
             <artifactId>restito</artifactId>
             <version>${project.version}</version>
         </dependency>

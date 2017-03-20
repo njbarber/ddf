@@ -32,15 +32,15 @@
             <artifactId>registry-api</artifactId>
         </dependency>
         <dependency>
-            <groupId>ddf.action.core</groupId>
+            <groupId>org.codice.ddf.action.core</groupId>
             <artifactId>action-core-api</artifactId>
         </dependency>
         <dependency>
-            <groupId>ddf.catalog.core</groupId>
+            <groupId>org.codice.ddf.catalog.core</groupId>
             <artifactId>catalog-core-api</artifactId>
         </dependency>
         <dependency>
-            <groupId>ddf.action.core</groupId>
+            <groupId>org.codice.ddf.action.core</groupId>
             <artifactId>action-core-impl</artifactId>
         </dependency>
         <dependency>
@@ -48,7 +48,7 @@
             <artifactId>slf4j-api</artifactId>
         </dependency>
         <dependency>
-            <groupId>ddf.catalog.core</groupId>
+            <groupId>org.codice.ddf.catalog.core</groupId>
             <artifactId>catalog-core-api-impl</artifactId>
             <scope>test</scope>
         </dependency>
@@ -65,12 +65,12 @@
             <artifactId>commons-lang3</artifactId>
         </dependency>
         <dependency>
-            <groupId>ddf.lib</groupId>
+            <groupId>org.codice.ddf.lib</groupId>
             <artifactId>common-system</artifactId>
             <version>${project.version}</version>
         </dependency>
         <dependency>
-            <groupId>ddf.security</groupId>
+            <groupId>org.codice.ddf.security</groupId>
             <artifactId>ddf-security-common</artifactId>
         </dependency>
     </dependencies>

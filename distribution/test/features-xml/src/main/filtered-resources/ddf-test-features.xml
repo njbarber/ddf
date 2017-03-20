@@ -14,7 +14,7 @@
 <features name="ddf-test-${project.version}">
 
 	<feature name="ddf-test-input-transformer-stubs" version="${project.version}">
-		<bundle start-level='60'>mvn:ddf.test/test-input-transformer-stubs/${project.version}</bundle>
+		<bundle start-level='60'>mvn:org.codice.ddf.test/test-input-transformer-stubs/${project.version}</bundle>
 	</feature>
 
 </features>

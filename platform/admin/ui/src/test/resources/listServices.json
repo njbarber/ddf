@@ -1339,7 +1339,7 @@
       "factory": false,
       "configurations": [
         {
-          "bundle_location": "mvn:ddf.platform/platform-configuration/2.8.0-SNAPSHOT",
+          "bundle_location": "mvn:org.codice.ddf.platform/platform-configuration/2.8.0-SNAPSHOT",
           "name": "Platform Global Configuration",
           "id": "ddf.platform.config",
           "bundle_name": "DDF :: Platform :: Configuration",
@@ -2135,7 +2135,7 @@
       "factory": false,
       "configurations": [
         {
-          "bundle_location": "mvn:ddf.security.sts/security-sts-guestclaimshandler/2.8.0-SNAPSHOT",
+          "bundle_location": "mvn:org.codice.ddf.security.sts/security-sts-guestclaimshandler/2.8.0-SNAPSHOT",
           "name": "Security STS Guest Claims Handler",
           "id": "ddf.security.sts.guestclaims",
           "bundle_name": "DDF :: Security :: STS :: Guest Claims Handler",
@@ -2594,7 +2594,7 @@
       "configurations": [
         {
           "fpid": "DDF_Custom_Mime_Type_Resolver",
-          "bundle_location": "mvn:ddf.mime.core/mime-core-configurableresolver/2.8.0-SNAPSHOT",
+          "bundle_location": "mvn:org.codice.ddf.mime.core/mime-core-configurableresolver/2.8.0-SNAPSHOT",
           "name": "MIME Custom Types",
           "id": "DDF_Custom_Mime_Type_Resolver.888b6aee-970f-40a2-b90f-51c634f830a2",
           "bundle_name": "DDF :: MIME :: Core :: ConfigurableResolver",
@@ -2612,7 +2612,7 @@
         },
         {
           "fpid": "DDF_Custom_Mime_Type_Resolver",
-          "bundle_location": "mvn:ddf.mime.core/mime-core-configurableresolver/2.8.0-SNAPSHOT",
+          "bundle_location": "mvn:org.codice.ddf.mime.core/mime-core-configurableresolver/2.8.0-SNAPSHOT",
           "name": "MIME Custom Types",
           "id": "DDF_Custom_Mime_Type_Resolver.be79097a-199e-479c-bc96-a327772f0996",
           "bundle_name": "DDF :: MIME :: Core :: ConfigurableResolver",
@@ -2630,7 +2630,7 @@
         },
         {
           "fpid": "DDF_Custom_Mime_Type_Resolver",
-          "bundle_location": "mvn:ddf.mime.core/mime-core-configurableresolver/2.8.0-SNAPSHOT",
+          "bundle_location": "mvn:org.codice.ddf.mime.core/mime-core-configurableresolver/2.8.0-SNAPSHOT",
           "name": "MIME Custom Types",
           "id": "DDF_Custom_Mime_Type_Resolver.f328ae78-6325-4767-973f-dcee3147a360",
           "bundle_name": "DDF :: MIME :: Core :: ConfigurableResolver",
@@ -2647,7 +2647,7 @@
         },
         {
           "fpid": "DDF_Custom_Mime_Type_Resolver",
-          "bundle_location": "mvn:ddf.mime.core/mime-core-configurableresolver/2.8.0-SNAPSHOT",
+          "bundle_location": "mvn:org.codice.ddf.mime.core/mime-core-configurableresolver/2.8.0-SNAPSHOT",
           "name": "MIME Custom Types",
           "id": "DDF_Custom_Mime_Type_Resolver.217417d6-fceb-4631-bf90-8ea61908596d",
           "bundle_name": "DDF :: MIME :: Core :: ConfigurableResolver",

@@ -17,11 +17,11 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <parent>
         <artifactId>catalog</artifactId>
-        <groupId>ddf.catalog</groupId>
+        <groupId>org.codice.ddf.catalog</groupId>
         <version>2.11.0-SNAPSHOT</version>
     </parent>
 
-    <groupId>ddf.catalog.async</groupId>
+    <groupId>org.codice.ddf.catalog.async</groupId>
     <name>DDF :: Catalog :: Async</name>
     <modelVersion>4.0.0</modelVersion>
     <artifactId>async</artifactId>

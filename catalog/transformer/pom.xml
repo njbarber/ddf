@@ -13,48 +13,48 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <parent>
-        <groupId>ddf.catalog</groupId>
+        <groupId>org.codice.ddf.catalog</groupId>
         <artifactId>catalog</artifactId>
         <version>2.11.0-SNAPSHOT</version>
     </parent>
-    <groupId>ddf.catalog.transformer</groupId>
+    <groupId>org.codice.ddf.catalog.transformer</groupId>
     <artifactId>transformer</artifactId>
     <packaging>pom</packaging>
     <name>DDF Catalog Transformers</name>
     <dependencyManagement>
         <dependencies>
             <dependency>
-                <groupId>ddf.action.core</groupId>
+                <groupId>org.codice.ddf.action.core</groupId>
                 <artifactId>action-core-api</artifactId>
                 <version>${project.version}</version>
             </dependency>
             <dependency>
-                <groupId>ddf.catalog.core</groupId>
+                <groupId>org.codice.ddf.catalog.core</groupId>
                 <artifactId>catalog-core-api</artifactId>
                 <version>${project.version}</version>
             </dependency>
             <dependency>
-                <groupId>ddf.catalog.core</groupId>
+                <groupId>org.codice.ddf.catalog.core</groupId>
                 <artifactId>catalog-core-api-impl</artifactId>
                 <version>${project.version}</version>
             </dependency>
             <dependency>
-                <groupId>ddf.catalog.core</groupId>
+                <groupId>org.codice.ddf.catalog.core</groupId>
                 <artifactId>catalog-core-commons</artifactId>
                 <version>${project.version}</version>
             </dependency>
             <dependency>
-                <groupId>ddf.catalog.core</groupId>
+                <groupId>org.codice.ddf.catalog.core</groupId>
                 <artifactId>filter-proxy</artifactId>
                 <version>${project.version}</version>
             </dependency>
             <dependency>
-                <groupId>ddf.catalog.common</groupId>
+                <groupId>org.codice.ddf.catalog.common</groupId>
                 <artifactId>geo-formatter</artifactId>
                 <version>${project.version}</version>
             </dependency>
             <dependency>
-                <groupId>ddf.catalog.transformer</groupId>
+                <groupId>org.codice.ddf.catalog.transformer</groupId>
                 <artifactId>catalog-transformer-xml-binding</artifactId>
                 <version>${project.version}</version>
             </dependency>

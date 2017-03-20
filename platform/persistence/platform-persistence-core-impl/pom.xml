@@ -17,11 +17,11 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <parent>
-        <groupId>ddf.persistence</groupId>
+        <groupId>org.codice.ddf.persistence</groupId>
         <artifactId>persistence</artifactId>
         <version>2.11.0-SNAPSHOT</version>
     </parent>
-    <groupId>ddf.persistence.core</groupId>
+    <groupId>org.codice.ddf.persistence.core</groupId>
     <artifactId>persistence-core-impl</artifactId>
     <name>DDF :: Persistence :: Core :: Internal Implementation</name>
     <packaging>bundle</packaging>
@@ -51,22 +51,22 @@
     </dependencyManagement>
     <dependencies>
         <dependency>
-            <groupId>ddf.platform.solr</groupId>
+            <groupId>org.codice.ddf.platform.solr</groupId>
             <artifactId>solr-factory</artifactId>
             <version>${project.version}</version>
         </dependency>
         <dependency>
-            <groupId>ddf.platform.solr</groupId>
+            <groupId>org.codice.ddf.platform.solr</groupId>
             <artifactId>solr-dependencies</artifactId>
             <version>${project.version}</version>
         </dependency>
         <dependency>
-            <groupId>ddf.persistence.core</groupId>
+            <groupId>org.codice.ddf.persistence.core</groupId>
             <artifactId>persistence-core-api</artifactId>
             <version>${project.version}</version>
         </dependency>
         <dependency>
-            <groupId>ddf.platform.solr</groupId>
+            <groupId>org.codice.ddf.platform.solr</groupId>
             <artifactId>solr-query</artifactId>
             <version>${project.version}</version>
         </dependency>
@@ -86,12 +86,12 @@
             <version>8.4</version>
         </dependency>
         <dependency>
-            <groupId>ddf.security.encryption</groupId>
+            <groupId>org.codice.ddf.security.encryption</groupId>
             <artifactId>security-encryption-api</artifactId>
             <version>${project.version}</version>
         </dependency>
         <dependency>
-            <groupId>ddf.platform</groupId>
+            <groupId>org.codice.ddf.platform</groupId>
             <artifactId>platform-configuration</artifactId>
         </dependency>
         <dependency>
@@ -125,7 +125,7 @@
             <artifactId>slf4j-api</artifactId>
         </dependency>
         <dependency>
-            <groupId>ddf.platform.solr</groupId>
+            <groupId>org.codice.ddf.platform.solr</groupId>
             <artifactId>solr-xpath</artifactId>
             <version>${project.version}</version>
         </dependency>

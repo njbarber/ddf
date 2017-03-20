@@ -533,7 +533,7 @@ public abstract class AbstractIntegrationTest {
                         ""))),
                 editConfigurationFilePut("etc/system.properties",
                         "ddf.version",
-                        MavenUtils.getArtifactVersion("ddf.test.itests", "test-itests-common")));
+                        MavenUtils.getArtifactVersion("org.codice.ddf.test.itests", "test-itests-common")));
     }
 
     protected Option[] configureLogLevel() {
@@ -559,13 +559,13 @@ public abstract class AbstractIntegrationTest {
     protected Option[] configureStartScript() {
         //add test dependencies to the test-dependencies-app instead of here
         return options(junitBundles(),
-                features(maven().groupId("ddf.test.itests")
+                features(maven().groupId("org.codice.ddf.test.itests")
                         .artifactId("test-itests-dependencies-app")
                         .type("xml")
                         .classifier("features")
                         .versionAsInProject(), "ddf-itest-dependencies"),
                 //Adds sdk-app to the features repo
-                features(maven("ddf.distribution", "sdk-app").classifier("features")
+                features(maven("org.codice.ddf.distribution", "sdk-app").classifier("features")
                         .type("xml")
                         .versionAsInProject()));
     }

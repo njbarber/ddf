@@ -16,7 +16,7 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <parent>
-        <groupId>ddf.catalog</groupId>
+        <groupId>org.codice.ddf.catalog</groupId>
         <artifactId>catalog</artifactId>
         <version>2.11.0-SNAPSHOT</version>
     </parent>
@@ -50,12 +50,12 @@
                 <version>${project.version}</version>
             </dependency>
             <dependency>
-                <groupId>ddf.platform.security</groupId>
+                <groupId>org.codice.ddf.platform.security</groupId>
                 <artifactId>security-rest-cxfwrapper</artifactId>
                 <version>${project.version}</version>
             </dependency>
             <dependency>
-                <groupId>ddf.security.encryption</groupId>
+                <groupId>org.codice.ddf.security.encryption</groupId>
                 <artifactId>security-encryption-api</artifactId>
                 <version>${project.version}</version>
             </dependency>

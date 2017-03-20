@@ -17,11 +17,11 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <parent>
         <artifactId>security</artifactId>
-        <groupId>ddf.platform.security</groupId>
+        <groupId>org.codice.ddf.platform.security</groupId>
         <version>2.11.0-SNAPSHOT</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
-    <groupId>ddf.security.migration</groupId>
+    <groupId>org.codice.ddf.security.migration</groupId>
     <artifactId>security-migratable</artifactId>
     <packaging>bundle</packaging>
 
@@ -29,11 +29,11 @@
 
     <dependencies>
         <dependency>
-            <groupId>ddf.platform.migration</groupId>
+            <groupId>org.codice.ddf.platform.migration</groupId>
             <artifactId>platform-migratable-api</artifactId>
         </dependency>
         <dependency>
-            <groupId>ddf.platform.migration</groupId>
+            <groupId>org.codice.ddf.platform.migration</groupId>
             <artifactId>platform-migratable-util</artifactId>
             <version>${project.version}</version>
         </dependency>

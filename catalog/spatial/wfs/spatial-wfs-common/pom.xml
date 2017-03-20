@@ -73,7 +73,7 @@
             <artifactId>spatial-wfs-v1_0_0-schema-bindings</artifactId>
         </dependency>
         <dependency>
-            <groupId>ddf.catalog.core</groupId>
+            <groupId>org.codice.ddf.catalog.core</groupId>
             <artifactId>catalog-core-api-impl</artifactId>
         </dependency>
     </dependencies>

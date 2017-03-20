@@ -17,7 +17,7 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <parent>
-        <groupId>ddf.test.itests</groupId>
+        <groupId>org.codice.ddf.test.itests</groupId>
         <artifactId>itests</artifactId>
         <version>2.11.0-SNAPSHOT</version>
     </parent>
@@ -60,7 +60,7 @@
         </dependency>
         <!-- End of pax exam dependencies -->
         <dependency>
-            <groupId>ddf.catalog</groupId>
+            <groupId>org.codice.ddf.catalog</groupId>
             <artifactId>ftp</artifactId>
             <version>${project.version}</version>
         </dependency>
@@ -112,74 +112,74 @@
             <version>3.5</version>
         </dependency>
         <dependency>
-            <groupId>ddf.platform.migration</groupId>
+            <groupId>org.codice.ddf.platform.migration</groupId>
             <artifactId>platform-migration</artifactId>
             <version>${project.version}</version>
             <scope>test</scope>
         </dependency>
         <dependency>
-            <groupId>ddf.catalog.core</groupId>
+            <groupId>org.codice.ddf.catalog.core</groupId>
             <artifactId>catalog-core-api</artifactId>
             <scope>test</scope>
         </dependency>
         <dependency>
-            <groupId>ddf.security.policy</groupId>
+            <groupId>org.codice.ddf.security.policy</groupId>
             <artifactId>security-policy-api</artifactId>
             <version>${project.version}</version>
             <scope>test</scope>
         </dependency>
         <dependency>
-            <groupId>ddf.security</groupId>
+            <groupId>org.codice.ddf.security</groupId>
             <artifactId>ddf-security-common</artifactId>
             <version>${project.version}</version>
             <scope>test</scope>
         </dependency>
         <dependency>
-            <groupId>ddf.security.policy</groupId>
+            <groupId>org.codice.ddf.security.policy</groupId>
             <artifactId>security-policy-context</artifactId>
             <version>${project.version}</version>
             <scope>test</scope>
         </dependency>
         <dependency>
-            <groupId>ddf.persistence.core</groupId>
+            <groupId>org.codice.ddf.persistence.core</groupId>
             <artifactId>persistence-core-api</artifactId>
             <version>${project.version}</version>
             <scope>test</scope>
         </dependency>
         <dependency>
-            <groupId>ddf.test.thirdparty</groupId>
+            <groupId>org.codice.ddf.test.thirdparty</groupId>
             <artifactId>restito</artifactId>
             <version>${project.version}</version>
             <scope>test</scope>
         </dependency>
         <dependency>
-            <groupId>ddf.test.itests</groupId>
+            <groupId>org.codice.ddf.test.itests</groupId>
             <artifactId>test-itests-common</artifactId>
             <version>${project.version}</version>
             <scope>test</scope>
         </dependency>
         <dependency>
-            <groupId>ddf.distribution</groupId>
+            <groupId>org.codice.ddf.distribution</groupId>
             <artifactId>sdk-app</artifactId>
             <version>${project.version}</version>
             <classifier>features</classifier>
             <type>xml</type>
         </dependency>
         <dependency>
-            <groupId>ddf.catalog.plugin</groupId>
+            <groupId>org.codice.ddf.catalog.plugin</groupId>
             <artifactId>catalog-plugin-metacard-validation</artifactId>
             <version>${project.version}</version>
             <scope>test</scope>
         </dependency>
         <dependency>
-            <groupId>ddf.test.itests</groupId>
+            <groupId>org.codice.ddf.test.itests</groupId>
             <artifactId>test-itests-dependencies-app</artifactId>
             <version>${project.version}</version>
             <classifier>features</classifier>
             <type>xml</type>
         </dependency>
         <dependency>
-            <groupId>ddf.catalog.core</groupId>
+            <groupId>org.codice.ddf.catalog.core</groupId>
             <artifactId>catalog-core-api-impl</artifactId>
             <version>${project.version}</version>
             <scope>test</scope>
@@ -190,7 +190,7 @@
             <version>0.33</version>
         </dependency>
         <dependency>
-            <groupId>ddf.catalog.core</groupId>
+            <groupId>org.codice.ddf.catalog.core</groupId>
             <artifactId>catalog-core-directorymonitor</artifactId>
             <version>${project.version}</version>
         </dependency>

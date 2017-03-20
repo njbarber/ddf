@@ -17,7 +17,7 @@
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <parent>
         <artifactId>idp</artifactId>
-        <groupId>ddf.security.idp</groupId>
+        <groupId>org.codice.ddf.security.idp</groupId>
         <version>2.11.0-SNAPSHOT</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
@@ -47,25 +47,25 @@
             <artifactId>commons-io</artifactId>
         </dependency>
         <dependency>
-            <groupId>ddf.security.core</groupId>
+            <groupId>org.codice.ddf.security.core</groupId>
             <artifactId>security-core-api</artifactId>
         </dependency>
         <dependency>
-            <groupId>ddf.security.handler</groupId>
+            <groupId>org.codice.ddf.security.handler</groupId>
             <artifactId>security-handler-api</artifactId>
         </dependency>
         <dependency>
-            <groupId>ddf.security.handler</groupId>
+            <groupId>org.codice.ddf.security.handler</groupId>
             <artifactId>security-handler-pki</artifactId>
             <version>${project.version}</version>
         </dependency>
         <dependency>
-            <groupId>ddf.security.handler</groupId>
+            <groupId>org.codice.ddf.security.handler</groupId>
             <artifactId>security-handler-basic</artifactId>
             <version>${project.version}</version>
         </dependency>
         <dependency>
-            <groupId>ddf.security.handler</groupId>
+            <groupId>org.codice.ddf.security.handler</groupId>
             <artifactId>security-handler-guest</artifactId>
             <version>${project.version}</version>
         </dependency>
@@ -74,11 +74,11 @@
             <artifactId>cxf-rt-rs-security-sso-saml</artifactId>
         </dependency>
         <dependency>
-            <groupId>ddf.security.encryption</groupId>
+            <groupId>org.codice.ddf.security.encryption</groupId>
             <artifactId>security-encryption-api</artifactId>
         </dependency>
         <dependency>
-            <groupId>ddf.security</groupId>
+            <groupId>org.codice.ddf.security</groupId>
             <artifactId>ddf-security-common</artifactId>
         </dependency>
         <dependency>
@@ -98,7 +98,7 @@
             <version>3.0</version>
         </dependency>
         <dependency>
-            <groupId>ddf.lib</groupId>
+            <groupId>org.codice.ddf.lib</groupId>
             <artifactId>common-system</artifactId>
             <version>${project.version}</version>
         </dependency>
@@ -138,7 +138,7 @@
             <artifactId>validation-api</artifactId>
         </dependency>
         <dependency>
-            <groupId>ddf.platform.util</groupId>
+            <groupId>org.codice.ddf.platform.util</groupId>
             <artifactId>platform-util-unavailableurls</artifactId>
             <version>${project.version}</version>
         </dependency>
@@ -148,11 +148,11 @@
             <version>1.4.01</version>
         </dependency>
         <dependency>
-            <groupId>ddf.platform.util</groupId>
+            <groupId>org.codice.ddf.platform.util</groupId>
             <artifactId>platform-util</artifactId>
         </dependency>
         <dependency>
-            <groupId>ddf.security.core</groupId>
+            <groupId>org.codice.ddf.security.core</groupId>
             <artifactId>security-core-impl</artifactId>
         </dependency>
         <dependency>
@@ -165,7 +165,7 @@
         </dependency>
         <!--Spock dependencies-->
         <dependency>
-            <groupId>ddf.lib</groupId>
+            <groupId>org.codice.ddf.lib</groupId>
             <artifactId>spock-shaded</artifactId>
             <version>${project.version}</version>
             <scope>test</scope>

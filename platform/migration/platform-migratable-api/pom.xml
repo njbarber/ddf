@@ -15,12 +15,12 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
     <parent>
-        <groupId>ddf.platform</groupId>
+        <groupId>org.codice.ddf.platform</groupId>
         <artifactId>migration</artifactId>
         <version>2.11.0-SNAPSHOT</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
-    <groupId>ddf.platform.migration</groupId>
+    <groupId>org.codice.ddf.platform.migration</groupId>
     <artifactId>platform-migratable-api</artifactId>
     <packaging>bundle</packaging>
     <name>DDF :: Platform :: Migratable :: API</name>
@@ -35,7 +35,7 @@
             <artifactId>commons-lang</artifactId>
         </dependency>
         <dependency>
-            <groupId>ddf.platform.api</groupId>
+            <groupId>org.codice.ddf.platform.api</groupId>
             <artifactId>platform-api</artifactId>
             <version>${project.version}</version>
         </dependency>

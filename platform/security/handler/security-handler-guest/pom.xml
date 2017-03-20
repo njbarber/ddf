@@ -17,7 +17,7 @@
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <parent>
         <artifactId>handler</artifactId>
-        <groupId>ddf.security.handler</groupId>
+        <groupId>org.codice.ddf.security.handler</groupId>
         <version>2.11.0-SNAPSHOT</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
@@ -30,7 +30,7 @@
             <artifactId>jasypt</artifactId>
         </dependency>
         <dependency>
-            <groupId>ddf.security.handler</groupId>
+            <groupId>org.codice.ddf.security.handler</groupId>
             <artifactId>security-handler-api</artifactId>
             <version>${project.version}</version>
         </dependency>
@@ -74,24 +74,24 @@
             <artifactId>commons-lang</artifactId>
         </dependency>
         <dependency>
-            <groupId>ddf.security.handler</groupId>
+            <groupId>org.codice.ddf.security.handler</groupId>
             <artifactId>security-handler-basic</artifactId>
             <version>${project.version}</version>
         </dependency>
         <dependency>
-            <groupId>ddf.security.handler</groupId>
+            <groupId>org.codice.ddf.security.handler</groupId>
             <artifactId>security-handler-pki</artifactId>
             <version>${project.version}</version>
         </dependency>
         <dependency>
-            <groupId>ddf.lib</groupId>
+            <groupId>org.codice.ddf.lib</groupId>
             <artifactId>grunt-port-allocator</artifactId>
             <version>${project.version}</version>
             <type>tar.gz</type>
             <classifier>npm</classifier>
         </dependency>
         <dependency>
-            <groupId>ddf.distribution</groupId>
+            <groupId>org.codice.ddf.distribution</groupId>
             <artifactId>branding-api</artifactId>
         </dependency>
         <dependency>
@@ -210,7 +210,7 @@
                         <configuration>
                             <artifactItems>
                                 <artifactItem>
-                                    <groupId>ddf.lib</groupId>
+                                    <groupId>org.codice.ddf.lib</groupId>
                                     <artifactId>grunt-port-allocator</artifactId>
                                     <version>${project.version}</version>
                                     <type>tar.gz</type>

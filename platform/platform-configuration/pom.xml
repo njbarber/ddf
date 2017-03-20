@@ -19,7 +19,7 @@
     <modelVersion>4.0.0</modelVersion>
     <parent>
         <artifactId>platform</artifactId>
-        <groupId>ddf.platform</groupId>
+        <groupId>org.codice.ddf.platform</groupId>
         <version>2.11.0-SNAPSHOT</version>
     </parent>
     <artifactId>platform-configuration</artifactId>
@@ -54,7 +54,7 @@
             <version>1.0.2</version>
         </dependency>
         <dependency>
-            <groupId>ddf.lib</groupId>
+            <groupId>org.codice.ddf.lib</groupId>
             <artifactId>common-system</artifactId>
             <version>${project.version}</version>
         </dependency>
@@ -73,7 +73,7 @@
             <version>1.10</version>
         </dependency>
         <dependency>
-            <groupId>ddf.distribution</groupId>
+            <groupId>org.codice.ddf.distribution</groupId>
             <artifactId>branding-api</artifactId>
             <version>${project.version}</version>
         </dependency>

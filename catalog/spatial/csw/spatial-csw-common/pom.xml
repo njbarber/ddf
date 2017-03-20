@@ -75,11 +75,11 @@
             <artifactId>spatial-csw-schema-bindings</artifactId>
         </dependency>
         <dependency>
-            <groupId>ddf.catalog.core</groupId>
+            <groupId>org.codice.ddf.catalog.core</groupId>
             <artifactId>catalog-core-api-impl</artifactId>
         </dependency>
         <dependency>
-            <groupId>ddf.security.core</groupId>
+            <groupId>org.codice.ddf.security.core</groupId>
             <artifactId>security-core-api</artifactId>
         </dependency>
         <dependency>
@@ -104,15 +104,15 @@
             <artifactId>spatial-ogc-common</artifactId>
         </dependency>
         <dependency>
-            <groupId>ddf.security</groupId>
+            <groupId>org.codice.ddf.security</groupId>
             <artifactId>ddf-security-common</artifactId>
         </dependency>
         <dependency>
-            <groupId>ddf.catalog.core</groupId>
+            <groupId>org.codice.ddf.catalog.core</groupId>
             <artifactId>catalog-core-commons</artifactId>
         </dependency>
         <dependency>
-            <groupId>ddf.platform.security</groupId>
+            <groupId>org.codice.ddf.platform.security</groupId>
             <artifactId>security-rest-cxfwrapper</artifactId>
         </dependency>
         <dependency>
@@ -161,16 +161,16 @@
             </exclusions>
         </dependency>
         <dependency>
-            <groupId>ddf.catalog.core</groupId>
+            <groupId>org.codice.ddf.catalog.core</groupId>
             <artifactId>filter-proxy</artifactId>
             <scope>test</scope>
         </dependency>
         <dependency>
-            <groupId>ddf.catalog.core</groupId>
+            <groupId>org.codice.ddf.catalog.core</groupId>
             <artifactId>catalog-core-urlresourcereader</artifactId>
         </dependency>
         <dependency>
-            <groupId>ddf.security.encryption</groupId>
+            <groupId>org.codice.ddf.security.encryption</groupId>
             <artifactId>security-encryption-api</artifactId>
         </dependency>
     </dependencies>

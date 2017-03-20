@@ -25,15 +25,15 @@
 
     <dependencies>
         <dependency>
-            <groupId>ddf.action.core</groupId>
+            <groupId>org.codice.ddf.action.core</groupId>
             <artifactId>action-core-api</artifactId>
         </dependency>
         <dependency>
-            <groupId>ddf.catalog.core</groupId>
+            <groupId>org.codice.ddf.catalog.core</groupId>
             <artifactId>catalog-core-api</artifactId>
         </dependency>
         <dependency>
-            <groupId>ddf.action.core</groupId>
+            <groupId>org.codice.ddf.action.core</groupId>
             <artifactId>action-core-impl</artifactId>
         </dependency>
         <dependency>
@@ -41,7 +41,7 @@
             <artifactId>slf4j-api</artifactId>
         </dependency>
         <dependency>
-            <groupId>ddf.catalog.core</groupId>
+            <groupId>org.codice.ddf.catalog.core</groupId>
             <artifactId>catalog-core-api-impl</artifactId>
             <scope>test</scope>
         </dependency>

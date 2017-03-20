@@ -16,7 +16,7 @@
     <modelVersion>4.0.0</modelVersion>
     <parent>
         <artifactId>security-expansion-pom</artifactId>
-        <groupId>ddf.security.expansion</groupId>
+        <groupId>org.codice.ddf.security.expansion</groupId>
         <version>2.11.0-SNAPSHOT</version>
     </parent>
     <artifactId>security-expansion-impl</artifactId>
@@ -24,7 +24,7 @@
     <packaging>bundle</packaging>
     <dependencies>
         <dependency>
-            <groupId>ddf.security.expansion</groupId>
+            <groupId>org.codice.ddf.security.expansion</groupId>
             <artifactId>security-expansion-api</artifactId>
         </dependency>
         <dependency>

@@ -19,7 +19,7 @@
     <modelVersion>4.0.0</modelVersion>
     <parent>
         <artifactId>platform</artifactId>
-        <groupId>ddf.platform</groupId>
+        <groupId>org.codice.ddf.platform</groupId>
         <version>2.11.0-SNAPSHOT</version>
     </parent>
     <artifactId>platform-app</artifactId>
@@ -27,112 +27,112 @@
     <packaging>pom</packaging>
     <dependencies>
         <dependency>
-            <groupId>ddf.security.core</groupId>
+            <groupId>org.codice.ddf.security.core</groupId>
             <artifactId>security-core-api</artifactId>
             <version>${project.version}</version>
         </dependency>
         <dependency>
-            <groupId>ddf.security.encryption</groupId>
+            <groupId>org.codice.ddf.security.encryption</groupId>
             <artifactId>security-encryption-api</artifactId>
             <version>${project.version}</version>
         </dependency>
         <dependency>
-            <groupId>ddf.security.encryption</groupId>
+            <groupId>org.codice.ddf.security.encryption</groupId>
             <artifactId>security-encryption-impl</artifactId>
             <version>${project.version}</version>
         </dependency>
         <dependency>
-            <groupId>ddf.security.encryption</groupId>
+            <groupId>org.codice.ddf.security.encryption</groupId>
             <artifactId>security-encryption-commands</artifactId>
             <version>${project.version}</version>
         </dependency>
         <dependency>
-            <groupId>ddf.platform.migration</groupId>
+            <groupId>org.codice.ddf.platform.migration</groupId>
             <artifactId>platform-migration</artifactId>
             <version>${project.version}</version>
         </dependency>
         <dependency>
-            <groupId>ddf.platform</groupId>
+            <groupId>org.codice.ddf.platform</groupId>
             <artifactId>platform-scheduler</artifactId>
             <version>${project.version}</version>
         </dependency>
         <dependency>
-            <groupId>ddf.platform</groupId>
+            <groupId>org.codice.ddf.platform</groupId>
             <artifactId>platform-commands</artifactId>
             <version>${project.version}</version>
         </dependency>
         <dependency>
-            <groupId>ddf.platform</groupId>
+            <groupId>org.codice.ddf.platform</groupId>
             <artifactId>platform-configuration</artifactId>
             <version>${project.version}</version>
         </dependency>
         <dependency>
-            <groupId>ddf.action.core</groupId>
+            <groupId>org.codice.ddf.action.core</groupId>
             <artifactId>action-core-api</artifactId>
             <version>${project.version}</version>
         </dependency>
         <dependency>
-            <groupId>ddf.action.core</groupId>
+            <groupId>org.codice.ddf.action.core</groupId>
             <artifactId>action-core-impl</artifactId>
             <version>${project.version}</version>
         </dependency>
         <dependency>
-            <groupId>ddf.notifications.core</groupId>
+            <groupId>org.codice.ddf.notifications.core</groupId>
             <artifactId>platform-notifications-core-api</artifactId>
             <version>${project.version}</version>
         </dependency>
         <dependency>
-            <groupId>ddf.notifications.core</groupId>
+            <groupId>org.codice.ddf.notifications.core</groupId>
             <artifactId>platform-core-notifications</artifactId>
             <version>${project.version}</version>
         </dependency>
         <dependency>
-            <groupId>ddf.notifications.core</groupId>
+            <groupId>org.codice.ddf.notifications.core</groupId>
             <artifactId>platform-core-notificationcommands</artifactId>
             <version>${project.version}</version>
         </dependency>
         <dependency>
-            <groupId>ddf.mime.core</groupId>
+            <groupId>org.codice.ddf.mime.core</groupId>
             <artifactId>mime-core-api</artifactId>
             <version>${project.version}</version>
         </dependency>
         <dependency>
-            <groupId>ddf.mime.core</groupId>
+            <groupId>org.codice.ddf.mime.core</groupId>
             <artifactId>mime-core-impl</artifactId>
             <version>${project.version}</version>
         </dependency>
         <dependency>
-            <groupId>ddf.mime.core</groupId>
+            <groupId>org.codice.ddf.mime.core</groupId>
             <artifactId>mime-core-configurableresolver</artifactId>
             <version>${project.version}</version>
         </dependency>
         <dependency>
-            <groupId>ddf.mime.tika</groupId>
+            <groupId>org.codice.ddf.mime.tika</groupId>
             <artifactId>mime-tika-resolver</artifactId>
             <version>${project.version}</version>
         </dependency>
         <dependency>
-            <groupId>ddf.metrics.reporting</groupId>
+            <groupId>org.codice.ddf.metrics.reporting</groupId>
             <artifactId>metrics-reporting</artifactId>
             <version>${project.version}</version>
         </dependency>
         <dependency>
-            <groupId>ddf.metrics.interceptor</groupId>
+            <groupId>org.codice.ddf.metrics.interceptor</groupId>
             <artifactId>metrics-interceptor</artifactId>
             <version>${project.version}</version>
         </dependency>
         <dependency>
-            <groupId>ddf.compression</groupId>
+            <groupId>org.codice.ddf.compression</groupId>
             <artifactId>compression-exi</artifactId>
             <version>${project.version}</version>
         </dependency>
         <dependency>
-            <groupId>ddf.compression</groupId>
+            <groupId>org.codice.ddf.compression</groupId>
             <artifactId>compression-gzip</artifactId>
             <version>${project.version}</version>
         </dependency>
         <dependency>
-            <groupId>ddf.platform</groupId>
+            <groupId>org.codice.ddf.platform</groupId>
             <artifactId>platform-filter-delegate</artifactId>
             <version>${project.version}</version>
         </dependency>
@@ -162,84 +162,84 @@
             <version>${org.geotools.bundle.version}</version>
         </dependency>
         <dependency>
-            <groupId>ddf.platform.solr</groupId>
+            <groupId>org.codice.ddf.platform.solr</groupId>
             <artifactId>platform-solr-server-standalone</artifactId>
             <version>${project.version}</version>
             <type>war</type>
         </dependency>
         <dependency>
-            <groupId>ddf.persistence.core</groupId>
+            <groupId>org.codice.ddf.persistence.core</groupId>
             <artifactId>persistence-core-api</artifactId>
             <version>${project.version}</version>
         </dependency>
         <dependency>
-            <groupId>ddf.persistence.core</groupId>
+            <groupId>org.codice.ddf.persistence.core</groupId>
             <artifactId>persistence-core-impl</artifactId>
             <version>${project.version}</version>
         </dependency>
         <dependency>
-            <groupId>ddf.persistence.core</groupId>
+            <groupId>org.codice.ddf.persistence.core</groupId>
             <artifactId>persistence-core-commands</artifactId>
             <version>${project.version}</version>
         </dependency>
         <dependency>
-            <groupId>ddf.persistence.core</groupId>
+            <groupId>org.codice.ddf.persistence.core</groupId>
             <artifactId>persistence-core-listeners</artifactId>
             <version>${project.version}</version>
         </dependency>
         <dependency>
-            <groupId>ddf.platform.util</groupId>
+            <groupId>org.codice.ddf.platform.util</groupId>
             <artifactId>platform-util</artifactId>
             <version>${project.version}</version>
         </dependency>
         <dependency>
-            <groupId>ddf.platform.error</groupId>
+            <groupId>org.codice.ddf.platform.error</groupId>
             <artifactId>platform-error-api</artifactId>
             <version>${project.version}</version>
         </dependency>
         <dependency>
-            <groupId>ddf.platform.error</groupId>
+            <groupId>org.codice.ddf.platform.error</groupId>
             <artifactId>platform-error-impl</artifactId>
             <version>${project.version}</version>
         </dependency>
         <dependency>
-            <groupId>ddf.platform</groupId>
+            <groupId>org.codice.ddf.platform</groupId>
             <artifactId>platform-parser-api</artifactId>
             <version>${project.version}</version>
         </dependency>
         <dependency>
-            <groupId>ddf.platform</groupId>
+            <groupId>org.codice.ddf.platform</groupId>
             <artifactId>platform-parser-xml</artifactId>
             <version>${project.version}</version>
         </dependency>
         <dependency>
-            <groupId>ddf.platform</groupId>
+            <groupId>org.codice.ddf.platform</groupId>
             <artifactId>platform-paxweb-jettyconfig</artifactId>
             <version>${project.version}</version>
         </dependency>
         <dependency>
-            <groupId>ddf.platform</groupId>
+            <groupId>org.codice.ddf.platform</groupId>
             <artifactId>platform-http-proxy</artifactId>
             <version>${project.version}</version>
         </dependency>
         <dependency>
-            <groupId>ddf.platform</groupId>
+            <groupId>org.codice.ddf.platform</groupId>
             <artifactId>landing-page</artifactId>
             <version>${project.version}</version>
         </dependency>
         <dependency>
-            <groupId>ddf.platform.solr</groupId>
+            <groupId>org.codice.ddf.platform.solr</groupId>
             <artifactId>solr-banana</artifactId>
             <version>${project.version}</version>
             <type>war</type>
         </dependency>
         <dependency>
-            <groupId>ddf.platform.solr</groupId>
+            <groupId>org.codice.ddf.platform.solr</groupId>
             <artifactId>solr-banana-provisioner</artifactId>
             <version>${project.version}</version>
         </dependency>
         <dependency>
-            <groupId>ddf.platform.migration</groupId>
+            <groupId>org.codice.ddf.platform.migration</groupId>
             <artifactId>platform-migratable-api</artifactId>
             <version>${project.version}</version>
         </dependency>
@@ -248,42 +248,42 @@
             <artifactId>validation-api</artifactId>
         </dependency>
         <dependency>
-            <groupId>ddf.platform</groupId>
+            <groupId>org.codice.ddf.platform</groupId>
             <artifactId>platform-migratable</artifactId>
             <version>${project.version}</version>
         </dependency>
         <dependency>
-            <groupId>ddf.persistence.core</groupId>
+            <groupId>org.codice.ddf.persistence.core</groupId>
             <artifactId>persistence-core-attributes-impl</artifactId>
             <version>${project.version}</version>
         </dependency>
         <dependency>
-            <groupId>ddf.platform.api</groupId>
+            <groupId>org.codice.ddf.platform.api</groupId>
             <artifactId>platform-api</artifactId>
             <version>${project.version}</version>
         </dependency>
         <dependency>
-            <groupId>ddf.platform</groupId>
+            <groupId>org.codice.ddf.platform</groupId>
             <artifactId>platform-logging</artifactId>
             <version>${project.version}</version>
         </dependency>
         <dependency>
-            <groupId>ddf.security.interceptor</groupId>
+            <groupId>org.codice.ddf.security.interceptor</groupId>
             <artifactId>security-interceptor-logger</artifactId>
             <version>${project.version}</version>
         </dependency>
         <dependency>
-            <groupId>ddf.platform</groupId>
+            <groupId>org.codice.ddf.platform</groupId>
             <artifactId>platform-filter-clientinfo</artifactId>
             <version>${project.version}</version>
         </dependency>
         <dependency>
-            <groupId>ddf.platform.country</groupId>
+            <groupId>org.codice.ddf.platform.country</groupId>
             <artifactId>platform-country-converter-api</artifactId>
             <version>${project.version}</version>
         </dependency>
         <dependency>
-            <groupId>ddf.platform.country</groupId>
+            <groupId>org.codice.ddf.platform.country</groupId>
             <artifactId>platform-country-converter-local</artifactId>
             <version>${project.version}</version>
         </dependency>

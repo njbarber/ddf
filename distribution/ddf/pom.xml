@@ -67,16 +67,16 @@
                                     mvn:org.codice.ddf/kernel/${project.version}/xml/features
                                 </descriptor>
                                 <descriptor>
-                                    mvn:ddf.platform/platform-app/${project.version}/xml/features
+                                    mvn:org.codice.ddf.platform/platform-app/${project.version}/xml/features
                                 </descriptor>
                                 <descriptor>
-                                    mvn:ddf.security/security-services-app/${project.version}/xml/features
+                                    mvn:org.codice.ddf.security/security-services-app/${project.version}/xml/features
                                 </descriptor>
                                 <descriptor>
-                                    mvn:ddf.catalog/catalog-app/${project.version}/xml/features
+                                    mvn:org.codice.ddf.catalog/catalog-app/${project.version}/xml/features
                                 </descriptor>
                                 <descriptor>
-                                    mvn:ddf.catalog.solr/solr-app/${project.version}/xml/features
+                                    mvn:org.codice.ddf.catalog.solr/solr-app/${project.version}/xml/features
                                 </descriptor>
                                 <descriptor>
                                     mvn:org.codice.opendj.embedded/opendj-embedded-app/${opendj-embedded.app.version}/xml/features
@@ -88,10 +88,10 @@
                                     mvn:org.codice.ddf.registry/registry-app/${project.version}/xml/features
                                 </descriptor>
                                 <descriptor>
-                                    mvn:ddf.ui/search-ui-app/${project.version}/xml/features
+                                    mvn:org.codice.ddf.ui/search-ui-app/${project.version}/xml/features
                                 </descriptor>
                                 <descriptor>
-                                    mvn:ddf.admin/admin-app/${project.version}/xml/features
+                                    mvn:org.codice.ddf.admin/admin-app/${project.version}/xml/features
                                 </descriptor>
                                 <descriptor>
                                     mvn:org.codice.ddf.resourcemanagement/resourcemanagement-app/${project.version}/xml/features
@@ -100,7 +100,7 @@
                                     mvn:org.codice.ddf.spatial/geowebcache-app/${project.version}/xml/features
                                 </descriptor>
                                 <descriptor>
-                                    mvn:ddf.distribution/install-profiles/${project.version}/xml/features
+                                    mvn:org.codice.ddf.distribution/install-profiles/${project.version}/xml/features
                                 </descriptor>
                                 <descriptor>
                                     mvn:org.apache.karaf.features/enterprise/${karaf.version}/xml/features
@@ -146,7 +146,7 @@
                                 <configuration>
                                     <artifactItems>
                                         <artifactItem>
-                                            <groupId>ddf</groupId>
+                                            <groupId>org.codice.ddf</groupId>
                                             <artifactId>docs</artifactId>
                                             <version>${project.version}</version>
                                             <outputDirectory>${setup.folder}/docs
@@ -168,31 +168,31 @@
             <id>release</id>
             <dependencies>
                 <dependency>
-                    <groupId>ddf.catalog.core</groupId>
+                    <groupId>org.codice.ddf.catalog.core</groupId>
                     <artifactId>catalog-core-api</artifactId>
                     <version>${project.version}</version>
                     <type>javadoc</type>
                 </dependency>
                 <dependency>
-                    <groupId>ddf.mime.core</groupId>
+                    <groupId>org.codice.ddf.mime.core</groupId>
                     <artifactId>mime-core-api</artifactId>
                     <version>${project.version}</version>
                     <type>javadoc</type>
                 </dependency>
                 <dependency>
-                    <groupId>ddf.action.core</groupId>
+                    <groupId>org.codice.ddf.action.core</groupId>
                     <artifactId>action-core-api</artifactId>
                     <version>${project.version}</version>
                     <type>javadoc</type>
                 </dependency>
                 <dependency>
-                    <groupId>ddf.security.core</groupId>
+                    <groupId>org.codice.ddf.security.core</groupId>
                     <artifactId>security-core-api</artifactId>
                     <version>${project.version}</version>
                     <type>javadoc</type>
                 </dependency>
                 <dependency>
-                    <groupId>ddf.security.encryption</groupId>
+                    <groupId>org.codice.ddf.security.encryption</groupId>
                     <artifactId>security-encryption-api</artifactId>
                     <version>${project.version}</version>
                     <type>javadoc</type>
@@ -213,7 +213,7 @@
                                 <configuration>
                                     <artifactItems>
                                         <artifactItem>
-                                            <groupId>ddf.catalog.core</groupId>
+                                            <groupId>org.codice.ddf.catalog.core</groupId>
                                             <artifactId>catalog-core-api</artifactId>
                                             <version>${project.version}</version>
                                             <type>javadoc</type>
@@ -221,7 +221,7 @@
                                             </outputDirectory>
                                         </artifactItem>
                                         <artifactItem>
-                                            <groupId>ddf.mime.core</groupId>
+                                            <groupId>org.codice.ddf.mime.core</groupId>
                                             <artifactId>mime-core-api</artifactId>
                                             <version>${project.version}</version>
                                             <type>javadoc</type>
@@ -229,7 +229,7 @@
                                             </outputDirectory>
                                         </artifactItem>
                                         <artifactItem>
-                                            <groupId>ddf.action.core</groupId>
+                                            <groupId>org.codice.ddf.action.core</groupId>
                                             <artifactId>action-core-api</artifactId>
                                             <version>${project.version}</version>
                                             <type>javadoc</type>
@@ -237,7 +237,7 @@
                                             </outputDirectory>
                                         </artifactItem>
                                         <artifactItem>
-                                            <groupId>ddf.security.core</groupId>
+                                            <groupId>org.codice.ddf.security.core</groupId>
                                             <artifactId>security-core-api</artifactId>
                                             <version>${project.version}</version>
                                             <type>javadoc</type>
@@ -245,7 +245,7 @@
                                             </outputDirectory>
                                         </artifactItem>
                                         <artifactItem>
-                                            <groupId>ddf.security.encryption</groupId>
+                                            <groupId>org.codice.ddf.security.encryption</groupId>
                                             <artifactId>security-encryption-api</artifactId>
                                             <version>${project.version}</version>
                                             <type>javadoc</type>
@@ -272,28 +272,28 @@
             <type>xml</type>
         </dependency>
         <dependency>
-            <groupId>ddf.platform</groupId>
+            <groupId>org.codice.ddf.platform</groupId>
             <artifactId>platform-app</artifactId>
             <version>${project.version}</version>
             <classifier>features</classifier>
             <type>xml</type>
         </dependency>
         <dependency>
-            <groupId>ddf.security</groupId>
+            <groupId>org.codice.ddf.security</groupId>
             <artifactId>security-services-app</artifactId>
             <version>${project.version}</version>
             <classifier>features</classifier>
             <type>xml</type>
         </dependency>
         <dependency>
-            <groupId>ddf.catalog</groupId>
+            <groupId>org.codice.ddf.catalog</groupId>
             <artifactId>catalog-app</artifactId>
             <version>${project.version}</version>
             <classifier>features</classifier>
             <type>xml</type>
         </dependency>
         <dependency>
-            <groupId>ddf.catalog.solr</groupId>
+            <groupId>org.codice.ddf.catalog.solr</groupId>
             <artifactId>solr-app</artifactId>
             <version>${project.version}</version>
             <classifier>features</classifier>
@@ -328,14 +328,14 @@
             <type>xml</type>
         </dependency>
         <dependency>
-            <groupId>ddf.ui</groupId>
+            <groupId>org.codice.ddf.ui</groupId>
             <artifactId>search-ui-app</artifactId>
             <version>${project.version}</version>
             <classifier>features</classifier>
             <type>xml</type>
         </dependency>
         <dependency>
-            <groupId>ddf.admin</groupId>
+            <groupId>org.codice.ddf.admin</groupId>
             <artifactId>admin-app</artifactId>
             <version>${project.version}</version>
             <classifier>features</classifier>
@@ -356,7 +356,7 @@
             <type>xml</type>
         </dependency>
         <dependency>
-            <groupId>ddf.distribution</groupId>
+            <groupId>org.codice.ddf.distribution</groupId>
             <artifactId>install-profiles</artifactId>
             <version>${project.version}</version>
             <classifier>features</classifier>
