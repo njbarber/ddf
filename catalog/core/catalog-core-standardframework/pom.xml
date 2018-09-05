@@ -213,9 +213,9 @@
             <version>${common-compress.version}</version>
         </dependency>
         <dependency>
-            <groupId>ddf.lib</groupId>
+            <groupId>org.codice.ddf.lib</groupId>
             <artifactId>common-system</artifactId>
-            <version>${project.version}</version>
+            <version>${ddf.libs.version}</version>
         </dependency>
         <dependency>
             <groupId>ddf.catalog.core</groupId>
@@ -359,9 +359,9 @@
 
         <!--Spock dependencies-->
         <dependency>
-            <groupId>ddf.lib</groupId>
+            <groupId>org.codice.ddf.lib</groupId>
             <artifactId>spock-shaded</artifactId>
-            <version>${project.version}</version>
+            <version>${ddf.libs.version}</version>
             <scope>test</scope>
         </dependency>
         <dependency>

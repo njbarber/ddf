@@ -148,9 +148,9 @@
             </exclusions>
         </dependency>
         <dependency>
-            <groupId>ddf.lib</groupId>
+            <groupId>org.codice.ddf.lib</groupId>
             <artifactId>common-system</artifactId>
-            <version>${project.version}</version>
+            <version>${ddf.libs.version}</version>
         </dependency>
         <dependency>
             <groupId>org.osgi</groupId>
@@ -187,9 +187,9 @@
             <artifactId>platform-util</artifactId>
         </dependency>
         <dependency>
-            <groupId>ddf.lib</groupId>
+            <groupId>org.codice.ddf.lib</groupId>
             <artifactId>test-common</artifactId>
-            <version>${project.version}</version>
+            <version>${ddf.libs.version}</version>
             <scope>test</scope>
         </dependency>
         <dependency>
@@ -199,15 +199,15 @@
             <scope>test</scope>
         </dependency>
         <dependency>
-            <groupId>ddf.lib</groupId>
+            <groupId>org.codice.ddf.lib</groupId>
             <artifactId>spock-shaded</artifactId>
-            <version>${project.version}</version>
+            <version>${ddf.libs.version}</version>
             <scope>test</scope>
         </dependency>
         <dependency>
-            <groupId>ddf.lib</groupId>
+            <groupId>org.codice.ddf.lib</groupId>
             <artifactId>failsafe-controller</artifactId>
-            <version>${project.version}</version>
+            <version>${ddf.libs.version}</version>
             <scope>test</scope>
         </dependency>
     </dependencies>

@@ -85,9 +85,9 @@
         </dependency>
         <!-- TEST DEPENDENCIES -->
         <dependency>
-            <groupId>ddf.lib</groupId>
+            <groupId>org.codice.ddf.lib</groupId>
             <artifactId>spock-shaded</artifactId>
-            <version>${project.version}</version>
+            <version>${ddf.libs.version}</version>
             <scope>test</scope>
         </dependency>
         <dependency>

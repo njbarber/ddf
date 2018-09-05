@@ -46,21 +46,26 @@
         </mailingList>
     </mailingLists>
     <properties>
+        <!-- DDF Subproject Version Properties -->
+        <!-- These should ideally only contain released versions. -->
+        <ddf.support.version>2.3.14</ddf.support.version>
+        <ddf.libs.version>2.14.0-SNAPSHOT</ddf.libs.version> <!-- Temporary snapshot version -->
+
+        <!-- General Project Properties -->
         <maven.compiler.source>1.8</maven.compiler.source>
         <maven.compiler.target>1.8</maven.compiler.target>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 
         <!--  default URL properties -->
         <ddf.scm.connection.url/>
         <snapshots.repository.url/>
         <reports.repository.url/>
         <project.scm.id>github</project.scm.id>
-        <!-- Must MANUALLY update this if the ddf/support project's version changes -->
-        <ddf.support.version>2.3.14</ddf.support.version>
         <!-- Do NOT set karaf.data or karaf.base -->
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
         <!-- ouput directory for reports -->
         <project.report.output.directory>project-info</project.report.output.directory>
+        
         <!-- Properties for the frontend-maven-plugin -->
         <node.version>v8.9.4</node.version>
         <yarn.version>v1.5.1</yarn.version>
@@ -1117,7 +1122,6 @@ are essentially embedding a slightly modified version of felix -->
         <module>ui</module>
         <module>gitsetup</module>
         <module>thirdparty</module>
-        <module>libs</module>
         <module>platform</module>
         <module>catalog</module>
         <module>broker</module>

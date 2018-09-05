@@ -27,9 +27,9 @@
     <packaging>feature</packaging>
     <dependencies>
         <dependency>
-            <groupId>ddf.lib</groupId>
+            <groupId>org.codice.ddf.lib</groupId>
             <artifactId>test-common</artifactId>
-            <version>${project.version}</version>
+            <version>${ddf.libs.version}</version>
         </dependency>
 
         <dependency>
