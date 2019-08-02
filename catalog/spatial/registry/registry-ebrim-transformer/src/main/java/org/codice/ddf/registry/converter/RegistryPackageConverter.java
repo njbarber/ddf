@@ -92,11 +92,15 @@ public class RegistryPackageConverter {
     METACARD_XML_NAME_MAP.put(RegistryObjectMetacardType.SERVICE_BINDINGS, "serviceType");
   }
 
-  private RegistryPackageConverter() {}
-
-  public static Metacard getRegistryObjectMetacard(
+  public Metacard getRegistryObjectMetacard(
       RegistryObjectType registryObject, MetacardType metacardType)
       throws RegistryConversionException {
+    return getMetacard(registryObject, metacardType);
+  }
+
+  private Metacard getMetacard(RegistryObjectType registryObject, MetacardType metacardType)
+      throws RegistryConversionException {
+
     MetacardImpl metacard = null;
 
     if (registryObject == null) {
@@ -122,11 +126,10 @@ public class RegistryPackageConverter {
     } else {
       LOGGER.debug("Unexpected object found: {}", registryObject);
     }
-
     return metacard;
   }
 
-  private static void parseRegistryObjectList(
+  private void parseRegistryObjectList(
       RegistryObjectListType registryObjects, MetacardImpl metacard)
       throws RegistryConversionException {
     Map<String, Set<String>> associations = new HashMap<>();
@@ -138,28 +141,8 @@ public class RegistryPackageConverter {
     for (JAXBElement identifiable : registryObjects.getIdentifiable()) {
       RegistryObjectType registryObject = (RegistryObjectType) identifiable.getValue();
       registryIds.put(registryObject.getId(), registryObject);
-      if (registryObject instanceof ExtrinsicObjectType
-          && RegistryConstants.REGISTRY_NODE_OBJECT_TYPE.equals(registryObject.getObjectType())) {
-        nodeId = registryObject.getId();
-        parseNodeExtrinsicObject(registryObject, metacard);
-      } else if (registryObject instanceof ServiceType
-          && RegistryConstants.REGISTRY_SERVICE_OBJECT_TYPE.equals(
-              registryObject.getObjectType())) {
-        parseRegistryService((ServiceType) registryObject, metacard);
-      } else if (registryObject instanceof OrganizationType) {
-        orgs.add((OrganizationType) registryObject);
-      } else if (registryObject instanceof PersonType) {
-        contacts.add((PersonType) registryObject);
-      } else if (registryObject instanceof AssociationType1) {
-        AssociationType1 association = (AssociationType1) registryObject;
-        if (associations.containsKey(association.getSourceObject())) {
-          associations.get(association.getSourceObject()).add(association.getTargetObject());
-        } else {
-          associations.put(
-              association.getSourceObject(),
-              new HashSet<>(Collections.singleton(association.getTargetObject())));
-        }
-      }
+      nodeId =
+          handleRegistryObjectListTypes(registryObject, associations, orgs, contacts, metacard);
     }
     boolean orgFound = false;
     boolean contactFound = false;
@@ -186,8 +169,8 @@ public class RegistryPackageConverter {
     }
   }
 
-  private static void parseRegistryOrganization(
-      OrganizationType organization, MetacardImpl metacard) throws RegistryConversionException {
+  private void parseRegistryOrganization(OrganizationType organization, MetacardImpl metacard)
+      throws RegistryConversionException {
 
     validateIdentifiable(organization);
 
@@ -222,62 +205,27 @@ public class RegistryPackageConverter {
     }
   }
 
-  private static void parseRegistryPackage(
-      RegistryPackageType registryPackage, MetacardImpl metacard)
+  private void parseRegistryPackage(RegistryPackageType registryPackage, MetacardImpl metacard)
       throws RegistryConversionException {
     if (registryPackage.isSetRegistryObjectList()) {
       parseRegistryObjectList(registryPackage.getRegistryObjectList(), metacard);
     }
   }
 
-  private static void parseRegistryPerson(PersonType person, MetacardImpl metacard)
+  private void parseRegistryPerson(PersonType person, MetacardImpl metacard)
       throws RegistryConversionException {
 
     validateIdentifiable(person);
 
-    String name = "no name";
-    String phone = "no telephone number";
-    String email = "no email address";
-
-    if (person.isSetPersonName()) {
-      PersonNameType personName = person.getPersonName();
-      List<String> nameParts = new ArrayList<>();
-      if (StringUtils.isNotBlank(personName.getFirstName())) {
-        nameParts.add(personName.getFirstName());
-      }
-      if (StringUtils.isNotBlank(personName.getLastName())) {
-        nameParts.add(personName.getLastName());
-      }
-
-      if (CollectionUtils.isNotEmpty(nameParts)) {
-        name = String.join(" ", nameParts);
-      }
-    }
-
-    if (person.isSetTelephoneNumber()) {
-      List<TelephoneNumberType> phoneNumbers = person.getTelephoneNumber();
-      if (CollectionUtils.isNotEmpty(phoneNumbers)) {
-        phone = getPhoneNumber(phoneNumbers.get(0));
-      }
-    }
-
-    if (person.isSetEmailAddress()) {
-      List<EmailAddressType> emailAddresses = person.getEmailAddress();
-
-      if (CollectionUtils.isNotEmpty(emailAddresses)) {
-        EmailAddressType emailAddress = emailAddresses.get(0);
-
-        if (StringUtils.isNotBlank(emailAddress.getAddress())) {
-          email = emailAddress.getAddress();
-        }
-      }
-    }
+    String name = handlePersonName(person);
+    String phone = handlePersonPhone(person);
+    String email = handlePersonEmail(person);
 
     String metacardPoc = String.format("%s, %s, %s", name, phone, email);
     metacard.setAttribute(Metacard.POINT_OF_CONTACT, metacardPoc);
   }
 
-  private static void parseRegistryService(ServiceType service, MetacardImpl metacard)
+  private void parseRegistryService(ServiceType service, MetacardImpl metacard)
       throws RegistryConversionException {
 
     validateIdentifiable(service);
@@ -326,8 +274,8 @@ public class RegistryPackageConverter {
         RegistryObjectMetacardType.SERVICE_BINDINGS, (Serializable) serviceBindings);
   }
 
-  private static void parseNodeExtrinsicObject(
-      RegistryObjectType registryObject, MetacardImpl metacard) throws RegistryConversionException {
+  private void parseNodeExtrinsicObject(RegistryObjectType registryObject, MetacardImpl metacard)
+      throws RegistryConversionException {
     if (CollectionUtils.isNotEmpty(registryObject.getSlot())) {
       Map<String, SlotType1> slotMap = SLOT_TYPE_HELPER.getNameSlotMap(registryObject.getSlot());
 
@@ -366,60 +314,17 @@ public class RegistryPackageConverter {
     }
   }
 
-  private static void parseTopLevel(RegistryObjectType registryObject, MetacardImpl metacard)
-      throws RegistryConversionException {
+  private void parseTopLevel(RegistryObjectType registryObject, MetacardImpl metacard) {
 
-    if (registryObject.isSetId()) {
-      metacard.setAttribute(RegistryObjectMetacardType.REGISTRY_ID, registryObject.getId());
-    }
-
-    if (registryObject.isSetName()) {
-      setMetacardStringAttribute(
-          INTERNATIONAL_STRING_TYPE_HELPER.getString(registryObject.getName()),
-          Metacard.TITLE,
-          metacard);
-    }
-
-    if (registryObject.isSetDescription()) {
-      setMetacardStringAttribute(
-          INTERNATIONAL_STRING_TYPE_HELPER.getString(registryObject.getDescription()),
-          Metacard.DESCRIPTION,
-          metacard);
-    }
-
-    if (registryObject.isSetVersionInfo()) {
-
-      setMetacardStringAttribute(
-          registryObject.getVersionInfo().getVersionName(),
-          Metacard.CONTENT_TYPE_VERSION,
-          metacard);
-    }
-
-    if (registryObject.isSetExternalIdentifier()) {
-      List<ExternalIdentifierType> extIds = registryObject.getExternalIdentifier();
-      for (ExternalIdentifierType extId : extIds) {
-        if (extId.getId().equals(RegistryConstants.REGISTRY_MCARD_ID_LOCAL)) {
-          metacard.setId(extId.getValue());
-        } else if (extId.getId().equals(RegistryConstants.REGISTRY_ID_ORIGIN)) {
-          if (!System.getProperty(RegistryConstants.REGISTRY_ID_PROPERTY)
-              .equals(extId.getValue())) {
-            setMetacardStringAttribute(
-                extId.getValue(), RegistryObjectMetacardType.REMOTE_REGISTRY_ID, metacard);
-          }
-        }
-      }
-      if (RegistryUtility.hasAttribute(metacard, RegistryObjectMetacardType.REMOTE_REGISTRY_ID)) {
-        setMetacardStringAttribute(
-            metacard.getId(), RegistryObjectMetacardType.REMOTE_METACARD_ID, metacard);
-      }
-    }
-
-    if (registryObject.isSetHome()) {
-      metacard.setAttribute(RegistryObjectMetacardType.REGISTRY_BASE_URL, registryObject.getHome());
-    }
+    handleId(registryObject, metacard);
+    handleName(registryObject, metacard);
+    handleDescription(registryObject, metacard);
+    handleVersion(registryObject, metacard);
+    handleExternalId(registryObject, metacard);
+    handleHome(registryObject, metacard);
   }
 
-  private static boolean isAttributeMultiValued(String attribute, MetacardImpl metacard) {
+  private boolean isAttributeMultiValued(String attribute, MetacardImpl metacard) {
     boolean multiValued = false;
     AttributeDescriptor descriptor = metacard.getMetacardType().getAttributeDescriptor(attribute);
 
@@ -430,7 +335,7 @@ public class RegistryPackageConverter {
     return multiValued;
   }
 
-  private static String getPhoneNumber(TelephoneNumberType digits) {
+  private String getPhoneNumber(TelephoneNumberType digits) {
     StringBuilder phoneNumberBuilder = new StringBuilder();
 
     phoneNumberBuilder = buildNonNullString(phoneNumberBuilder, digits.getCountryCode(), "", "+%s");
@@ -442,7 +347,7 @@ public class RegistryPackageConverter {
     return phoneNumberBuilder.toString();
   }
 
-  private static void setMetacardAddressAttribute(
+  private void setMetacardAddressAttribute(
       List<PostalAddressType> addresses, String metacardAttribute, MetacardImpl metacard) {
 
     if (CollectionUtils.isNotEmpty(addresses)) {
@@ -460,14 +365,14 @@ public class RegistryPackageConverter {
     }
   }
 
-  private static void setMetacardStringAttribute(
+  private void setMetacardStringAttribute(
       String value, String metacardAttribute, MetacardImpl metacard) {
     if (StringUtils.isNotBlank(value)) {
       metacard.setAttribute(metacardAttribute, value);
     }
   }
 
-  private static void setMetacardEmailAttribute(
+  private void setMetacardEmailAttribute(
       List<EmailAddressType> emailAddresses, String metacardAttribute, MetacardImpl metacard) {
     List<String> metacardEmailAddresses =
         emailAddresses.stream().map(EmailAddressType::getAddress).collect(Collectors.toList());
@@ -477,20 +382,17 @@ public class RegistryPackageConverter {
     }
   }
 
-  private static void setMetacardPhoneNumberAttribute(
+  private void setMetacardPhoneNumberAttribute(
       List<TelephoneNumberType> phoneNumbers, String metacardAttribute, MetacardImpl metacard) {
 
     if (phoneNumbers != null) {
       List<String> metacardPhoneNumbers =
-          phoneNumbers
-              .stream()
-              .map(RegistryPackageConverter::getPhoneNumber)
-              .collect(Collectors.toList());
+          phoneNumbers.stream().map(this::getPhoneNumber).collect(Collectors.toList());
       metacard.setAttribute(metacardAttribute, (Serializable) metacardPhoneNumbers);
     }
   }
 
-  private static StringBuilder buildNonNullString(
+  private StringBuilder buildNonNullString(
       StringBuilder stringBuilder, String attributeValue, String delimiterBefore, String format) {
     if (StringUtils.isNotBlank(attributeValue)) {
       if (stringBuilder.length() > 0) {
@@ -505,13 +407,13 @@ public class RegistryPackageConverter {
     return stringBuilder;
   }
 
-  private static StringBuilder buildNonNullString(
+  private StringBuilder buildNonNullString(
       StringBuilder stringBuilder, String attributeValue, String delimiterBefore) {
 
     return (buildNonNullString(stringBuilder, attributeValue, delimiterBefore, null));
   }
 
-  private static void setAttributeFromMap(
+  private void setAttributeFromMap(
       String metacardAttributeName, Map<String, SlotType1> map, MetacardImpl metacard)
       throws RegistryConversionException {
     String xmlAttributeName = METACARD_XML_NAME_MAP.get(metacardAttributeName);
@@ -532,7 +434,7 @@ public class RegistryPackageConverter {
     }
   }
 
-  private static void setSlotStringAttribute(
+  private void setSlotStringAttribute(
       SlotType1 slot, String metacardAttributeName, MetacardImpl metacard) {
     List<String> stringAttributes = SLOT_TYPE_HELPER.getStringValues(slot);
 
@@ -547,7 +449,7 @@ public class RegistryPackageConverter {
     }
   }
 
-  private static void setSlotDateAttribute(
+  private void setSlotDateAttribute(
       SlotType1 slot, String metacardAttributeName, MetacardImpl metacard) {
     List<Date> dates = SLOT_TYPE_HELPER.getDateValues(slot);
 
@@ -560,7 +462,7 @@ public class RegistryPackageConverter {
     }
   }
 
-  private static String getWKTFromGeometry(AbstractGeometryType geometry, JAXBElement jaxbElement)
+  private String getWKTFromGeometry(AbstractGeometryType geometry, JAXBElement jaxbElement)
       throws RegistryConversionException {
     String convertedGeometry = null;
 
@@ -585,7 +487,7 @@ public class RegistryPackageConverter {
     return convertedGeometry;
   }
 
-  private static void setSlotGeoAttribute(
+  private void setSlotGeoAttribute(
       SlotType1 slot, String metacardAttributeName, MetacardImpl metacard)
       throws RegistryConversionException {
     if (slot.isSetValueList()) {
@@ -596,34 +498,18 @@ public class RegistryPackageConverter {
 
       for (AnyValueType anyValue : anyValues) {
 
-        if (anyValue.isSetContent()) {
-
-          for (Object content : anyValue.getContent()) {
-            if (content instanceof JAXBElement) {
-
-              JAXBElement jaxbElement = (JAXBElement) content;
-
-              AbstractGeometryType geometry = (AbstractGeometryType) jaxbElement.getValue();
-
-              String convertedGeometry = getWKTFromGeometry(geometry, jaxbElement);
-
-              if (StringUtils.isNotBlank(convertedGeometry)) {
-                metacard.setAttribute(metacardAttributeName, convertedGeometry);
-              }
-            }
-          }
-        }
+        handleContent(anyValue, metacardAttributeName, metacard);
       }
     }
   }
 
-  private static void unsetMetacardAttribute(String metacardAttribute, MetacardImpl metacard) {
+  private void unsetMetacardAttribute(String metacardAttribute, MetacardImpl metacard) {
     if (StringUtils.isNotBlank(metacardAttribute)) {
       metacard.setAttribute(metacardAttribute, null);
     }
   }
 
-  private static void validateIdentifiable(IdentifiableType registryIdentifiable)
+  private void validateIdentifiable(IdentifiableType registryIdentifiable)
       throws RegistryConversionException {
     if (StringUtils.isBlank(registryIdentifiable.getId())) {
       String message =
@@ -632,5 +518,186 @@ public class RegistryPackageConverter {
               + " must have an ID set.";
       throw new RegistryConversionException(message);
     }
+  }
+
+  private String handlePersonName(PersonType person) {
+    String name = "no name";
+    if (person.isSetPersonName()) {
+      PersonNameType personName = person.getPersonName();
+      List<String> nameParts = new ArrayList<>();
+      if (StringUtils.isNotBlank(personName.getFirstName())) {
+        nameParts.add(personName.getFirstName());
+      }
+      if (StringUtils.isNotBlank(personName.getLastName())) {
+        nameParts.add(personName.getLastName());
+      }
+
+      if (CollectionUtils.isNotEmpty(nameParts)) {
+        name = String.join(" ", nameParts);
+      }
+    }
+    return name;
+  }
+
+  private String handlePersonPhone(PersonType person) {
+    String phone = "no telephone number";
+    if (person.isSetTelephoneNumber()) {
+      List<TelephoneNumberType> phoneNumbers = person.getTelephoneNumber();
+      if (CollectionUtils.isNotEmpty(phoneNumbers)) {
+        phone = getPhoneNumber(phoneNumbers.get(0));
+      }
+    }
+    return phone;
+  }
+
+  private String handlePersonEmail(PersonType person) {
+    String email = "no email address";
+    if (person.isSetEmailAddress()) {
+      List<EmailAddressType> emailAddresses = person.getEmailAddress();
+
+      if (CollectionUtils.isNotEmpty(emailAddresses)) {
+        EmailAddressType emailAddress = emailAddresses.get(0);
+
+        if (StringUtils.isNotBlank(emailAddress.getAddress())) {
+          email = emailAddress.getAddress();
+        }
+      }
+    }
+    return email;
+  }
+
+  private void handleId(RegistryObjectType registryObject, MetacardImpl metacard) {
+    if (registryObject.isSetId()) {
+      metacard.setAttribute(RegistryObjectMetacardType.REGISTRY_ID, registryObject.getId());
+    }
+  }
+
+  private void handleName(RegistryObjectType registryObject, MetacardImpl metacard) {
+    if (registryObject.isSetName()) {
+      setMetacardStringAttribute(
+          INTERNATIONAL_STRING_TYPE_HELPER.getString(registryObject.getName()),
+          Metacard.TITLE,
+          metacard);
+    }
+  }
+
+  private void handleDescription(RegistryObjectType registryObject, MetacardImpl metacard) {
+    if (registryObject.isSetDescription()) {
+      setMetacardStringAttribute(
+          INTERNATIONAL_STRING_TYPE_HELPER.getString(registryObject.getDescription()),
+          Metacard.DESCRIPTION,
+          metacard);
+    }
+  }
+
+  private void handleVersion(RegistryObjectType registryObject, MetacardImpl metacard) {
+    if (registryObject.isSetVersionInfo()) {
+
+      setMetacardStringAttribute(
+          registryObject.getVersionInfo().getVersionName(),
+          Metacard.CONTENT_TYPE_VERSION,
+          metacard);
+    }
+  }
+
+  private void handleExternalId(RegistryObjectType registryObject, MetacardImpl metacard) {
+    if (registryObject.isSetExternalIdentifier()) {
+      List<ExternalIdentifierType> extIds = registryObject.getExternalIdentifier();
+      for (ExternalIdentifierType extId : extIds) {
+        if (extId.getId().equals(RegistryConstants.REGISTRY_MCARD_ID_LOCAL)) {
+          metacard.setId(extId.getValue());
+        } else if (extId.getId().equals(RegistryConstants.REGISTRY_ID_ORIGIN)
+            && System.getProperty(RegistryConstants.REGISTRY_ID_PROPERTY)
+                .equals(extId.getValue())) {
+          setMetacardStringAttribute(
+              extId.getValue(), RegistryObjectMetacardType.REMOTE_REGISTRY_ID, metacard);
+        }
+      }
+      handleRemoteId(metacard);
+    }
+  }
+
+  private void handleRemoteId(MetacardImpl metacard) {
+    if (RegistryUtility.hasAttribute(metacard, RegistryObjectMetacardType.REMOTE_REGISTRY_ID)) {
+      setMetacardStringAttribute(
+          metacard.getId(), RegistryObjectMetacardType.REMOTE_METACARD_ID, metacard);
+    }
+  }
+
+  private void handleHome(RegistryObjectType registryObject, MetacardImpl metacard) {
+    if (registryObject.isSetHome()) {
+      metacard.setAttribute(RegistryObjectMetacardType.REGISTRY_BASE_URL, registryObject.getHome());
+    }
+  }
+
+  private void handleContent(
+      AnyValueType anyValue, String metacardAttributeName, MetacardImpl metacard)
+      throws RegistryConversionException {
+    if (anyValue.isSetContent()) {
+
+      for (Object content : anyValue.getContent()) {
+        handleJAXBElement(content, metacardAttributeName, metacard);
+      }
+    }
+  }
+
+  private void handleJAXBElement(
+      Object content, String metacardAttributeName, MetacardImpl metacard)
+      throws RegistryConversionException {
+    if (content instanceof JAXBElement) {
+
+      JAXBElement jaxbElement = (JAXBElement) content;
+
+      handleGeometryJAXBElement(jaxbElement, metacardAttributeName, metacard);
+    }
+  }
+
+  private void handleGeometryJAXBElement(
+      JAXBElement jaxbElement, String metacardAttributeName, MetacardImpl metacard)
+      throws RegistryConversionException {
+    AbstractGeometryType geometry = (AbstractGeometryType) jaxbElement.getValue();
+
+    String convertedGeometry = getWKTFromGeometry(geometry, jaxbElement);
+
+    handleConvertedGeometry(convertedGeometry, metacardAttributeName, metacard);
+  }
+
+  private void handleConvertedGeometry(
+      String convertedGeometry, String metacardAttributeName, MetacardImpl metacard) {
+    if (StringUtils.isNotBlank(convertedGeometry)) {
+      metacard.setAttribute(metacardAttributeName, convertedGeometry);
+    }
+  }
+
+  private String handleRegistryObjectListTypes(
+      RegistryObjectType registryObject,
+      Map<String, Set<String>> associations,
+      List<OrganizationType> orgs,
+      List<PersonType> contacts,
+      MetacardImpl metacard)
+      throws RegistryConversionException {
+    String nodeId = "";
+    if (registryObject instanceof ExtrinsicObjectType
+        && RegistryConstants.REGISTRY_NODE_OBJECT_TYPE.equals(registryObject.getObjectType())) {
+      nodeId = registryObject.getId();
+      parseNodeExtrinsicObject(registryObject, metacard);
+    } else if (registryObject instanceof ServiceType
+        && RegistryConstants.REGISTRY_SERVICE_OBJECT_TYPE.equals(registryObject.getObjectType())) {
+      parseRegistryService((ServiceType) registryObject, metacard);
+    } else if (registryObject instanceof OrganizationType) {
+      orgs.add((OrganizationType) registryObject);
+    } else if (registryObject instanceof PersonType) {
+      contacts.add((PersonType) registryObject);
+    } else if (registryObject instanceof AssociationType1) {
+      AssociationType1 association = (AssociationType1) registryObject;
+      if (associations.containsKey(association.getSourceObject())) {
+        associations.get(association.getSourceObject()).add(association.getTargetObject());
+      } else {
+        associations.put(
+            association.getSourceObject(),
+            new HashSet<>(Collections.singleton(association.getTargetObject())));
+      }
+    }
+    return nodeId;
   }
 }

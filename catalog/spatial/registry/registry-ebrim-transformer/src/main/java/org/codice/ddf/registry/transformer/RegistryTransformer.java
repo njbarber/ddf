@@ -27,6 +27,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.Reader;
 import java.io.Serializable;
+import java.nio.charset.Charset;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.Map;
@@ -52,6 +53,12 @@ public class RegistryTransformer implements InputTransformer, MetacardTransforme
 
   private MetacardType registryMetacardType;
 
+  private RegistryPackageConverter registryPackageConverter;
+
+  public RegistryTransformer(RegistryPackageConverter registryPackageConverter) {
+    this.registryPackageConverter = registryPackageConverter;
+  }
+
   @Override
   public Metacard transform(InputStream inputStream)
       throws IOException, CatalogTransformerException {
@@ -59,36 +66,16 @@ public class RegistryTransformer implements InputTransformer, MetacardTransforme
   }
 
   @Override
-  public Metacard transform(InputStream inputStream, String id)
-      throws IOException, CatalogTransformerException {
+  public Metacard transform(InputStream inputStream, String id) throws CatalogTransformerException {
 
     MetacardImpl metacard;
 
     try (TemporaryFileBackedOutputStream fileBackedOutputStream =
         new TemporaryFileBackedOutputStream()) {
 
-      try {
-        IOUtils.copy(inputStream, fileBackedOutputStream);
+      copyStream(inputStream, fileBackedOutputStream);
 
-      } catch (IOException e) {
-        throw new CatalogTransformerException(
-            "Unable to transform from CSW RIM Service Record to Metacard. Error reading input stream.",
-            e);
-      } finally {
-        IOUtils.closeQuietly(inputStream);
-      }
-
-      try (InputStream inputStreamCopy = fileBackedOutputStream.asByteSource().openStream()) {
-        metacard = (MetacardImpl) unmarshal(inputStreamCopy);
-      } catch (ParserException e) {
-        throw new CatalogTransformerException(
-            "Unable to transform from CSW RIM Service Record to Metacard. Parser exception caught",
-            e);
-      } catch (RegistryConversionException e) {
-        throw new CatalogTransformerException(
-            "Unable to transform from CSW RIM Service Record to Metacard. Conversion exception caught",
-            e);
-      }
+      metacard = (MetacardImpl) unmarshal(fileBackedOutputStream);
 
       if (metacard == null) {
         throw new CatalogTransformerException(
@@ -121,32 +108,46 @@ public class RegistryTransformer implements InputTransformer, MetacardTransforme
     if (RegistryUtility.isRegistryMetacard(metacard)
         || RegistryUtility.isInternalRegistryMetacard(metacard)) {
       String metadata = metacard.getMetadata();
-      return new BinaryContentImpl(IOUtils.toInputStream(metadata));
+      return new BinaryContentImpl(IOUtils.toInputStream(metadata, Charset.defaultCharset()));
     } else {
       throw new CatalogTransformerException(
           "Can't transform metacard of tag type " + metacard.getTags() + " to csw-ebrim xml");
     }
   }
 
-  private Metacard unmarshal(InputStream xmlStream)
-      throws ParserException, RegistryConversionException {
+  private Metacard unmarshal(TemporaryFileBackedOutputStream xmlStream)
+      throws CatalogTransformerException {
     MetacardImpl metacard = null;
 
-    JAXBElement<RegistryObjectType> registryObjectTypeJAXBElement =
-        parser.unmarshal(configurator, JAXBElement.class, xmlStream);
-    if (registryObjectTypeJAXBElement != null) {
+    try (InputStream inputStreamCopy = xmlStream.asByteSource().openStream()) {
 
-      RegistryObjectType registryObjectType = registryObjectTypeJAXBElement.getValue();
+      JAXBElement<RegistryObjectType> registryObjectTypeJAXBElement =
+          parser.unmarshal(configurator, JAXBElement.class, inputStreamCopy);
+      if (registryObjectTypeJAXBElement != null) {
 
-      if (registryObjectType != null) {
+        RegistryObjectType registryObjectType = registryObjectTypeJAXBElement.getValue();
 
-        metacard =
-            (MetacardImpl)
-                RegistryPackageConverter.getRegistryObjectMetacard(
-                    registryObjectType, registryMetacardType);
+        if (registryObjectType != null) {
+
+          metacard =
+              (MetacardImpl)
+                  registryPackageConverter.getRegistryObjectMetacard(
+                      registryObjectType, registryMetacardType);
+        }
       }
+    } catch (ParserException e) {
+      throw new CatalogTransformerException(
+          "Unable to transform from CSW RIM Service Record to Metacard. Parser exception caught",
+          e);
+    } catch (RegistryConversionException e) {
+      throw new CatalogTransformerException(
+          "Unable to transform from CSW RIM Service Record to Metacard. Conversion exception caught",
+          e);
+    } catch (IOException e) {
+      throw new CatalogTransformerException(
+          "Unable to transform from CSW RIM Service Record to Metacard. Error reading input stream.",
+          e);
     }
-
     return metacard;
   }
 
@@ -165,5 +166,20 @@ public class RegistryTransformer implements InputTransformer, MetacardTransforme
 
   public void setRegistryMetacardType(MetacardType registryMetacardType) {
     this.registryMetacardType = registryMetacardType;
+  }
+
+  private void copyStream(
+      InputStream inputStream, TemporaryFileBackedOutputStream fileBackedOutputStream)
+      throws CatalogTransformerException {
+    try {
+      IOUtils.copy(inputStream, fileBackedOutputStream);
+
+    } catch (IOException e) {
+      throw new CatalogTransformerException(
+          "Unable to transform from CSW RIM Service Record to Metacard. Error reading input stream.",
+          e);
+    } finally {
+      IOUtils.closeQuietly(inputStream);
+    }
   }
 }

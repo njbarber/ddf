@@ -53,6 +53,7 @@ import org.codice.ddf.parser.xml.XmlParser;
 import org.codice.ddf.registry.common.RegistryConstants;
 import org.codice.ddf.registry.common.metacard.RegistryObjectMetacardType;
 import org.codice.ddf.registry.common.metacard.RegistryUtility;
+import org.codice.ddf.registry.converter.RegistryPackageConverter;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -76,7 +77,7 @@ public class RegistryTransformerTest {
 
   @Before
   public void setUp() {
-    registryTransformer = new RegistryTransformer();
+    registryTransformer = new RegistryTransformer(new RegistryPackageConverter());
     parser = new XmlParser();
     metacardTypes = new ArrayList<>();
     metacardTypes.addAll(

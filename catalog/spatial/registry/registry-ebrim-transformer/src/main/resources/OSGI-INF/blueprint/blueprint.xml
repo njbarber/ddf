@@ -17,6 +17,7 @@
     <reference id="xmlParser" interface="org.codice.ddf.parser.Parser" filter="(id=xml)"
                availability="mandatory"/>
 
+    <bean id="registryPackageConverter" class="org.codice.ddf.registry.converter.RegistryPackageConverter"/>
     <bean id="registryObjectMetacardType" class="ddf.catalog.data.impl.MetacardTypeImpl">
         <argument value="registry"/>
         <argument>
@@ -48,6 +49,7 @@
         <bean class="org.codice.ddf.registry.transformer.RegistryTransformer">
             <property name="parser" ref="xmlParser"/>
             <property name="registryMetacardType" ref="registryObjectMetacardType"/>
+            <argument ref="registryPackageConverter"/>
         </bean>
     </service>
 
