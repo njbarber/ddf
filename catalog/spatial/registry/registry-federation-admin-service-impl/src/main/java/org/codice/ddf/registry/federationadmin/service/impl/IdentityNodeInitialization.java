@@ -15,6 +15,7 @@ package org.codice.ddf.registry.federationadmin.service.impl;
 
 import static org.codice.ddf.registry.schemabindings.EbrimConstants.RIM_FACTORY;
 
+import com.connexta.ion.legacy.federation.registry.plugins.AttributeProcessor;
 import ddf.catalog.data.Metacard;
 import ddf.catalog.data.impl.AttributeImpl;
 import ddf.catalog.data.types.Core;
@@ -26,6 +27,7 @@ import java.security.PrivilegedActionException;
 import java.time.OffsetDateTime;
 import java.time.ZoneId;
 import java.time.ZoneOffset;
+import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
 import java.util.concurrent.ScheduledExecutorService;
@@ -88,6 +90,8 @@ public class IdentityNodeInitialization {
   private long retryInterval = DEFAULT_RETRY_INTERVAL_SECONDS;
 
   private final ScheduledExecutorService executor;
+
+  private List<AttributeProcessor> attributeProcessors;
 
   public IdentityNodeInitialization(ScheduledExecutorService executor) {
     this(executor, DEFAULT_RETRY_INTERVAL_SECONDS);
@@ -231,6 +235,10 @@ public class IdentityNodeInitialization {
     SlotType1 liveDate =
         slotTypeHelper.create(RegistryConstants.XML_LIVE_DATE_NAME, rightNow, DATE_TIME);
     extrinsicObject.getSlot().add(liveDate);
+
+    for (AttributeProcessor attributeProcessor : attributeProcessors) {
+      attributeProcessor.addSlots(extrinsicObject);
+    }
 
     if (registryPackage.getRegistryObjectList() == null) {
       registryPackage.setRegistryObjectList(RIM_FACTORY.createRegistryObjectListType());

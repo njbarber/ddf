@@ -13,6 +13,7 @@
  */
 package org.codice.ddf.registry.converter;
 
+import com.connexta.ion.legacy.federation.registry.plugins.AttributeProcessor;
 import com.vividsolutions.jts.geom.Geometry;
 import com.vividsolutions.jts.io.WKTWriter;
 import ddf.catalog.data.AttributeDescriptor;
@@ -20,9 +21,6 @@ import ddf.catalog.data.Metacard;
 import ddf.catalog.data.MetacardType;
 import ddf.catalog.data.impl.MetacardImpl;
 import ddf.catalog.data.types.Contact;
-import ddf.catalog.data.types.Core;
-import ddf.catalog.data.types.DateTime;
-import ddf.catalog.data.types.Topic;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -36,22 +34,7 @@ import java.util.stream.Collectors;
 import javax.xml.bind.JAXBElement;
 import net.opengis.cat.wrs.v_1_0_2.AnyValueType;
 import net.opengis.gml.v_3_1_1.AbstractGeometryType;
-import oasis.names.tc.ebxml_regrep.xsd.rim._3.AssociationType1;
-import oasis.names.tc.ebxml_regrep.xsd.rim._3.EmailAddressType;
-import oasis.names.tc.ebxml_regrep.xsd.rim._3.ExternalIdentifierType;
-import oasis.names.tc.ebxml_regrep.xsd.rim._3.ExtrinsicObjectType;
-import oasis.names.tc.ebxml_regrep.xsd.rim._3.IdentifiableType;
-import oasis.names.tc.ebxml_regrep.xsd.rim._3.OrganizationType;
-import oasis.names.tc.ebxml_regrep.xsd.rim._3.PersonNameType;
-import oasis.names.tc.ebxml_regrep.xsd.rim._3.PersonType;
-import oasis.names.tc.ebxml_regrep.xsd.rim._3.PostalAddressType;
-import oasis.names.tc.ebxml_regrep.xsd.rim._3.RegistryObjectListType;
-import oasis.names.tc.ebxml_regrep.xsd.rim._3.RegistryObjectType;
-import oasis.names.tc.ebxml_regrep.xsd.rim._3.RegistryPackageType;
-import oasis.names.tc.ebxml_regrep.xsd.rim._3.ServiceBindingType;
-import oasis.names.tc.ebxml_regrep.xsd.rim._3.ServiceType;
-import oasis.names.tc.ebxml_regrep.xsd.rim._3.SlotType1;
-import oasis.names.tc.ebxml_regrep.xsd.rim._3.TelephoneNumberType;
+import oasis.names.tc.ebxml_regrep.xsd.rim._3.*;
 import org.apache.commons.collections.CollectionUtils;
 import org.apache.commons.lang.StringUtils;
 import org.codice.ddf.registry.common.RegistryConstants;
@@ -69,27 +52,29 @@ public class RegistryPackageConverter {
 
   private static final Logger LOGGER = LoggerFactory.getLogger(RegistryPackageConverter.class);
 
-  private static final Map<String, String> METACARD_XML_NAME_MAP;
+  private List<AttributeProcessor> attributeProcessors;
+
+  private final Map<String, String> extrinsicAttributesMap;
+
+  private static final Map<String, String> REGISTRY_SERVICE_ATTRIBUTE_MAP = new HashMap<>();
+
+  static {
+    REGISTRY_SERVICE_ATTRIBUTE_MAP.put(
+        RegistryObjectMetacardType.SERVICE_BINDING_TYPES, "bindingType");
+    REGISTRY_SERVICE_ATTRIBUTE_MAP.put(RegistryObjectMetacardType.SERVICE_BINDINGS, "serviceType");
+  }
 
   private static final InternationalStringTypeHelper INTERNATIONAL_STRING_TYPE_HELPER =
       new InternationalStringTypeHelper();
 
   private static final SlotTypeHelper SLOT_TYPE_HELPER = new SlotTypeHelper();
 
-  static {
-    METACARD_XML_NAME_MAP = new HashMap<>();
-    METACARD_XML_NAME_MAP.put(Core.CREATED, "liveDate");
-    METACARD_XML_NAME_MAP.put(DateTime.START, "dataStartDate");
-    METACARD_XML_NAME_MAP.put(DateTime.END, "dataEndDate");
-    METACARD_XML_NAME_MAP.put(Core.MODIFIED, "lastUpdated");
-    METACARD_XML_NAME_MAP.put(RegistryObjectMetacardType.LINKS, "links");
-    METACARD_XML_NAME_MAP.put(Core.LOCATION, "location");
-    METACARD_XML_NAME_MAP.put(RegistryObjectMetacardType.REGION, "region");
-    METACARD_XML_NAME_MAP.put(RegistryObjectMetacardType.DATA_SOURCES, "inputDataSources");
-    METACARD_XML_NAME_MAP.put(Topic.KEYWORD, "dataTypes");
-    METACARD_XML_NAME_MAP.put(RegistryObjectMetacardType.SECURITY_LEVEL, "securityLevel");
-    METACARD_XML_NAME_MAP.put(RegistryObjectMetacardType.SERVICE_BINDING_TYPES, "bindingType");
-    METACARD_XML_NAME_MAP.put(RegistryObjectMetacardType.SERVICE_BINDINGS, "serviceType");
+  public RegistryPackageConverter() {
+    this.extrinsicAttributesMap = new ExtrinsicAttributes().getExtrinsicAttributes();
+  }
+
+  public RegistryPackageConverter(ExtrinsicAttributes extrinsicAttributes) {
+    this.extrinsicAttributesMap = extrinsicAttributes.getExtrinsicAttributes();
   }
 
   public Metacard getRegistryObjectMetacard(
@@ -231,9 +216,9 @@ public class RegistryPackageConverter {
     validateIdentifiable(service);
 
     String xmlServiceBindingsTypesAttributeName =
-        METACARD_XML_NAME_MAP.get(RegistryObjectMetacardType.SERVICE_BINDING_TYPES);
+        REGISTRY_SERVICE_ATTRIBUTE_MAP.get(RegistryObjectMetacardType.SERVICE_BINDING_TYPES);
     String xmlServiceBindingsAttributeName =
-        METACARD_XML_NAME_MAP.get(RegistryObjectMetacardType.SERVICE_BINDINGS);
+        REGISTRY_SERVICE_ATTRIBUTE_MAP.get(RegistryObjectMetacardType.SERVICE_BINDINGS);
 
     List<String> serviceBindings = new ArrayList<>();
     List<String> serviceBindingTypes = new ArrayList<>();
@@ -279,16 +264,12 @@ public class RegistryPackageConverter {
     if (CollectionUtils.isNotEmpty(registryObject.getSlot())) {
       Map<String, SlotType1> slotMap = SLOT_TYPE_HELPER.getNameSlotMap(registryObject.getSlot());
 
-      setAttributeFromMap(Core.CREATED, slotMap, metacard);
-      setAttributeFromMap(DateTime.START, slotMap, metacard);
-      setAttributeFromMap(DateTime.END, slotMap, metacard);
-      setAttributeFromMap(Core.MODIFIED, slotMap, metacard);
-      setAttributeFromMap(RegistryObjectMetacardType.LINKS, slotMap, metacard);
-      setAttributeFromMap(Core.LOCATION, slotMap, metacard);
-      setAttributeFromMap(RegistryObjectMetacardType.REGION, slotMap, metacard);
-      setAttributeFromMap(RegistryObjectMetacardType.DATA_SOURCES, slotMap, metacard);
-      setAttributeFromMap(Topic.KEYWORD, slotMap, metacard);
-      setAttributeFromMap(RegistryObjectMetacardType.SECURITY_LEVEL, slotMap, metacard);
+      for (Map.Entry<String, String> entry : extrinsicAttributesMap.entrySet()) {
+        setAttributeFromMap(entry.getKey(), entry.getValue(), slotMap, metacard);
+      }
+      for (AttributeProcessor attributeProcessor : attributeProcessors) {
+        attributeProcessor.addAttributes(slotMap, metacard);
+      }
     }
 
     if (registryObject.isSetName()) {
@@ -338,12 +319,10 @@ public class RegistryPackageConverter {
   private String getPhoneNumber(TelephoneNumberType digits) {
     StringBuilder phoneNumberBuilder = new StringBuilder();
 
-    phoneNumberBuilder = buildNonNullString(phoneNumberBuilder, digits.getCountryCode(), "", "+%s");
-
-    phoneNumberBuilder = buildNonNullString(phoneNumberBuilder, digits.getAreaCode(), " ", "(%s)");
-    phoneNumberBuilder = buildNonNullString(phoneNumberBuilder, digits.getNumber(), " ");
-    phoneNumberBuilder =
-        buildNonNullString(phoneNumberBuilder, digits.getExtension(), " ", "ext %s");
+    buildNonNullString(phoneNumberBuilder, digits.getCountryCode(), "", "+%s");
+    buildNonNullString(phoneNumberBuilder, digits.getAreaCode(), " ", "(%s)");
+    buildNonNullString(phoneNumberBuilder, digits.getNumber(), " ");
+    buildNonNullString(phoneNumberBuilder, digits.getExtension(), " ", "ext %s");
     return phoneNumberBuilder.toString();
   }
 
@@ -354,11 +333,11 @@ public class RegistryPackageConverter {
       StringBuilder addressString = new StringBuilder();
       PostalAddressType address = addresses.get(0);
 
-      addressString = buildNonNullString(addressString, address.getStreet(), " ");
-      addressString = buildNonNullString(addressString, address.getCity(), ", ");
-      addressString = buildNonNullString(addressString, address.getStateOrProvince(), ", ");
-      addressString = buildNonNullString(addressString, address.getPostalCode(), " ");
-      addressString = buildNonNullString(addressString, address.getCountry(), ", ");
+      buildNonNullString(addressString, address.getStreet(), " ");
+      buildNonNullString(addressString, address.getCity(), ", ");
+      buildNonNullString(addressString, address.getStateOrProvince(), ", ");
+      buildNonNullString(addressString, address.getPostalCode(), " ");
+      buildNonNullString(addressString, address.getCountry(), ", ");
       if (StringUtils.isNotBlank(addressString.toString())) {
         metacard.setAttribute(metacardAttribute, addressString.toString());
       }
@@ -392,7 +371,7 @@ public class RegistryPackageConverter {
     }
   }
 
-  private StringBuilder buildNonNullString(
+  private void buildNonNullString(
       StringBuilder stringBuilder, String attributeValue, String delimiterBefore, String format) {
     if (StringUtils.isNotBlank(attributeValue)) {
       if (stringBuilder.length() > 0) {
@@ -404,19 +383,21 @@ public class RegistryPackageConverter {
         stringBuilder.append(attributeValue);
       }
     }
-    return stringBuilder;
   }
 
   private StringBuilder buildNonNullString(
       StringBuilder stringBuilder, String attributeValue, String delimiterBefore) {
 
-    return (buildNonNullString(stringBuilder, attributeValue, delimiterBefore, null));
+    buildNonNullString(stringBuilder, attributeValue, delimiterBefore, null);
+    return stringBuilder;
   }
 
   private void setAttributeFromMap(
-      String metacardAttributeName, Map<String, SlotType1> map, MetacardImpl metacard)
+      String metacardAttributeName,
+      String xmlAttributeName,
+      Map<String, SlotType1> map,
+      MetacardImpl metacard)
       throws RegistryConversionException {
-    String xmlAttributeName = METACARD_XML_NAME_MAP.get(metacardAttributeName);
 
     if (map.containsKey(xmlAttributeName)) {
 

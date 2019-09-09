@@ -17,7 +17,15 @@
     <reference id="xmlParser" interface="org.codice.ddf.parser.Parser" filter="(id=xml)"
                availability="mandatory"/>
 
-    <bean id="registryPackageConverter" class="org.codice.ddf.registry.converter.RegistryPackageConverter"/>
+    <bean id="extrinsicAttributes" class="org.codice.ddf.registry.converter.ExtrinsicAttributes"/>
+
+    <reference-list id="attributeProcessor" interface="com.connexta.ion.legacy.federation.registry.plugins.AttributeProcessor" availability="optional"/>
+
+    <bean id="registryPackageConverter" class="org.codice.ddf.registry.converter.RegistryPackageConverter">
+        <argument ref="extrinsicAttributes"/>
+        <property name="attributeProcessors" ref="attributeProcessor"/>
+    </bean>
+
     <bean id="registryObjectMetacardType" class="ddf.catalog.data.impl.MetacardTypeImpl">
         <argument value="registry"/>
         <argument>
